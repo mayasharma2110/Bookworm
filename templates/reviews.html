@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookworm</title>
+</head>
+<body>
+    hi 123456
+    {% for book in books %}
+        {{ book.book_title }}<br>
+        {{ book.author }}<br>
+        {{ book.genre_name }}<br>
+    {% endfor %}
+    {% for user in users %}
+        {{ user.username }}<br>
+    {% endfor %}
+    {% for genre in genres %}
+        {{ genre.genre_name }}<br>
+    {% endfor %}
+</body>
+</html>
