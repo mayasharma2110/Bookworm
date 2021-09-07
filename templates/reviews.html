@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bookworm</title>
-</head>
-<body>
-    hi 123456
+{% extends "base.html" %}
+{% block content %}
+
+<h2>I'm extending the base template</h2>
+
     {% for review in reviews %}
         {{ review.book_title }}<br>
         {{ review.recommend }}<br>
@@ -14,18 +10,18 @@
         {{ review.comment }}<br>
         {{ review.created_by }}<br>
         {{ review.date_created }}<br>
-        {{ review.date_updated }}<br>
+        {{ review.date_updated }}<br><br>
     {% endfor %}
     {% for book in books %}
         {{ book.book_title }}<br>
         {{ book.author }}<br>
-        {{ book.genre_name }}<br>
+        {{ book.genre_name }}<br><br>
     {% endfor %}
     {% for user in users %}
-        {{ user.username }}<br>
+        {{ user.username }}<br><br>
     {% endfor %}
     {% for genre in genres %}
         {{ genre.genre_name }}<br>
     {% endfor %}
-</body>
-</html>
+
+{% endblock %}
