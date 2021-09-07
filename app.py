@@ -21,18 +21,16 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_reviews")
 def get_reviews():
-    reviews = mongo.db.reviews.find()
-    books = mongo.db.books.find()
-    genres = mongo.db.genres.find()
-    users = mongo.db.users.find()
-    print(list(reviews))
-    print(list(books))
-    print(list(genres))
-    print(list(users))
-    for col1 in mongo.db.reviews.find():
-        print(col1, book_title)
-    return render_template("reviews.html", reviews=reviews, books=books, genres=genres,
-                           users=users)
+    reviews = list(mongo.db.reviews.find())
+    books = list(mongo.db.books.find())
+    genres = list(mongo.db.genres.find())
+    users = list(mongo.db.users.find())
+    # print(list(reviews))
+    # print(list(books))
+    # print(list(genres))
+    # print(list(users))
+    return render_template("reviews.html", reviews=reviews, books=books, 
+                           genres=genres, users=users)
 
 
 if __name__ == "__main__":

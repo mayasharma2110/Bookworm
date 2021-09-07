@@ -7,6 +7,15 @@
 </head>
 <body>
     hi 123456
+    {% for review in reviews %}
+        {{ review.book_title }}<br>
+        {{ review.recommend }}<br>
+        {{ review.stars }}<br>
+        {{ review.comment }}<br>
+        {{ review.created_by }}<br>
+        {{ review.date_created }}<br>
+        {{ review.date_updated }}<br>
+    {% endfor %}
     {% for book in books %}
         {{ book.book_title }}<br>
         {{ book.author }}<br>
