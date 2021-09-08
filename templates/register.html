@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3 class="center-align">Register</h3>
+
+<div class="row">
+    <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('register') }}">
+      <div class="card-panel">
+        <!-- username -->
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="fas fa-solid fa-user prefix green-text text-darken-4"></i>
+              <input id="username" name="username" type="text" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required class="validate">
+              <label for="username">Username</label>
+            </div>
+          </div>
+          <!-- age category -->
+          <!-- <div class="row">
+            <div class="input-field col s12">
+              <select>
+                <option value="" disabled selected>Choose your option</option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+              </select>
+              <i class="fas fa-solid fa-child prefix green-text text-darken-4"></i> -->
+              <!-- <input id="agecategory" name="agecategory" type="text" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required class="validate"> -->
+              <!-- <label for="agecategory">Age Category</label>
+            </div>
+          </div> -->
+          <!-- gender -->
+          <!-- <div class="row">
+            <div class="input-field col s12">
+              <select>
+                <option value="" disabled selected>Choose your option</option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+              </select>
+              <i class="fas fa-solid fa-venus-mars prefix green-text text-darken-4"></i> -->
+              <!-- <input id="gender" name="gender" type="text" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required class="validate"> -->
+              <!-- <label for="gender">Gender</label>
+            </div>
+          </div> -->
+          <!-- password -->
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="fas fa-solid fa-lock prefix green-text text-darken-4"></i>
+              <input id="password" name="password" type="password" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required class="validate">
+              <label for="password">Password</label>
+            </div>
+          </div>
+          <!-- register -->
+          <div class="row">
+            <button type="submit" class="col s12 btn btn-large green darken-4">
+              Register
+              <i class="fas fa-sign-in-alt"></i>
+            </button>
+          </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="row">
+    <div class="col c12">
+      <p class="center-align">
+        Already Registered?
+        <a href="#" class="green-text text-lighten-1">Log In</a>
+      </p>
+    </div>
+  </div>
+
+{% endblock %}

@@ -145,7 +145,7 @@ The website will use Materializecss grids to make the layout responsive to diffe
 
 * The login page will contain a form for registered users to login. This will ask for username and password, if either are incorrect this will be displayed ot the user and the site will ask them to try again. There will also be a logout link for logged in users to use.
 
-* The register page will contain a form for new members to sign up and be part of the community. This will ask for users username, password, age category and gender. The site will check against the database to make sure there is no current user with such username and if so will notify the user as such and to choose a different username instead. Age category and gender can be of use for users of the site when deciding on a new book/author based on demogrpahics of those who read such books/authors' work, these fields will be optional as not everyone will want to give the information for various reasons.
+* The register page will contain a form for new members to sign up and be part of the community. This will ask for users username, password, age category and gender. The site will check against the database to make sure there is no current user with such username and if so will notify the user as such and to choose a different username instead. Age category and gender can be of use for users of the site when deciding on a new book/author based on demogrpahics of those who read such books/authors' work.
 
 * The new review page will contain a form which allows signed in users to create a new review for a book. This will include a dropdown for the book that is being revewed, recommend yes/no field, start out of 5 field and review comment (free text field).
 
@@ -457,7 +457,7 @@ on your own repository to view/edit as you wish.
 
 ### Code
 
-* The Materializecss library was used to help make this website responsive for different devices. 
+* The Materializecss library was used to help make this website responsive for different devices and to create the collapsible navbar. 
 
 * The Materializecss libraries were also used to help make x, y, z.   
 
