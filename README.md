@@ -123,33 +123,33 @@ Key features to be included based on user stories are:
 
 * Responsive website on mobile, tablet and laptop size devices.
 
-* The home page will contain xxxxx.
+* The home page will contain the reviews and a search bar for users to search for a book or author. Signed in users will also see their own reviews displayed at the top.
 
-* The login page will contain xxxxx.
+* The login page will contain a form for registered users to login.
 
-* The register page will contain xxxxx.
+* The register page will contain a form for new members to sign up and be part of the community.
 
-* The new review page will contain xxxxx.
+* The new review page will contain a form which allows signed in users to create a new review for a book.
 
-* The manage books page will contain xxxxx.
+* The new review page will contain a form which allows signed in users to add a new book to the database/site.
 
 * The manage genres page will contain xxxxx.
 
 ### Structure
 
-All pages of the website will have a consistent navigation bar. The home, login and register links will be available to users who aren't yet registered and/or logged into the site. For logged in users this will show home, new review, manage books, manage genres and logout links.
+All pages of the website will have a consistent navigation bar. The home, login and register links will be available to users who aren't yet registered and/or logged into the site. For logged in users this will show home, new review, manage books, manage genres and logout links. Note the manage genres link will only be available to the Admin of the site and no other users.
 
-The website will use bootstrap/Materializecss grids to make the layout responsive to different devices and screen sizes.
+The website will use Materializecss grids to make the layout responsive to different devices and screen sizes.
 
-The home page will contain xxxxx.
+* The home page will contain the reviews and a search bar for users to search for a book or author. Signed in users will also see their own reviews displayed at the top. Signed in users can update or delete their own reviews, this will only be a soft delete and the information will remain in the database but not be shown on the site to users. Admin are allowed to delete any review they deem spam or unacceptable in some way, this again will be a soft delete only.
 
-The login page will contain xxxxx.
+* The login page will contain a form for registered users to login. This will ask for username and password, if either are incorrect this will be displayed ot the user and the site will ask them to try again. There will also be a logout link for logged in users to use.
 
-The register page will contain xxxxx.
+* The register page will contain a form for new members to sign up and be part of the community. This will ask for users username, password, age category and gender. The site will check against the database to make sure there is no current user with such username and if so will notify the user as such and to choose a different username instead. Age category and gender can be of use for users of the site when deciding on a new book/author based on demogrpahics of those who read such books/authors' work, these fields will be optional as not everyone will want to give the information for various reasons.
 
-The new review page will contain xxxxx.
+* The new review page will contain a form which allows signed in users to create a new review for a book. This will include a dropdown for the book that is being revewed, recommend yes/no field, start out of 5 field and review comment (free text field).
 
-The manage books page will contain xxxxx.
+* The new review page will contain a form which allows signed in users to add a new book to the database/site.
 
 The manage genres page will contain xxxxx.
 
@@ -293,9 +293,6 @@ I picked images of books and people reading books, I also wanted to pick images 
 
 * mongodb, flask, myqsl, python
 
-* [Bootstrap Version 4.1.3](https://getbootstrap.com/docs/4.1/getting-started/download/)
-  * Used grid layout to ensure the content was responsive to different device sizes (mobile, tablet and laptop).
-
 * [Materializecss](https://materializecss.com/)
   * Used to xxx.
 
@@ -354,7 +351,7 @@ I also checked the website on my HP 15 inch laptop, Philips 20 inch monitor and 
 
 * Used the [w3c validator](https://validator.w3.org/) to validate my html (for both pages of the website) to check for no errors or warnings. 
 * Used the [jigsaw validator](https://jigsaw.w3.org/css-validator/#validate_by_input) to validate my style.css file to check for no errors or warnings. 
-I did not validate css of the whole website as this included the imported bootstrap files.
+I did not validate css of the whole website as this included the imported materializecss files.
 
 * Used [Jshint](https://jshint.com/) to validate my js files and ensure no warnings or errors.
 
@@ -460,9 +457,9 @@ on your own repository to view/edit as you wish.
 
 ### Code
 
-* The bootstrap library was used to help make this website responsive for different devices. 
+* The Materializecss library was used to help make this website responsive for different devices. 
 
-* The bootstrap/Materializecss libraries were also used to help make x, y, z.   
+* The Materializecss libraries were also used to help make x, y, z.   
 
 ### Content
 
@@ -477,7 +474,7 @@ on your own repository to view/edit as you wish.
   
 ### Acknowledgments
 
-* Code Institute for teaching me the basics of HTML, CSS, Bootstrap, JavaScript, jQuery, Python, MongoDB, mySQL and Flask to allow me to create this website.
+* Code Institute for teaching me the basics of HTML, CSS, Materializecss, JavaScript, jQuery, Python, MongoDB, mySQL and Flask to allow me to create this website.
 
 * My mentor Antonio Rodriguez who helped provide feedback on this website and improvements that could be made.
 
