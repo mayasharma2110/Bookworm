@@ -74,25 +74,48 @@ Mockups:
 
 #### First Time Visitor Goals
 
-* As a first time user, xxxxx.
+* As a first time user, I want to know the purpose of the site.
+
+* As a first time user, I want to read reviews registered users have made.
+
+* As a first time user, I want to be able to find a new book that I may like to read and sort the reviews based on the average rating.
+
+* As a first time user, I want to be able to be able to search in the reviews for books by a certain author or of a certain genre I like.
+
 
 #### Returning Visitor Goals
 
-* As a returning user, xxxxx.
+* As a returning user, I similar needs of a first time user.
+
+* As a returning user, I want to be able to register and login as myself.
+
+* As a returning user, I want to be able to add my own books to the site.
+
+* As a returning user, I want to be able to add my own reviews to the site, I would also like to update or delete my own reviews.
 
 #### Frequent User Goals
 
-* As a frequent user, xxxxx.
+* As a frequent user, I want to be able to see my own reviews at the top for easy management needs to update/delete.
 
 ### Strategy
 
 #### Business goals
 
-* As a business owner I want to, xxxxx.
+* As a business owner I want to, help users find new books/authors they may enjoy.
+
+* As a business owner I want to, help companies sell more books based on this review site and help users by providing a link to where they can buy the books.
+
+* As a business owner I want to, be able to manage the list of book genres that are displayed as options to users of the site when adding a new book to the database/site.
+
+* As a business owner I want to, be able to manage the reviews and soft delete any that are deemed spam or unacceptable in some way, this will be a soft delete and will remain in the database but not be shown on the site to users.
 
 #### User Goals
 
-* To xxxxx.
+* To read reviews and gain information about new books/authors they may like.
+
+* To help the community by providing reviews for books they have read.
+
+* To have the ability to update or delete a review I have made.
 
 ### Scope
 
