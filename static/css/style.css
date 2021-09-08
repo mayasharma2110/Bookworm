@@ -1,3 +1,26 @@
 /* body {
     background: blue;
 } */
+
+/* main colours */
+/* green (#00e676), orange (#E6650B), magenta (#E60B8C), dark green (#1b5e20) and other text uses darkslategrey. */
+
+/* navbar */
+nav .brand-logo{
+    margin-left: 20px;
+    color: #1b5e20;
+    font-weight: 600;
+}
+
+nav ul a {
+    color: #1b5e20;
+    font-weight: 500;
+}
+
+.fa-bars {
+    color: #1b5e20;
+}
+
+.text-shadow {
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+}

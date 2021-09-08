@@ -12,6 +12,49 @@
     <title>Bookworm</title>
 </head>
 <body>
+    <header>
+        <!-- top navbar -->
+        <nav class="nav-extended green accent-3">
+            <div class="nav-wrapper">
+                <a href="{{ url_for('get_reviews') }}" class="brand-logo">Bookworm</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="{{ url_for('get_reviews') }}">Home</a></li>
+                    <!-- when logged in -->
+                    <!-- {% if session.user %} -->
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#">New Review</a></li>
+                        <li><a href="#">Manage Books</a></li>
+                        <!-- admin only for manage genres -->
+                        <li><a href="#">Manage Genres</a></li>
+                        <li><a href="#">Log Out</a></li>
+                    <!-- when logged out -->
+                    <!-- {% else %} -->
+                        <li><a href="#">Log In</a></li>
+                        <li><a href="#">Register</a></li>
+                    <!-- {% endif %} -->
+                </ul>
+            </div>
+        </nav>
+        <!-- mobile navbar -->
+        <ul class="sidenav" id="mobile-demo">
+            <li> <h4 class="center-align teal-text text-lighten-1">Bookworm</h4></li>
+            <li><a href="{{ url_for('get_reviews') }}">Home</a></li>
+            <!-- when logged in -->
+            <!-- {% if session.user %} -->
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">New Review</a></li>
+                <li><a href="#">Manage Books</a></li>
+                <!-- admin only for manage genres -->
+                <li><a href="#">Manage Genres</a></li>
+                <li><a href="#">Log Out</a></li>
+            <!-- when logged out -->
+            <!-- {% else %} -->
+                <li><a href="#">Log In</a></li>
+                <li><a href="#">Register</a></li>
+            <!-- {% endif %} -->
+        </ul>
+    </header>
     <div class="container">
         {% block content %}
         {% endblock %}

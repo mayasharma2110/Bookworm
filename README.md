@@ -252,7 +252,7 @@ Please note there are a few changes to the final site since the wireframes were 
 ### Surface
 
 #### Colours
-I tok inspiration from [Waterstones](https://www.waterstones.com/) and [World of Books](https://www.worldofbooks.com/en-gb) to get the colour theme of green/blue. [Adobe Color](https://color.adobe.com/create/color-wheel) also helped me find complemantary colours to go with the main green/blue colour. I used a teal (#xxxxxx), red (#xxxxxx) and yellow (#xxxxxx) for the majority of the site. For the navbar and headings text I picked xxxxxx and other text uses xxxxxx.
+I noticed that several booksites seem to use a common colour of blue e.g. [Waterstones](https://www.waterstones.com/) and [World of Books](https://www.worldofbooks.com/en-gb), however I chose a main colour of green as I found this a good colour to represent nature/balance and is also calming. From [Adobe Color](https://color.adobe.com/create/color-wheel) I choose green (#00e676) as the main colour and this site helped me find the split complemantary colours of orange (#E6650B) and magenta (#E60B8C). For the navbar and headings text I chose dark green (#1b5e20) and other text uses darkslategrey.
 
 #### Imagery
 I picked images of books and people reading books, I also wanted to pick images that created a sense of relaxation and calm (so a few of the images are of people reading outside). The images used on the site are credited in the credits - media section of this readme.
