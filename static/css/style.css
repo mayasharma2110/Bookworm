@@ -3,7 +3,7 @@
 } */
 
 /* main colours */
-/* green (#00e676), orange (#E6650B), magenta (#E60B8C), dark green (#1b5e20) and other text uses darkslategrey. */
+/* green (#00e676), orange (#E6650B), magenta (#E60B8C), dark green (#1b5e20), light green (##B9F6CA) and other text uses darkslategrey. */
 
 /* navbar */
 nav .brand-logo{
@@ -25,6 +25,10 @@ h3 {
     color: #1b5e20
 }
 
+.flashes h4 {
+    line-height: 2; 
+}
+
 /* home page */
 
 /* register page */
@@ -32,6 +36,7 @@ h3 {
     border: 1px #1b5e20 dashed;
     border-radius: 40px;
 }
+
 /* login page */
 
 /* add review page */
