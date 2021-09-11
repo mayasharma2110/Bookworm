@@ -21,7 +21,7 @@
                 <ul class="right hide-on-med-and-down">
                     <li><a href="{{ url_for('get_reviews') }}">Home</a></li>
                     <!-- when logged in -->
-                        <li><a href="#">Profile</a></li>
+                    <li><a href="{{ url_for('myreviews', username=session['user']) }}">My Reviews</a></li>
                         <li><a href="#">New Review</a></li>
                         <li><a href="#">Manage Books</a></li>
                         <!-- admin only for manage genres -->
@@ -38,7 +38,7 @@
             <li> <h4 class="center-align teal-text text-lighten-1">Bookworm</h4></li>
             <li><a href="{{ url_for('get_reviews') }}">Home</a></li>
             <!-- when logged in -->
-                <li><a href="#">Profile</a></li>
+                <li><a href="{{ url_for('myreviews', username=session['user']) }}">My Reviews</a></li>
                 <li><a href="#">New Review</a></li>
                 <li><a href="#">Manage Books</a></li>
                 <!-- admin only for manage genres -->

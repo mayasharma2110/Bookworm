@@ -57,7 +57,7 @@ def register():
         # put the new user into session cookie
         session["user"] = request.form.get("username").lower()
         flash("Registration Successful!")
-
+        return redirect(url_for("myreviews", username=session["user"]))
     # else, GET method functionality
     return render_template("register.html")
 
@@ -76,6 +76,8 @@ def login():
                     session["user"] = request.form.get("username").lower()
                     flash("Welcome, {}".format(
                         request.form.get("username")))
+                    return redirect(url_for(
+                        "myreviews", username=session["user"]))
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password")
@@ -87,6 +89,18 @@ def login():
             return redirect(url_for("login"))
 
     return render_template("login.html")
+
+
+@app.route("/myreviews/<username>", methods=["GET", "POST"])
+def myreviews(username):
+    # grab the session user's username from db
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+
+    if session["user"]:
+        return render_template("myreviews.html", username=username)
+
+    return redirect(url_for("login"))
 
 
 if __name__ == "__main__":
