@@ -131,9 +131,9 @@ Key features to be included based on user stories are:
 
 * The new review page will contain a form which allows signed in users to create a new review for a book.
 
-* The new review page will contain a form which allows signed in users to add a new book to the database/site.
+* The manage books page will contain a list of all current books in the database and a link which allows signed in users to add a new book to the database/site.
 
-* The manage genres page will contain xxxxx.
+* The manage genres page will contain a list of all current genres in the database, this will be accessible to admin only.
 
 ### Structure
 
@@ -141,7 +141,7 @@ All pages of the website will have a consistent navigation bar. The home, login 
 
 The website will use Materializecss grids to make the layout responsive to different devices and screen sizes.
 
-* The home page will contain the reviews and a search bar for users to search for a book or author. Signed in users will also see their own reviews displayed at the top. Signed in users can update or delete their own reviews, this will only be a soft delete and the information will remain in the database but not be shown on the site to users. Admin are allowed to delete any review they deem spam or unacceptable in some way, this again will be a soft delete only.
+* The home page will contain the reviews and a search bar for users to search for a book or author. Signed in users will also see their own reviews displayed at the top. Signed in users can update or delete their own reviews, this will only be a soft delete and the information will remain in the database but not be shown on the site to users. Admin are able to delete any review they deem spam or unacceptable in some way, this again will be a soft delete only.
 
 * The login page will contain a form for registered users to login. This will ask for username and password, if either are incorrect this will be displayed ot the user and the site will ask them to try again. There will also be a logout link for logged in users to use.
 
@@ -149,98 +149,37 @@ The website will use Materializecss grids to make the layout responsive to diffe
 
 * The new review page will contain a form which allows signed in users to create a new review for a book. This will include a dropdown for the book that is being revewed, recommend yes/no field, start out of 5 field and review comment (free text field).
 
-* The new review page will contain a form which allows signed in users to add a new book to the database/site.
+* The manage books page will contain a list of all current books in the database and a link which allows signed in users to add a new book to the database/site. Admin will also be able to update or delete existing books in the database from this page.
 
-The manage genres page will contain xxxxx.
+* The manage genres page will contain a list of all current genres in the database. This will be accessible to admin only and allow them to view all genres in the database and a link to allow them to add a new genre and update/delete an existing one.
 
 ### Skeleton
 
 I used Balsamiq to make the wireframes for this project. The website was designed to have 6 pages - Home, Login, Register, New Review, Manage Books and Manage Categories. The webiste also includes a logout link which logs out signed in users and takes them to the home page.
-The wireframes were created for all pages for phone, tablet and desktop devices.
 
 #### Wireframes Home
 
-Mobile
-
-![Home Phone Wireframes](assets/wireframes/home-phone.PNG)  
-
-Tablet
-
-![Home Tablet Wireframes](assets/wireframes/home-tablet.PNG)
-
-Desktop
-
-![Home Desktop Wireframes](assets/wireframes/home-desktop.PNG)  
+![Home Phone Wireframes](assets/wireframes/home.jpg)  
 
 #### Wireframes Login
 
-Mobile
-
-![Login Phone Wireframes](assets/wireframes/login-phone.PNG)  
-
-Tablet
-
-![Login Tablet Wireframes](assets/wireframes/login-tablet.PNG) 
-
-Desktop
-
-![Login Desktop Wireframes](assets/wireframes/login-desktop.PNG) 
+![Login Desktop Wireframes](assets/wireframes/login.jpg) 
 
 #### Wireframes Register
 
-Mobile
-
-![Register Phone Wireframes](assets/wireframes/register-phone.PNG)  
-
-Tablet
-
-![Register Wireframes](assets/wireframes/register-tablet.PNG) 
-
-Desktop
-
-![Register Desktop Wireframes](assets/wireframes/register-desktop.PNG) 
+![Register Desktop Wireframes](assets/wireframes/register.jpg) 
 
 #### Wireframes New Review
 
-Mobile
-
-![New Review Phone Wireframes](assets/wireframes/new-review-phone.PNG)  
-
-Tablet
-
-![New Review Tablet Wireframes](assets/wireframes/new-review-tablet.PNG)
-
-Desktop
-
-![New Review Desktop Wireframes](assets/wireframes/new-review-desktop.PNG)  
+![New Review Desktop Wireframes](assets/wireframes/new_review.jpg)  
 
 #### Wireframes Manage Books
 
-Mobile
-
-![Manage Books Phone Wireframes](assets/wireframes/manage-books-phone.PNG)  
-
-Tablet
-
-![Manage Books Tablet Wireframes](assets/wireframes/manage-books-tablet.PNG) 
-
-Desktop
-
-![Manage Books Desktop Wireframes](assets/wireframes/manage-books-desktop.PNG) 
+![Manage Books Desktop Wireframes](assets/wireframes/manage_books.jpg) 
 
 #### Wireframes Manage Genres
 
-Mobile
-
-![Manage Genres Phone Wireframes](assets/wireframes/manage-genres-phone.PNG)  
-
-Tablet
-
-![Manage Genres Wireframes](assets/wireframes/manage-genres-tablet.PNG) 
-
-Desktop
-
-![Manage Genres Desktop Wireframes](assets/wireframes/manage-genres-desktop.PNG) 
+![Manage Genres Desktop Wireframes](assets/wireframes/manage_genres.jpg) 
 
 #### Wireframes Comments
 
@@ -252,7 +191,7 @@ Please note there are a few changes to the final site since the wireframes were 
 ### Surface
 
 #### Colours
-I noticed that several booksites seem to use a common colour of blue e.g. [Waterstones](https://www.waterstones.com/) and [World of Books](https://www.worldofbooks.com/en-gb), however I chose a main colour of green as I found this a good colour to represent nature/balance and is also calming. From [Adobe Color](https://color.adobe.com/create/color-wheel) I choose green (#00e676) as the main colour and this site helped me find the split complemantary colours of orange (#E6650B) and magenta (#E60B8C). For the navbar and headings text I chose dark green (#1b5e20) and other text uses darkslategrey.
+I noticed that several booksites seem to use a common colour of blue e.g. [Waterstones](https://www.waterstones.com/) and [World of Books](https://www.worldofbooks.com/en-gb), however I chose a main colour of green as I found this a good colour to represent nature/balance and is also calming. From [Adobe Color](https://color.adobe.com/create/color-wheel) I choose green (#00e676) as the main colour and this site helped me find the split complemantary colours of orange (#E6650B) and magenta (#E60B8C). For the navbar and headings text I chose a light (#B9F6CA) and dark green (#1b5e20) and other text uses darkslategrey.
 
 #### Imagery
 I picked images of books and people reading books, I also wanted to pick images that created a sense of relaxation and calm (so a few of the images are of people reading outside). The images used on the site are credited in the credits - media section of this readme.
