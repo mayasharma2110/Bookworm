@@ -159,27 +159,27 @@ I used Balsamiq to make the wireframes for this project. The website was designe
 
 #### Wireframes Home
 
-![Home Phone Wireframes](assets/wireframes/home.jpg)  
+![Home Wireframes](static/wireframes/home.jpg)  
 
 #### Wireframes Login
 
-![Login Desktop Wireframes](assets/wireframes/login.jpg) 
+![Login Wireframes](static/wireframes/login.jpg) 
 
 #### Wireframes Register
 
-![Register Desktop Wireframes](assets/wireframes/register.jpg) 
+![Register Wireframes](static/wireframes/register.jpg) 
 
 #### Wireframes New Review
 
-![New Review Desktop Wireframes](assets/wireframes/new_review.jpg)  
+![New Review Wireframes](static/wireframes/new_review.jpg)  
 
 #### Wireframes Manage Books
 
-![Manage Books Desktop Wireframes](assets/wireframes/manage_books.jpg) 
+![Manage Books Wireframes](static/wireframes/manage_books.jpg) 
 
 #### Wireframes Manage Genres
 
-![Manage Genres Desktop Wireframes](assets/wireframes/manage_genres.jpg) 
+![Manage Genres Wireframes](static/wireframes/manage_genres.jpg) 
 
 #### Wireframes Comments
 
