@@ -21,15 +21,20 @@
                 <ul class="right hide-on-med-and-down">
                     <li><a href="{{ url_for('get_reviews') }}">Home</a></li>
                     <!-- when logged in -->
-                    <li><a href="{{ url_for('myreviews', username=session['user']) }}">My Reviews</a></li>
+                    {% if session.user %}
+                        <li><a href="{{ url_for('myreviews', username=session['user']) }}">My Reviews</a></li>
                         <li><a href="#">New Review</a></li>
                         <li><a href="#">Manage Books</a></li>
                         <!-- admin only for manage genres -->
-                        <li><a href="#">Manage Genres</a></li>
-                        <li><a href="#">Log Out</a></li>
+                        {% if session.user=="admin" %}
+                            <li><a href="#">Manage Genres</a></li>
+                        {% endif %}
+                        <li><a href="{{ url_for('logout') }}">Log Out</a></li>
                     <!-- when logged out -->
+                    {% else %}
                         <li><a href="{{ url_for('login') }}">Log In</a></li>
                         <li><a href="{{ url_for('register') }}">Register</a></li>
+                    {% endif %}
                 </ul>
             </div>
         </nav>
@@ -38,15 +43,20 @@
             <li> <h4 class="center-align teal-text text-lighten-1">Bookworm</h4></li>
             <li><a href="{{ url_for('get_reviews') }}">Home</a></li>
             <!-- when logged in -->
+            {% if session.user %}
                 <li><a href="{{ url_for('myreviews', username=session['user']) }}">My Reviews</a></li>
                 <li><a href="#">New Review</a></li>
                 <li><a href="#">Manage Books</a></li>
                 <!-- admin only for manage genres -->
-                <li><a href="#">Manage Genres</a></li>
-                <li><a href="#">Log Out</a></li>
+                {% if session.user=="admin" %}
+                    <li><a href="#">Manage Genres</a></li>
+                {% endif %}
+                <li><a href="{{ url_for('logout') }}">Log Out</a></li>
             <!-- when logged out -->
+            {% else %}
                 <li><a href="{{ url_for('login') }}">Log In</a></li>
                 <li><a href="{{ url_for('register') }}">Register</a></li>
+            {% endif %}
         </ul>
     </header>
 

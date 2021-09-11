@@ -6,6 +6,10 @@
 /* green (#00e676), orange (#E6650B), magenta (#E60B8C), dark green (#1b5e20), light green (##B9F6CA) and other text uses darkslategrey. */
 
 /* navbar */
+.nav-extended {
+    border-bottom: 5px solid #1b5e20;
+}
+
 nav .brand-logo{
     margin: 0 20px;
     color: #1b5e20;
