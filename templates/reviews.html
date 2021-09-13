@@ -1,46 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <!-- x is books -->
-    {% for x in range(1,8) %}
-
-    {{ x }}
-        <!-- y is reviews -->
-        {% for y in range(7,11) %}
-            <!-- if y.book_title==x.book_title -->
-            {% if y==x %}
-                Both x and y are {{ y }}
-            {% endif %}
-
-        {% endfor %}
-
-    {% endfor %}
-
-    <!-- flash messages -->
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-        {% for message in messages %}
-        {% endfor %}
-    {% endif %}
-    {% endwith %}
-
-    {% for book in books %}
-        {{book.book_title}}
-        <!-- check if any reviews with that book title -->
-        {{ with anyreviews = review.book_title == book.book_title}}
-            <!-- if any reviews, show all reviews -->
-            {% if anyreviews %}
-                {% for review in reviews %}
-                    {{review.comment}}
-                {% endfor %} 
-            <!-- if no reviews show some text -->
-            {% else %}
-            {% endif %}
-        {% endwith %}
-    {% endfor %}
-
-    {% for book in books %}
-    
+    <!-- show all genres -->
+    {% for genre in genres %}
+    <b>{{ genre.genre_name }}: </b> <br>
+        <!-- check if any books fo each genre -->
+        {% for book in books if book.genre_name == genre.genre_name %}
         <ul class="collapsible">
             <li>
               <div class="collapsible-header green darken-4 white-text"><i class="fas fa-arrow-alt-circle-down"></i>
@@ -52,34 +17,36 @@
             </div>
               <div class="collapsible-body">
                     <span>
-                    {% for review in reviews %}
-                    {% if review.book_title==book.book_title%}
-                    <!-- count to check if any reviews for this book -->
-                    <!-- show all reviews -->
-                    {% else %}
-                    <!-- if no reviews show some text -->
-                    {% endif %}
-                    {% endfor %}
-
-                    {% for review in reviews %}
-                    {% if review.book_title==book.book_title%}
-                        {{ review.username }} <br>
-                        get age_category and gender from users collection <br>
-                        {{ review.recommend }} <br>
-                        {{ review.stars }} <br>
-                        {{ review.comment }} <br>
-                        {{ review.date_created }} <br>
+                    <!-- check if any reviews with that book title -->
+                    {% for review in reviews if review.book_title == book.book_title %}
+                    <!-- if any reviews, show all reviews -->
+                    <!-- want some way to split list items (ie reviews) -->
+                        User: {{ review.username }} <br>
+                        {% for user in users if user.username == review.username %}
+                            Age Category: {{ user.age_category}} <br>
+                            Gender: {{ user.gender}} <br>
+                        {% endfor %}
+                        Recommends this book: {{ review.recommend }} <br>
+                        Stars out of 5: {{ review.stars }} <br>
+                        Review comment: {{ review.comment }} <br>
+                        Date Created: {{ review.date_created }} <br>
                         <!-- if else statement if not an updated review -->
-                        {{ review.date_updated }} <br>
-                    {% else %}
+                        Date Updated: {{ review.date_updated }} <br> <br>
+                    <!-- want some way to split list items (ie reviews) -->
                     <!-- if no reviews show some text -->
-                    No reivews currently for this book
-                    {% endif %}
+                    {% else %}
+                        Sorry, there are no reviews for this book currently. 
+                        If you have read it please add a review here. <br>
                     {% endfor %}
                     </span>
               </div>
             </li>
         </ul>
+        <!-- if no books of this genre -->
+        {% else %}
+        Sorry, there are no books in the database for this genre currently. 
+        If you have read a book of this genre please add it here and then add a review here. <br>
+        {% endfor %}
 
     {% endfor %}
 
