@@ -30,7 +30,7 @@ def get_reviews():
     # print(list(books))
     # print(list(genres))
     # print(list(users))
-    return render_template("reviews.html", reviews=reviews, books=books, 
+    return render_template("reviews.html", reviews=reviews, books=books,
                            genres=genres, users=users)
 
 

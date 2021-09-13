@@ -1,25 +1,86 @@
 {% extends "base.html" %}
 {% block content %}
 
-    {% for review in reviews %}
-        {{ review.book_title }}<br>
-        {{ review.recommend }}<br>
-        {{ review.stars }}<br>
-        {{ review.comment }}<br>
-        {{ review.created_by }}<br>
-        {{ review.date_created }}<br>
-        {{ review.date_updated }}<br><br>
+    <!-- x is books -->
+    {% for x in range(1,8) %}
+
+    {{ x }}
+        <!-- y is reviews -->
+        {% for y in range(7,11) %}
+            <!-- if y.book_title==x.book_title -->
+            {% if y==x %}
+                Both x and y are {{ y }}
+            {% endif %}
+
+        {% endfor %}
+
     {% endfor %}
+
+    <!-- flash messages -->
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+
     {% for book in books %}
-        {{ book.book_title }}<br>
-        {{ book.author }}<br>
-        {{ book.genre_name }}<br><br>
+        {{book.book_title}}
+        <!-- check if any reviews with that book title -->
+        {{ with anyreviews = review.book_title == book.book_title}}
+            <!-- if any reviews, show all reviews -->
+            {% if anyreviews %}
+                {% for review in reviews %}
+                    {{review.comment}}
+                {% endfor %} 
+            <!-- if no reviews show some text -->
+            {% else %}
+            {% endif %}
+        {% endwith %}
     {% endfor %}
-    {% for user in users %}
-        {{ user.username }}<br><br>
-    {% endfor %}
-    {% for genre in genres %}
-        {{ genre.genre_name }}<br>
+
+    {% for book in books %}
+    
+        <ul class="collapsible">
+            <li>
+              <div class="collapsible-header green darken-4 white-text"><i class="fas fa-arrow-alt-circle-down"></i>
+                <b>{{ book.book_title }}</b> <br>
+                {{ book.author }} <br>
+                {{ book.genre_name }} <br>
+                {{ book.url }} <br>
+                derive and show average review <br>
+            </div>
+              <div class="collapsible-body">
+                    <span>
+                    {% for review in reviews %}
+                    {% if review.book_title==book.book_title%}
+                    <!-- count to check if any reviews for this book -->
+                    <!-- show all reviews -->
+                    {% else %}
+                    <!-- if no reviews show some text -->
+                    {% endif %}
+                    {% endfor %}
+
+                    {% for review in reviews %}
+                    {% if review.book_title==book.book_title%}
+                        {{ review.username }} <br>
+                        get age_category and gender from users collection <br>
+                        {{ review.recommend }} <br>
+                        {{ review.stars }} <br>
+                        {{ review.comment }} <br>
+                        {{ review.date_created }} <br>
+                        <!-- if else statement if not an updated review -->
+                        {{ review.date_updated }} <br>
+                    {% else %}
+                    <!-- if no reviews show some text -->
+                    No reivews currently for this book
+                    {% endif %}
+                    {% endfor %}
+                    </span>
+              </div>
+            </li>
+        </ul>
+
     {% endfor %}
 
 {% endblock %}
