@@ -50,13 +50,13 @@ h3 {
     pointer-events: auto;   
 }
 
-.input-field1 {
+.input-field {
     position: relative;
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
 
-.input-field1 .prefix {
+.input-field .prefix {
     position: absolute;
     width: 3rem;
     font-size: 2rem;
@@ -65,7 +65,7 @@ h3 {
     top: .5rem;
 }
 
-.input-field1.col label {
+.input-field.col label {
     margin-left: 3rem;
     left: .75rem;
     color: #1b5e20;
