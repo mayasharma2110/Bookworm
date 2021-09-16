@@ -110,7 +110,26 @@ def logout():
     session.pop("user")
     return redirect(url_for("login"))
 
-   
+
+@app.route("/add_review", methods=["GET","POST"])
+def add_review():
+    # if request.method == "POST":
+    #     review = {
+    #         "category_name": request.form.get("category_name"),
+    #         "task_name": request.form.get("task_name"),
+    #         "task_description": request.form.get("task_description"),
+    #         "is_urgent": is_urgent,
+    #         "due_date": request.form.get("due_date"),
+    #         "created_by": session["user"]
+    #     }
+    #     mongo.db.reviews.insert_one(review)
+    #     flash("Your review was successfully added")
+    #     return redirect(url_for("get_reviews"))
+
+    # books = mongo.db.books.find().sort("book_title", 1)
+    return render_template("add_review.html")
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
