@@ -8,6 +8,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
     print("found env.py")
+from datetime import datetime
 
 
 app = Flask(__name__)
@@ -111,20 +112,22 @@ def logout():
     return redirect(url_for("login"))
 
 
-@app.route("/add_review", methods=["GET","POST"])
+@app.route("/add_review", methods=["GET", "POST"])
 def add_review():
-    # if request.method == "POST":
-    #     review = {
-    #         "category_name": request.form.get("category_name"),
-    #         "task_name": request.form.get("task_name"),
-    #         "task_description": request.form.get("task_description"),
-    #         "is_urgent": is_urgent,
-    #         "due_date": request.form.get("due_date"),
-    #         "created_by": session["user"]
-    #     }
-    #     mongo.db.reviews.insert_one(review)
-    #     flash("Your review was successfully added")
-    #     return redirect(url_for("get_reviews"))
+    if request.method == "POST":
+        todaydate = datetime.today()
+        review = {
+            "book_title": request.form.get("book_title"),
+            "recommend": request.form.get("recommend"),
+            "stars": request.form.get("stars"),
+            "comment": request.form.get("comment"),
+            "username": session["user"],
+            "date_created": '{0:%d} {0:%B}, {0:%Y}'.format(todaydate, "day", "month", "year"),
+            "date_updated": ""
+        }
+        mongo.db.reviews.insert_one(review)
+        flash("Your review was successfully added")
+        return redirect(url_for("get_reviews"))
 
     books = mongo.db.books.find().sort("book_title", 1)
     return render_template("add_review.html", books=books)
