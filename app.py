@@ -126,8 +126,8 @@ def add_review():
     #     flash("Your review was successfully added")
     #     return redirect(url_for("get_reviews"))
 
-    # books = mongo.db.books.find().sort("book_title", 1)
-    return render_template("add_review.html")
+    books = mongo.db.books.find().sort("book_title", 1)
+    return render_template("add_review.html", books=books)
 
 
 if __name__ == "__main__":

@@ -50,7 +50,7 @@ h3 {
     pointer-events: auto;   
 }
 
-.input-field {
+/* .input-field {
     position: relative;
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -76,7 +76,7 @@ h3 {
     transform-origin: 0% 100%;
     text-align: initial;
     transform: translateY(12px);
-}
+} */
 
 .input-field2 {
     position: relative;
@@ -90,20 +90,7 @@ h3 {
     font-size: 2rem;
     /* -webkit-transition: color .2s; */
     /* transition: color .2s; */
-    /* top: .5rem; */
-}
-
-.input-field2.col label {
-    /* margin-left: 3rem;
-    left: .75rem;
-    color: #9e9e9e;
-    position: absolute;
-    top: 0;
-    font-size: 1rem;
-    cursor: text;
-    transform-origin: 0% 100%;
-    text-align: initial;
-    transform: translateY(12px); */
+    top: .5rem;
 }
 
 .label2 {

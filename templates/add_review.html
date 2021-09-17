@@ -12,7 +12,7 @@
                 <select id="book_title" name="book_title" class="validate" required>
                     <option value="" disabled selected>Choose Book</option>
                     {% for book in books %}
-                        <option value="{{ book.book_title }}">{{ book.book_title }}</option>
+                        <option value="{{ book.book_title }}">{{ book.book_title }} by {{ book.author }}</option>
                     {% endfor %}
                 </select>
                 <label for="book_title">Book Title</label>
