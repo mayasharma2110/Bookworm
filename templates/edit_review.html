@@ -9,17 +9,20 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-folder-open prefix teal-text text-darken-4"></i>
+                <!-- make user be unable to change book title for the review they are editing -->
                 <select id="book_title" name="book_title" class="validate" required>
-                    <option value="" disabled selected>Choose Book</option>
+                    <option value="" disabled>Choose Book</option>
                     {% for book in books %}
-                        <option value="{{ book.book_title }}">{{ book.book_title }} by {{ book.author }}</option>
+                        {% if book.book_title == review.book_title %}
+                            <option value="{{ book.book_title }}" selected>{{ book.book_title }} by {{ book.author }}</option>
+                        {% else %}
+                            <option value="{{ book.book_title }}">{{ book.book_title }} by {{ book.author }}</option>
+                        {% endif %}
                     {% endfor %}
                 </select>
                 <label for="book_title">Book Title</label>
             </div>
         </div>
-        <!-- text to direct users to add a new book if not already in database -->
-        <div>Can you not find the book you are after? Please add it to the database here and then come back to this page to add your review!</div>
         <!-- Recommend -->
         <div class="row">
             <div class="input-field2 col s12">
@@ -58,7 +61,9 @@
             <div class="input-field col s12">
                 <i class="fas fa-pencil-alt prefix teal-text text-darken-4"></i>
                 <textarea id="comment" name="comment" minlength="10"
-                    maxlength="300" class="materialize-textarea validate" required></textarea>
+                    maxlength="300" class="materialize-textarea validate" required>
+                {{- review.comment -}}
+                </textarea>
                 <label for="comment">Review Comment: </label>
             </div>
         </div>
