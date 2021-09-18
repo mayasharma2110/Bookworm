@@ -133,6 +133,26 @@ def add_review():
     return render_template("add_review.html", books=books)
 
 
+@app.route("/edit_review/<review_id>", methods=["GET", "POST"])
+def edit_review(review_id):
+    if request.method == "POST":
+        submit = {
+            "book_title": request.form.get("book_title"),
+            "recommend": request.form.get("recommend"),
+            "stars": request.form.get("stars"),
+            "comment": request.form.get("comment"),
+            # "username": session["user"],
+            # "date_created": "",
+            "date_updated": '{0:%d} {0:%B}, {0:%Y}'.format(todaydate, "day", "month", "year")
+        }
+        mongo.db.reviews.update({"_id": ObjectId(review_id)}, submit)
+        flash("Review Successfully Updated")
+
+    review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
+    books = mongo.db.books.find().sort("book_title", 1)
+    return render_template("edit_review.html", review=review, books=books)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
