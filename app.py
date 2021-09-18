@@ -136,6 +136,7 @@ def add_review():
 @app.route("/edit_review/<review_id>", methods=["GET", "POST"])
 def edit_review(review_id):
     if request.method == "POST":
+        todaydate = datetime.today()
         submit = {
             "book_title": request.form.get("book_title"),
             "recommend": request.form.get("recommend"),
