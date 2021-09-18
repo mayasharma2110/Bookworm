@@ -123,7 +123,7 @@ def add_review():
             "comment": request.form.get("comment"),
             "username": session["user"],
             "date_created": '{0:%d} {0:%B}, {0:%Y}'.format(todaydate, "day", "month", "year"),
-            "date_updated": ""
+            "date_updated": "Not Applicable"
         }
         mongo.db.reviews.insert_one(review)
         flash("Your review was successfully added")

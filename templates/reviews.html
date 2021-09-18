@@ -11,18 +11,28 @@
         <ul class="collapsible">
             <li>
               <div class="collapsible-header green darken-4 white-text"><i class="fas fa-arrow-alt-circle-down"></i>
-                <b>{{ book.book_title }}</b> <br>
-                {{ book.author }} <br>
-                {{ book.genre_name }} <br>
-                {{ book.url }} <br>
-                derive and show average review <br>
+                    <b>{{ book.book_title }}</b> <br>
+                    {{ book.author }} <br>
+                    {{ book.genre_name }} <br>
+                    {{ book.url }} <br>
+                    derive and show average review <br>
             </div>
               <div class="collapsible-body">
                     <span>
                     <!-- check if any reviews with that book title -->
                     {% for review in reviews if review.book_title == book.book_title %}
+                    
                     <!-- if any reviews, show all reviews -->
                     <!-- want some way to split list items (ie reviews) -->
+                    <!-- if user signed in made the review show delete and edit buttons -->
+                    <div class="col s3">
+                        <!-- <i class="fas fa-caret-down"></i> -->
+                        {% if session.user|lower == review.username|lower %}
+                            <a class="btn-small pink darken-3" href="#">Delete</a>
+                            <a class="btn-small orange darken-3" href="#">Edit</a>
+                        {% endif %}
+                    </div>
+                    <div class="col s9">
                         User: {{ review.username }} <br>
                         {% for user in users if user.username == review.username %}
                             Age Category: {{ user.age_category}} <br>
@@ -34,6 +44,7 @@
                         Date Created: {{ review.date_created }} <br>
                         <!-- if else statement if not an updated review -->
                         Date Updated: {{ review.date_updated }} <br> <br>
+                    </div>
                     <!-- want some way to split list items (ie reviews) -->
                     <!-- if no reviews show some text -->
                     {% else %}

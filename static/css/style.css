@@ -1,9 +1,10 @@
-/* body {
-    background: blue;
-} */
+body {
+    color: #424242;
+}
 
 /* main colours */
-/* green (#00e676), orange (#E6650B), magenta (#E60B8C), dark green (#1b5e20), light green (##B9F6CA) and other text uses darkslategrey. */
+/* green (#00e676 green accent-3), orange (#ef6c00 orange darken-3), magenta (#ad1457 pink darken-3), 
+dark green (#1b5e20 green darken-4), light green (#b9f6ca green accent-1) and other text uses dark grey (#424242 grey darken-3). */
 
 /* navbar */
 .nav-extended {
