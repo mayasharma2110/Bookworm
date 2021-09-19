@@ -25,35 +25,60 @@
         </div>
         <!-- Recommend -->
         <div class="row">
-            <div class="input-field2 col s12">
-                <i class="fas fa-thumbs-up prefix teal-text text-darken-4"> </i> <span class="label2">Would you recommend this book to others:</span>
-                <br>
-                <input id="recommend" name="recommend" type="radio" value="Yes" checked >
-                <label for="Yes">Yes</label>
-                <br>
-                <input id="recommend" name="recommend" type="radio" value="No" >
-                <label for="No">No</label>
+            <div class="input-field col s12">
+                <i class="fas fa-thumbs-up prefix teal-text text-darken-4"></i>
+                <select id="recommend" name="recommend" class="validate" required>
+                    <option value="" disabled>Choose Option</option>
+                    {% if review.recommend == "Yes" %}
+                        <option value="Yes" selected>Yes</option>
+                        <option value="No">No</option>
+                    {% else %}
+                        <option value="Yes">Yes</option>
+                        <option value="No" selected>No</option>
+                    {% endif %}
+                </select>
+                <label for="recommend">Would you recommend this book to others?</label>
             </div>
         </div>
         <!-- stars out of 5 -->
         <div class="row">
-            <div class="input-field2 col s12">
-                <i class="fas fa-star prefix teal-text text-darken-4"> </i> <span class="label2">Stars out of 5:</span>
-                <br>
-                <input id="stars" name="stars" type="radio" value="1">
-                <label for="1">1</label>
-                <br>
-                <input id="stars" name="stars" type="radio" value="2">
-                <label for="2">2</label>
-                <br>
-                <input id="stars" name="stars" type="radio" value="3">
-                <label for="3">3</label>
-                <br>
-                <input id="stars" name="stars" type="radio" value="4" checked>
-                <label for="4">4</label>
-                <br>
-                <input id="stars" name="stars" type="radio" value="5">
-                <label for="5">5</label>
+            <div class="input-field col s12">
+                <i class="fas fa-star prefix teal-text text-darken-4"></i> 
+                <select id="stars" name="stars" class="validate" required>
+                    <option value="" disabled>Choose Option</option>
+                    {% if review.stars == "1" %}
+                        <option value="1" selected>1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    {%  elif review.stars== "2" %}
+                        <option value="1">1</option>
+                        <option value="2" selected>2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    {%  elif review.stars== "3" %}
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3" selected>3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    {%  elif review.stars== "4" %}
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4" selected>4</option>
+                        <option value="5">5</option>
+                    {%  elif review.stars== "5" %}
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5" selected>5</option>
+                    {% endif %}
+                </select>
+                <label for="stars">Stars out of 5</label>
             </div>
         </div>
         <!-- comment -->
