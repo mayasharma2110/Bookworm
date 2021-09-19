@@ -45,67 +45,10 @@ h3 {
 /* login page */
 
 /* add review page */
-[type="radio"]:not(:checked), [type="radio"]:checked {
-    position: relative;
-    opacity: 1; 
-    pointer-events: auto;   
-}
-
-/* .input-field {
-    position: relative;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-}
-
-.input-field .prefix {
-    position: absolute;
-    width: 3rem;
-    font-size: 2rem;
-    -webkit-transition: color .2s;
-    transition: color .2s;
-    top: .5rem;
-}
 
 .input-field.col label {
-    margin-left: 3rem;
-    left: .75rem;
     color: #1b5e20;
-    position: absolute;
-    top: 0;
-    font-size: 1rem;
-    cursor: text;
-    transform-origin: 0% 100%;
-    text-align: initial;
-    transform: translateY(12px);
-} */
-
-.input-field2 {
-    position: relative;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-}
-
-.input-field2 .prefix {
-    /* position: absolute; */
-    width: 3rem;
-    font-size: 2rem;
-    /* -webkit-transition: color .2s; */
-    /* transition: color .2s; */
-    top: .5rem;
-}
-
-.label2 {
-    margin-left: 3rem;
-    left: .75rem;
-    color: #1b5e20;
-    position: absolute;
-    top: 0;
-    font-size: 1rem;
-    cursor: text;
-    transform-origin: 0% 100%;
-    text-align: initial;
-    transform: translateY(12px);
-}
+} 
 
 /* add book page */
 
