@@ -271,9 +271,15 @@ Result - The feature did not act as expected and it did z. I did a to test, noti
 
 ### View Reviews
 
+- loop show "sorry no reviews text" or show all the reviews in its own loop
+
 ### Add New Review
 
+- date created variable in right format used https://www.w3schools.com/python/python_datetime.asp to help me get this format how I wanted it.
+
 ### Update Current Review
+
+- issue with date_created field being overwirtten with a value of "", had to get the value from the database and save as a variable to then include it when updating the review document in the mongodb collection.
 
 ### Delete Review
 
