@@ -136,18 +136,24 @@ def add_review():
 @app.route("/edit_review/<review_id>", methods=["GET", "POST"])
 def edit_review(review_id):
     if request.method == "POST":
+        book_title1 = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})["book_title"]
+        username1 = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})["username"]
+        date_created1 = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})["date_created"]
         todaydate = datetime.today()
         submit = {
-            "book_title": request.form.get("book_title"),
+            # keep booktitle, username and datecreated the same as before
+            "book_title": book_title1,
+            "username": username1,
+            "date_created": date_created1,
+            # update recommend, stars, comment and dateupdated variables
             "recommend": request.form.get("recommend"),
             "stars": request.form.get("stars"),
             "comment": request.form.get("comment"),
-            # "username": session["user"],
-            # "date_created": "",
             "date_updated": '{0:%d} {0:%B}, {0:%Y}'.format(todaydate, "day", "month", "year")
         }
         mongo.db.reviews.update({"_id": ObjectId(review_id)}, submit)
         flash("Review Successfully Updated")
+        return redirect(url_for("get_reviews"))
 
     review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
     books = mongo.db.books.find().sort("book_title", 1)
