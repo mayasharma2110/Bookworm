@@ -15,35 +15,38 @@
             </div>
           </div>
           <!-- age category -->
-          <!-- <div class="row">
-            <div class="input-field col s12">
-              <select>
-                <option value="" disabled selected>Choose your option</option>
-                <option value="1">Option 1</option>
-                <option value="2">Option 2</option>
-                <option value="3">Option 3</option>
-              </select>
-              <i class="fas fa-solid fa-child prefix green-text text-darken-4"></i> -->
-              <!-- <input id="agecategory" name="agecategory" type="text" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required class="validate"> -->
-              <!-- <label for="agecategory">Age Category</label>
-            </div>
-          </div> -->
-          <!-- gender -->
-          <!-- <div class="row">
-            <div class="input-field col s12">
-              <select>
-                <option value="" disabled selected>Choose your option</option>
-                <option value="1">Option 1</option>
-                <option value="2">Option 2</option>
-                <option value="3">Option 3</option>
-              </select>
-              <i class="fas fa-solid fa-venus-mars prefix green-text text-darken-4"></i> -->
-              <!-- <input id="gender" name="gender" type="text" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required class="validate"> -->
-              <!-- <label for="gender">Gender</label>
-            </div>
-          </div> -->
-          <!-- password -->
           <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-solid fa-child prefix green-text text-darken-4"></i>
+                <select id="age_category" name="age_category" class="validate" required>
+                    <option value="" disabled selected>Choose age category</option>
+                        <option value="15_or_under">15 or under</option>
+                        <option value="16-24">16-24</option>
+                        <option value="25-34">25-34</option>
+                        <option value="35-44">35-44</option>
+                        <option value="45-54">45-54</option>
+                        <option value="55-64">55-64</option>
+                        <option value="65_or_older">65 or older</option>
+                        <option value="Other">Other</option>
+                </select>
+                <label for="age_category">What is your age category?</label>
+            </div>
+        </div>
+        <!-- gender -->
+        <div class="row">
+          <div class="input-field col s12">
+              <i class="fas fa-solid fa-venus-mars prefix green-text text-darken-4"></i> 
+              <select id="gender" name="gender" class="validate" required>
+              <option value="" disabled selected>Choose your gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+              <label for="gender">What is your gender</label>
+            </div>
+        </div> -->
+        <!-- password -->
+        <div class="row">
             <div class="input-field col s12">
               <i class="fas fa-solid fa-lock prefix green-text text-darken-4"></i>
               <input id="password" name="password" type="password" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required class="validate">

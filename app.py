@@ -50,7 +50,9 @@ def register():
         # else if no existing user in db with username
         register = {
             "username": request.form.get("username").lower(),
-            "password": generate_password_hash(request.form.get("password"))
+            "password": generate_password_hash(request.form.get("password")),
+            "age_category": request.form.get("age_category"),
+            "gender": request.form.get("gender")
         }
 
         mongo.db.users.insert_one(register)
