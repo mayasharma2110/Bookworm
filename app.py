@@ -125,7 +125,8 @@ def add_review():
             "comment": request.form.get("comment"),
             "username": session["user"],
             "date_created": '{0:%d} {0:%B}, {0:%Y}'.format(todaydate, "day", "month", "year"),
-            "date_updated": "Not Applicable"
+            "date_updated": "Not Applicable", 
+            "display": "Y"
         }
         mongo.db.reviews.insert_one(review)
         flash("Your review was successfully added")
@@ -151,7 +152,8 @@ def edit_review(review_id):
             "recommend": request.form.get("recommend"),
             "stars": request.form.get("stars"),
             "comment": request.form.get("comment"),
-            "date_updated": '{0:%d} {0:%B}, {0:%Y}'.format(todaydate, "day", "month", "year")
+            "date_updated": '{0:%d} {0:%B}, {0:%Y}'.format(todaydate, "day", "month", "year"), 
+            "display": "Y"
         }
         mongo.db.reviews.update({"_id": ObjectId(review_id)}, submit)
         flash("Review Successfully Updated")
