@@ -26,10 +26,13 @@
                     <!-- want some way to split list items (ie reviews) -->
                     <!-- if user signed in made the review show delete and edit buttons -->
                     <div class="col s3">
-                        <!-- <i class="fas fa-caret-down"></i> -->
+                        <!-- allow user who made the review to edit the review -->
                         {% if session.user|lower == review.username|lower %}
-                            <a class="btn-small pink darken-3" href="{{ url_for('delete_review', review_id=review._id) }}">Delete</a>
                             <a class="btn-small orange darken-3" href="{{ url_for('edit_review', review_id=review._id) }}">Edit</a>
+                        {% endif %}
+                        <!-- allow user who made the review or admin to remove the review -->
+                        {% if session.user|lower == review.username|lower or session.user|lower=="admin"%}
+                            <a class="btn-small pink darken-3" href="{{ url_for('delete_review', review_id=review._id) }}">Delete</a>
                         {% endif %}
                     </div>
                     <div class="col s9">
