@@ -164,6 +164,26 @@ def edit_review(review_id):
     return render_template("edit_review.html", review=review, books=books)
 
 
+@app.route("/delete_review/<review_id>")
+def delete_review(review_id):
+    submit = {
+            # keep booktitle, username, datecreated, dateupdated, recommend, stars and comment the same as before
+            "book_title": mongo.db.reviews.find_one({"_id": ObjectId(review_id)})["book_title"],
+            "username": mongo.db.reviews.find_one({"_id": ObjectId(review_id)})["username"],
+            "date_created": mongo.db.reviews.find_one({"_id": ObjectId(review_id)})["date_created"],
+            "date_updated": mongo.db.reviews.find_one({"_id": ObjectId(review_id)})["date_updated"],
+            "recommend": mongo.db.reviews.find_one({"_id": ObjectId(review_id)})["recommend"],
+            "stars": mongo.db.reviews.find_one({"_id": ObjectId(review_id)})["stars"],
+            "comment": mongo.db.reviews.find_one({"_id": ObjectId(review_id)})["comment"],
+            # change display to N to not show on the website
+            "display": "N"
+        }
+    mongo.db.reviews.update({"_id": ObjectId(review_id)}, submit)
+
+    flash("Review Successfully Deleted")
+    return redirect(url_for("get_reviews"))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
