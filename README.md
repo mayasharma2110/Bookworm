@@ -216,9 +216,11 @@ I picked images of books and people reading books, I also wanted to pick images 
 
 ### Features Left to Implement
 
-* It would be nice to have xxxxx. 
+* It would be nice to use some book API, for example [Google Books](https://developers.google.com/books/docs/v1/using), as this could help ensure the spelling of book titles and authors are correct when users add a new book to the site/database (and help avoid having duplicates of the same bok with various spellings of title/author). This could have the users enter a book they have using the ISBN number (usually found on the back of the book near the barcode) or if they do not have the book to hand they could be prompted to google for its ISBN number or contact the site with the details so a person could manually add it to the site/database. 
 
-* It would be nice to have xxxxx. 
+* It would be nice to have a check when a user adds a new review to see if they have already made a review for that book - if yes we could prompt them to edit this review instead.
+
+* It would be nice to have defensive programming to check if a user really wants to delete a review. 
 
 ## Technologies Used
 
