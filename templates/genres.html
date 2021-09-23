@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h3 class="center-align">Manage Genres</h3>
+
+    <div class="row">
+        {% for genre in genres %}
+            <div class="col s12 m6 l4">
+                <div class="card center-align">
+                    <div class="card-content green darken-4 white-text">
+                        <span class="card-title">{{ genre.genre_name }}</span>
+                    </div>
+                    <div class="card-action">
+                        <a href="#" class="btn-small orange darken-3">Edit</a>
+                        <a href="#" class="btn-small pink darken-3">Delete</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

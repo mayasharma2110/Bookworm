@@ -27,7 +27,7 @@
                         <li><a href="#">Manage Books</a></li>
                         <!-- admin only for manage genres -->
                         {% if session.user=="admin" %}
-                            <li><a href="#">Manage Genres</a></li>
+                            <li><a href="{{ url_for('get_genres') }}">Manage Genres</a></li>
                         {% endif %}
                         <li><a href="{{ url_for('logout') }}">Log Out</a></li>
                     <!-- when logged out -->
@@ -49,7 +49,7 @@
                 <li><a href="#">Manage Books</a></li>
                 <!-- admin only for manage genres -->
                 {% if session.user=="admin" %}
-                    <li><a href="#">Manage Genres</a></li>
+                    <li><a href="{{ url_for('get_genres') }}">Manage Genres</a></li>
                 {% endif %}
                 <li><a href="{{ url_for('logout') }}">Log Out</a></li>
             <!-- when logged out -->
