@@ -220,7 +220,9 @@ I picked images of books and people reading books, I also wanted to pick images 
 
 * It would be nice to have a check when a user adds a new review to see if they have already made a review for that book - if yes we could prompt them to edit this review instead.
 
-* It would be nice to have defensive programming to check if a user really wants to delete a review. 
+* It would be nice to have defensive programming to check if a user or admin really wants to delete a review. 
+
+* It would be nice to have defensive programming to check if an admin really wants to delete a genre name. 
 
 ## Technologies Used
 
