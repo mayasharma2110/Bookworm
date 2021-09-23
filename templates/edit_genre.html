@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3 class="center-align">Edit Genre</h3>
+
+<div class="row card-panel grey lighten-5">
+    <form class="col s12" method="POST" action="{{ url_for('edit_genre', genre_id=genre._id) }}">
+        <!-- edit genre -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-pencil-alt prefix green-text text-darken-4"></i>
+                <input id="genre_name" name="genre_name" minlength="3" maxlength="25"
+                        type="text" class="validate" value="{{ genre.genre_name }}" required>
+                    <label for="genre_name">Genre Name</label>
+            </div>
+        </div>
+        <!-- submit button -->
+        <div class="row">
+            <div class="col s12 center-align">
+                <a href="{{ url_for('get_genres') }}" class="btn-large pink darken-3">
+                    Cancel <i class="fas fa-times-circle right"></i></a>
+                <button type="submit" class="btn-large green darken-4">
+                    Edit Genre <i class="fas fa-edit right"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
