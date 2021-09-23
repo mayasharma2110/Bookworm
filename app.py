@@ -184,10 +184,25 @@ def delete_review(review_id):
     return redirect(url_for("get_reviews"))
 
 
+# you'll actually want to provide conditional checks on your Python functions to restrict these pages, but redirect users elsewhere if they're not validated.
 @app.route("/get_genres")
 def get_genres():
     genres = list(mongo.db.genres.find().sort("genre_name", 1))
     return render_template("genres.html", genres=genres)
+
+
+# you'll actually want to provide conditional checks on your Python functions to restrict these pages, but redirect users elsewhere if they're not validated.
+@app.route("/add_genre", methods=["GET", "POST"])
+def add_genre():
+    if request.method == "POST":
+        genre = {
+            "genre_name": request.form.get("genre_name")
+        }
+        mongo.db.genres.insert_one(genre)
+        flash("New Genre Added")
+        return redirect(url_for("get_genres"))
+
+    return render_template("add_genre.html")
 
 
 if __name__ == "__main__":

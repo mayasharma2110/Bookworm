@@ -4,6 +4,14 @@
     <h3 class="center-align">Manage Genres</h3>
 
     <div class="row">
+        <div class="col s12 center-align">
+            <a href="{{ url_for('add_genre') }}" class="btn-large green darken-4">
+                Add Genre <i class="fas fa-plus-square right"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="row">
         {% for genre in genres %}
             <div class="col s12 m6 l4">
                 <div class="card center-align">
