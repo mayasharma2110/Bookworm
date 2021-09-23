@@ -94,6 +94,7 @@ def login():
     return render_template("login.html")
 
 
+# you'll actually want to provide conditional checks on your Python functions to restrict these pages, but redirect users elsewhere if they're not validated.
 @app.route("/myreviews/<username>", methods=["GET", "POST"])
 def myreviews(username):
     # grab the session user's username from db
@@ -136,6 +137,7 @@ def add_review():
     return render_template("add_review.html", books=books)
 
 
+# no need to add conditional checks as it would be difficult for a user to guess the review id to get on to this page
 @app.route("/edit_review/<review_id>", methods=["GET", "POST"])
 def edit_review(review_id):
     if request.method == "POST":
@@ -205,6 +207,7 @@ def add_genre():
     return render_template("add_genre.html")
 
 
+# no need to add conditional checks as it would be difficult for a user to guess the genre id to get on to this page
 @app.route("/edit_genre/<genre_id>", methods=["GET", "POST"])
 def edit_genre(genre_id):
     if request.method == "POST":
