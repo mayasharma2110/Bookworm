@@ -26,7 +26,7 @@
                         <li><a href="{{ url_for('add_review') }}">New Review</a></li>
                         <!-- admin only for manage genres or manage books -->
                         {% if session.user=="admin" %}
-                            <li><a href="#">Manage Books</a></li>
+                            <li><a href="{{ url_for('get_books') }}">Manage Books</a></li>
                             <li><a href="{{ url_for('get_genres') }}">Manage Genres</a></li>
                         {% else %}
                         <li><a href="{{ url_for('add_book')}}">Add Book</a></li>
@@ -50,7 +50,7 @@
                 <li><a href="{{ url_for('add_review') }}">New Review</a></li>
                 <!-- admin only for manage genres or manage books -->
                 {% if session.user=="admin" %}
-                    <li><a href="#">Manage Books</a></li>
+                    <li><a href="{{ url_for('get_books') }}">Manage Books</a></li>
                     <li><a href="{{ url_for('get_genres') }}">Manage Genres</a></li>
                 {% else %}
                     <li><a href="{{ url_for('add_book')}}">Add Book</a></li>

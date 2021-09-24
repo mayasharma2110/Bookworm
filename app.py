@@ -245,6 +245,29 @@ def add_book():
     return render_template("add_book.html", genres=genres)
 
 
+@app.route("/get_books")
+def get_books():
+    books = list(mongo.db.books.find().sort("book_title", 1))
+    return render_template("books.html", books=books)
+
+
+# no need to add conditional checks as it would be difficult for a user to guess the genre id to get on to this page
+@app.route("/edit_book/<book_id>", methods=["GET", "POST"])
+def edit_book(book_id):
+    if request.method == "POST":
+        submit = {
+            "book_title": request.form.get("book_title"),
+            "genre_name": request.form.get("genre_name"),
+            "author": request.form.get("author")
+        }
+        mongo.db.books.update({"_id": ObjectId(book_id)}, submit)
+        flash("Book Successfully Updated")
+        return redirect(url_for("get_books"))
+
+    book = mongo.db.book.find_one({"_id": ObjectId(book_id)})
+    return render_template("edit_book.html", book=book)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

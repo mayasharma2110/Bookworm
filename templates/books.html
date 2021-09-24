@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h3 class="center-align">Manage Books</h3>
+
+    <div class="row">
+        <div class="col s12 center-align">
+            <a href="{{ url_for('add_book') }}" class="btn-large green darken-4">
+                Add Book <i class="fas fa-plus-square right"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="row">
+        {% for book in books %}
+            <div class="col s12 m6">
+                <div class="card left-align">
+                    <div class="card-content green darken-4 white-text">
+                        <span class="card-title"> Book Title: {{ book.book_title }} <br> Author: {{ book.author }} </span>
+                    </div>
+                    <div class="card-action">
+                        <a href="#" class="btn-small orange darken-3">Edit</a>
+                        <a href="#" class="btn-small pink darken-3">Delete</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
