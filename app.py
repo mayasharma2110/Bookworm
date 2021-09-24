@@ -264,8 +264,9 @@ def edit_book(book_id):
         flash("Book Successfully Updated")
         return redirect(url_for("get_books"))
 
-    book = mongo.db.book.find_one({"_id": ObjectId(book_id)})
-    return render_template("edit_book.html", book=book)
+    genres = mongo.db.genres.find().sort("genre_name", 1)
+    book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
+    return render_template("edit_book.html", book=book, genres=genres)
 
 
 if __name__ == "__main__":
