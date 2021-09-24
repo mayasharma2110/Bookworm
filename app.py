@@ -229,6 +229,22 @@ def delete_genre(genre_id):
     return redirect(url_for("get_genres"))
 
 
+@app.route("/add_book", methods=["GET", "POST"])
+def add_book():
+    if request.method == "POST":
+        book = {
+            "book_title": request.form.get("book_title"),
+            "genre_name": request.form.get("genre_name"),
+            "author": request.form.get("author")
+        }
+        mongo.db.books.insert_one(book)
+        flash("New Book Added")
+        return redirect(url_for("get_reviews"))
+
+    genres = mongo.db.genres.find().sort("genre_name", 1)
+    return render_template("add_book.html", genres=genres)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

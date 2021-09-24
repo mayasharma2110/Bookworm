@@ -24,10 +24,12 @@
                     {% if session.user %}
                         <li><a href="{{ url_for('myreviews', username=session['user']) }}">My Reviews</a></li>
                         <li><a href="{{ url_for('add_review') }}">New Review</a></li>
-                        <li><a href="#">Manage Books</a></li>
-                        <!-- admin only for manage genres -->
+                        <!-- admin only for manage genres or manage books -->
                         {% if session.user=="admin" %}
+                            <li><a href="#">Manage Books</a></li>
                             <li><a href="{{ url_for('get_genres') }}">Manage Genres</a></li>
+                        {% else %}
+                        <li><a href="{{ url_for('add_book')}}">Add Book</a></li>
                         {% endif %}
                         <li><a href="{{ url_for('logout') }}">Log Out</a></li>
                     <!-- when logged out -->
@@ -46,10 +48,12 @@
             {% if session.user %}
                 <li><a href="{{ url_for('myreviews', username=session['user']) }}">My Reviews</a></li>
                 <li><a href="{{ url_for('add_review') }}">New Review</a></li>
-                <li><a href="#">Manage Books</a></li>
-                <!-- admin only for manage genres -->
+                <!-- admin only for manage genres or manage books -->
                 {% if session.user=="admin" %}
+                    <li><a href="#">Manage Books</a></li>
                     <li><a href="{{ url_for('get_genres') }}">Manage Genres</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('add_book')}}">Add Book</a></li>
                 {% endif %}
                 <li><a href="{{ url_for('logout') }}">Log Out</a></li>
             <!-- when logged out -->
