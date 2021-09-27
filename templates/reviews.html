@@ -30,16 +30,22 @@
             <ul class="collapsible">
                 <li>
                 <div class="collapsible-header green darken-4 white-text"><i class="fas fa-arrow-alt-circle-down"></i>
-                        <b>{{ book.book_title }}</b> <br>
+                        {{ book.book_title }} <br>
                         {{ book.author }} <br>
                         {{ book.genre_name }} <br>
-                        derive and show average review <br>
+                        Derive and show average review for each book <br>
+                        reviews1 = list(mongo.db.reviews.find({"$text": {"$search": book}}))["stars"] <br>
+                        {% for review in reviews if review.book_title == book.book_title and review.display == "Y" %}
+                            Stars: {{ review.stars }} <br>
+                        {% else %}
+                            Sorry, there are no reviews for this book currently. 
+                            If you have read it please add a review here. <br>
+                        {% endfor %}
                 </div>
                 <div class="collapsible-body">
                         <span>
                         <!-- check if any reviews with that book title -->
                         {% for review in reviews if review.book_title == book.book_title and review.display == "Y" %}
-                        
                         <!-- if any reviews, show all reviews -->
                         <!-- want some way to split list items (ie reviews) -->
                         <!-- if user signed in made the review show delete and edit buttons -->
@@ -63,10 +69,8 @@
                             Stars out of 5: {{ review.stars }} <br>
                             Review comment: {{ review.comment }} <br>
                             Date Created: {{ review.date_created }} <br>
-                            <!-- if else statement if not an updated review -->
                             Date Updated: {{ review.date_updated }} <br> <br>
                         </div>
-                        <!-- want some way to split list items (ie reviews) -->
                         <!-- if no reviews show some text -->
                         {% else %}
                             Sorry, there are no reviews for this book currently. 

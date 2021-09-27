@@ -22,7 +22,6 @@
                     <li><a href="{{ url_for('get_reviews') }}">Home</a></li>
                     <!-- when logged in -->
                     {% if session.user %}
-                        <li><a href="{{ url_for('myreviews', username=session['user']) }}">My Reviews</a></li>
                         <li><a href="{{ url_for('add_review') }}">New Review</a></li>
                         <!-- admin only for manage genres or manage books -->
                         {% if session.user=="admin" %}
@@ -46,7 +45,6 @@
             <li><a href="{{ url_for('get_reviews') }}">Home</a></li>
             <!-- when logged in -->
             {% if session.user %}
-                <li><a href="{{ url_for('myreviews', username=session['user']) }}">My Reviews</a></li>
                 <li><a href="{{ url_for('add_review') }}">New Review</a></li>
                 <!-- admin only for manage genres or manage books -->
                 {% if session.user=="admin" %}
