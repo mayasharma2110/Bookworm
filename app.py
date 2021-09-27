@@ -35,7 +35,19 @@ def get_reviews():
                            genres=genres, users=users)
 
 
-@app.route("/register", methods=["GET","POST"])
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    books = list(mongo.db.books.find({"$text": {"$search": query}}))
+    reviews = list(mongo.db.reviews.find())
+    genres = list(mongo.db.genres.find())
+    users = list(mongo.db.users.find())
+    return render_template("reviews.html", reviews=reviews, books=books,
+                           genres=genres, users=users)
+
+
+
+@app.route("/register", methods=["GET", "POST"])
 def register():
     # POST method functionality
     if request.method == "POST":

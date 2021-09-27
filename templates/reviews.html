@@ -3,67 +3,91 @@
 
 <h3 class="center-align">All Reviews</h3>
 
-    <!-- show all genres -->
-    {% for genre in genres %}
-    <b>{{ genre.genre_name }}: </b> <br>
-        <!-- check if any books fo each genre -->
-        {% for book in books if book.genre_name == genre.genre_name %}
-        <ul class="collapsible">
-            <li>
-              <div class="collapsible-header green darken-4 white-text"><i class="fas fa-arrow-alt-circle-down"></i>
-                    <b>{{ book.book_title }}</b> <br>
-                    {{ book.author }} <br>
-                    {{ book.genre_name }} <br>
-                    {{ book.url }} <br>
-                    derive and show average review <br>
+    <div class="row card-panel grey lighten-5">
+        <form action="{{ url_for('search') }}" method="post" class="col s12">
+            <div class="row valign-wrapper center-align">
+                <div class="input-field col s12 m8">
+                    <i class="fas fa-search prefix light-green-text text-darken-4"></i>
+                    <input type="text" name="query" id="query" minlength="3" class="validate" required>
+                    <label for="query">Search Books (search based on book titles or authors)</label>
+                </div>
+                <div class="col s12 m4">
+                    <a href="{{ url_for('get_reviews') }}" class="red btn text-shadow">Reset</a>
+                    <button type="submit" class="light-blue darken-1 btn text-shadow">
+                        <i class="fas fa-search left"></i> Search
+                    </button>
+                </div>
             </div>
-              <div class="collapsible-body">
-                    <span>
-                    <!-- check if any reviews with that book title -->
-                    {% for review in reviews if review.book_title == book.book_title and review.display == "Y" %}
-                    
-                    <!-- if any reviews, show all reviews -->
-                    <!-- want some way to split list items (ie reviews) -->
-                    <!-- if user signed in made the review show delete and edit buttons -->
-                    <div class="col s3">
-                        <!-- allow user who made the review to edit the review -->
-                        {% if session.user|lower == review.username|lower %}
-                            <a class="btn-small orange darken-3" href="{{ url_for('edit_review', review_id=review._id) }}">Edit</a>
-                        {% endif %}
-                        <!-- allow user who made the review or admin to remove the review -->
-                        {% if session.user|lower == review.username|lower or session.user|lower=="admin"%}
-                            <a class="btn-small pink darken-3" href="{{ url_for('delete_review', review_id=review._id) }}">Delete</a>
-                        {% endif %}
-                    </div>
-                    <div class="col s9">
-                        User: {{ review.username }} <br>
-                        {% for user in users if user.username == review.username %}
-                            Age Category: {{ user.age_category}} <br>
-                            Gender: {{ user.gender}} <br>
+        </form>
+    </div>
+
+    {% if books|length > 0 %}
+    <!-- show all genres -->
+        {% for genre in genres %}
+        <b>{{ genre.genre_name }}: </b> <br>
+            <!-- check if any books fo each genre -->
+            {% for book in books if book.genre_name == genre.genre_name %}
+            <ul class="collapsible">
+                <li>
+                <div class="collapsible-header green darken-4 white-text"><i class="fas fa-arrow-alt-circle-down"></i>
+                        <b>{{ book.book_title }}</b> <br>
+                        {{ book.author }} <br>
+                        {{ book.genre_name }} <br>
+                        derive and show average review <br>
+                </div>
+                <div class="collapsible-body">
+                        <span>
+                        <!-- check if any reviews with that book title -->
+                        {% for review in reviews if review.book_title == book.book_title and review.display == "Y" %}
+                        
+                        <!-- if any reviews, show all reviews -->
+                        <!-- want some way to split list items (ie reviews) -->
+                        <!-- if user signed in made the review show delete and edit buttons -->
+                        <div class="col s3">
+                            <!-- allow user who made the review to edit the review -->
+                            {% if session.user|lower == review.username|lower %}
+                                <a class="btn-small orange darken-3" href="{{ url_for('edit_review', review_id=review._id) }}">Edit</a>
+                            {% endif %}
+                            <!-- allow user who made the review or admin to remove the review -->
+                            {% if session.user|lower == review.username|lower or session.user|lower=="admin"%}
+                                <a class="btn-small pink darken-3" href="{{ url_for('delete_review', review_id=review._id) }}">Delete</a>
+                            {% endif %}
+                        </div>
+                        <div class="col s9">
+                            User: {{ review.username }} <br>
+                            {% for user in users if user.username == review.username %}
+                                Age Category: {{ user.age_category}} <br>
+                                Gender: {{ user.gender}} <br>
+                            {% endfor %}
+                            Recommends this book: {{ review.recommend }} <br>
+                            Stars out of 5: {{ review.stars }} <br>
+                            Review comment: {{ review.comment }} <br>
+                            Date Created: {{ review.date_created }} <br>
+                            <!-- if else statement if not an updated review -->
+                            Date Updated: {{ review.date_updated }} <br> <br>
+                        </div>
+                        <!-- want some way to split list items (ie reviews) -->
+                        <!-- if no reviews show some text -->
+                        {% else %}
+                            Sorry, there are no reviews for this book currently. 
+                            If you have read it please add a review here. <br>
                         {% endfor %}
-                        Recommends this book: {{ review.recommend }} <br>
-                        Stars out of 5: {{ review.stars }} <br>
-                        Review comment: {{ review.comment }} <br>
-                        Date Created: {{ review.date_created }} <br>
-                        <!-- if else statement if not an updated review -->
-                        Date Updated: {{ review.date_updated }} <br> <br>
-                    </div>
-                    <!-- want some way to split list items (ie reviews) -->
-                    <!-- if no reviews show some text -->
-                    {% else %}
-                        Sorry, there are no reviews for this book currently. 
-                        If you have read it please add a review here. <br>
-                    {% endfor %}
-                    </span>
-              </div>
-            </li>
-        </ul>
-        <!-- if no books of this genre -->
-        {% else %}
-        Sorry, there are no books in the database for this genre currently. 
-        If you have read a book of this genre please add it here and then add a review here. <br>
+                        </span>
+                </div>
+                </li>
+            </ul>
+            <!-- if no books of this genre -->
+            {% else %}
+            Sorry, there are no books in the database for this genre currently. 
+            If you have read a book of this genre please add it here and then add a review here. <br>
+            {% endfor %}
+
         {% endfor %}
 
-    {% endfor %}
+    {% else %}
+            
+        <h3 class="red-text text-darken-4 center-align">No Results Found</h3>
+
+    {% endif %}
 
 {% endblock %}
