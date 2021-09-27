@@ -6,7 +6,7 @@
 <div class="row card-panel grey lighten-5">
     <form class="col s12" method="POST" action="{{ url_for('add_review') }}">
         <!-- text to direct users to add a new book if not already in database -->
-        <div><em>Can you not find the book you are after? <br> Please add it to the database here and then come back to this page to add your review!</em></div>
+        <div><em>Can you not find the book you are after? <br> Please add it to the database <a href="{{ url_for('add_book') }}" class="green-text text-lighten-1">here</a> and then come back to this page to add your review!</em></div>
         <br>
         <!-- select book -->
         <div class="row">
