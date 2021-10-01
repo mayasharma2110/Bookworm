@@ -27,12 +27,43 @@ def get_reviews():
     books = list(mongo.db.books.find())
     genres = list(mongo.db.genres.find())
     users = list(mongo.db.users.find())
-    # print(list(reviews))
-    # print(list(books))
-    # print(list(genres))
-    # print(list(users))
+    # create dictionary with average reviews
+    averageRev  = {
+        # 1st value in number of reviews, and 2nd number is average review to 1 decimal place
+        "I let you go": ["2", "5"],
+        "In The Dark": ["8", "4.7"],
+        "The Secret Dreamworld Of A Shopaholic": ["2", "3"],
+        "Thirteen": ["6", "4.8"],
+        "A Streetcar Named Desire": ["1", "4"],
+        "Keep Her Quiet": ["3", "4.2"],
+        "Can You Keep a Secret?": ["1", "5"],
+        "fantasy1": ["-", "0"]
+        }
+    # create actual dictionary based on reviews in database
+    averageRev1 = {}
+    for book in books:
+        # 1st value in number of reviews, 2nd is total number of stars from all reviews on the book
+        # and 3rd number is average review to 1 decimal place
+        averageRev1[book["book_title"]] = ["", "", ""]
+    # get number of reviews and average review
+    for book in books:
+        # number of reviews starts at 0
+        num1 = 0
+        # total stars
+        totalstars = 0
+        for review in reviews:
+            if review["book_title"] == book["book_title"] and review["display"] == "Y":
+                num1 += 1
+                totalstars += int(review["stars"])
+                # totalStars = totalStars + int(review["stars"])
+        averageRev1[book["book_title"]][0] = num1
+        averageRev1[book["book_title"]][1] = totalstars
+        # create average based on total and number of reviews
+        if averageRev1[book["book_title"]][0] != 0:
+            averageRev1[book["book_title"]][2] = round(averageRev1[book["book_title"]][1]/averageRev1[book["book_title"]][0], 1)
     return render_template("reviews.html", reviews=reviews, books=books,
-                           genres=genres, users=users)
+                           genres=genres, users=users,
+                           averageRev=averageRev, averageRev1=averageRev1)
 
 
 @app.route("/search", methods=["GET", "POST"])

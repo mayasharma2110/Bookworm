@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 
+<!-- Books: <br> {{ books }} <br> <br>
+Reviews: <br> {{ reviews }} <br> <br>
+Average reviews dict: <br> {{ averageRev1 }} -->
+
 <h3 class="center-align">All Reviews</h3>
 
     <div class="row card-panel grey lighten-5">
@@ -30,17 +34,14 @@
             <ul class="collapsible">
                 <li>
                 <div class="collapsible-header green darken-4 white-text"><i class="fas fa-arrow-alt-circle-down"></i>
-                        {{ book.book_title }} <br>
-                        {{ book.author }} <br>
-                        {{ book.genre_name }} <br>
-                        Derive and show average review for each book <br>
-                        reviews1 = list(mongo.db.reviews.find({"$text": {"$search": book}}))["stars"] <br>
-                        {% for review in reviews if review.book_title == book.book_title and review.display == "Y" %}
-                            Stars: {{ review.stars }} <br>
-                        {% else %}
-                            Sorry, there are no reviews for this book currently. 
-                            If you have read it please add a review here. <br>
-                        {% endfor %}
+                    {{ book.book_title }} <br>
+                    {{ book.author }} <br>
+                    {{ book.genre_name }} <br>
+                    {% if averageRev1[book.book_title][0] != 0 %}
+                        Average review: {{ averageRev1[book.book_title][2] }}/5 ({{ averageRev1[book.book_title][0] }}) <br>
+                    {% else %}
+                        Average review: -/5 (0)
+                    {% endif %}
                 </div>
                 <div class="collapsible-body">
                         <span>
