@@ -16,10 +16,10 @@ Average reviews dict: <br> {{ averageRev1 }} -->
                     <label for="query">Search Books (search based on book titles or authors)</label>
                 </div>
                 <div class="col s12 m4">
-                    <a href="{{ url_for('get_reviews') }}" class="red btn text-shadow">Reset</a>
-                    <button type="submit" class="light-blue darken-1 btn text-shadow">
+                    <button type="submit" class="orange darken-3 btn">
                         <i class="fas fa-search left"></i> Search
                     </button>
+                    <a href="{{ url_for('get_reviews') }}" class="pink darken-3 btn">Reset</a>
                 </div>
             </div>
         </form>
@@ -75,7 +75,7 @@ Average reviews dict: <br> {{ averageRev1 }} -->
                         <!-- if no reviews show some text -->
                         {% else %}
                             Sorry, there are no reviews for this book currently. 
-                            If you have read it please add a review here. <br>
+                            If you have read it please add a review <a href="{{ url_for('add_review') }}" class="green-text text-lighten-1">here</a>. <br>
                         {% endfor %}
                         </span>
                 </div>
@@ -84,7 +84,7 @@ Average reviews dict: <br> {{ averageRev1 }} -->
             <!-- if no books of this genre -->
             {% else %}
             Sorry, there are no books in the database for this genre currently. 
-            If you have read a book of this genre please add it here and then add a review here. <br>
+            If you have read a book of this genre please add it <a href="{{ url_for('add_book') }}" class="green-text text-lighten-1">here</a> and then add a review <a href="{{ url_for('add_review') }}" class="green-text text-lighten-1">here</a>. <br>
             {% endfor %}
 
         {% endfor %}
