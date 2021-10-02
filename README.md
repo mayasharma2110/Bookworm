@@ -16,9 +16,19 @@ Mockups:
 
 ![New Review Mockups](assets/mockups/mockup-new-review.PNG)
 
+![Edit Review Mockups](assets/mockups/mockup-edit-review.PNG)
+
+![Add Book Mockups](assets/mockups/mockup-add-book.PNG)
+
 ![Manage Books Mockups](assets/mockups/mockup-manage-books.PNG)
 
+![Edit Book Mockups](assets/mockups/mockup-edit-book.PNG)
+
 ![Manage Genres Mockups](assets/mockups/mockup-manage-genres.PNG)
+
+![Add Genre Mockups](assets/mockups/mockup-add-genre.PNG)
+
+![Edit Genre Mockups](assets/mockups/mockup-edit-genre.PNG)
 
 ## Table of Contents
 
@@ -47,13 +57,21 @@ Mockups:
     * [Features Left to Implement](#features-left-to-inplement)
 * [Technologies Used](#technologies-used)
 * [Testing](#testing)
-  * [User Authentication](#user-authentication)
+  * [User Authentication Register](#user-authentication-register)
+  * [User Authentication Log In](#user-authentication-log-in)
+  * [User Authentication Log Out](#user-authentication-log-out)
   * [View Reviews](#view-reviews)
   * [Add New Review](#add-new-review)
-  * [Update Current Review](#update-current-review)
+  * [Edit Review](#edit-review)
   * [Delete Review](#delete-review)
   * [Manage Books](#manage-books)
+  * [Add Book](#add-book)
+  * [Edit Book](#edit-book)
+  * [Delete Book](#delete-book)
   * [Manage Genres](#manage-genres)
+  * [Add Genre](#add-genre)
+  * [Edit Genre](#edit-genre)
+  * [Delete Genre](#delete-genre)
   * [Online Validation](#online-validation)
   * [Lighthouse Validation](#lighthouse-validation) 
   * [User Stories from the UX Section](#user-stories-from-the-ux-section)
@@ -78,24 +96,24 @@ Mockups:
 
 * As a first time user, I want to read reviews registered users have made.
 
-* As a first time user, I want to be able to find a new book that I may like to read and sort the reviews based on the average rating.
+* As a first time user, I want to be able to find a new book that I may like to read.
 
-* As a first time user, I want to be able to be able to search in the reviews for books by a certain author or of a certain genre I like.
+* As a first time user, I want to be able to be able to search in the reviews for a certain book title or author.
 
 
 #### Returning Visitor Goals
 
-* As a returning user, I similar needs of a first time user.
+* As a returning user, I have similar needs of a first time user.
 
 * As a returning user, I want to be able to register and login as myself.
 
-* As a returning user, I want to be able to add my own books to the site.
+* As a returning user, I want to be able to add new books to the database/site.
 
 * As a returning user, I want to be able to add my own reviews to the site, I would also like to update or delete my own reviews.
 
 #### Frequent User Goals
 
-* As a frequent user, I want to be able to see my own reviews at the top for easy management needs to update/delete.
+* As a frequent user, I have similar needs of a first time and returning user.
 
 ### Strategy
 
@@ -103,9 +121,7 @@ Mockups:
 
 * As a business owner I want to, help users find new books/authors they may enjoy.
 
-* As a business owner I want to, help companies sell more books based on this review site and help users by providing a link to where they can buy the books.
-
-* As a business owner I want to, be able to manage the list of book genres that are displayed as options to users of the site when adding a new book to the database/site.
+* As a business owner I want to, be able to manage the list of books and genres that are displayed as options to users of the site when adding a new review or book to the database/site.
 
 * As a business owner I want to, be able to manage the reviews and soft delete any that are deemed spam or unacceptable in some way, this will be a soft delete and will remain in the database but not be shown on the site to users.
 
@@ -123,7 +139,7 @@ Key features to be included based on user stories are:
 
 * Responsive website on mobile, tablet and laptop size devices.
 
-* The home page will contain the reviews and a search bar for users to search for a book or author. Signed in users will also see their own reviews displayed at the top.
+* The home page will contain the reviews and a search bar for users to search for a book title or author. 
 
 * The login page will contain a form for registered users to login.
 
@@ -131,7 +147,7 @@ Key features to be included based on user stories are:
 
 * The new review page will contain a form which allows signed in users to create a new review for a book.
 
-* The manage books page will contain a list of all current books in the database and a link which allows signed in users to add a new book to the database/site.
+* The manage books page will contain a list of all current books in the database, this will be accessible to admin only.
 
 * The manage genres page will contain a list of all current genres in the database, this will be accessible to admin only.
 
@@ -141,7 +157,7 @@ All pages of the website will have a consistent navigation bar. The home, login 
 
 The website will use Materializecss grids to make the layout responsive to different devices and screen sizes.
 
-* The home page will contain the reviews and a search bar for users to search for a book or author. Signed in users will also see their own reviews displayed at the top. Signed in users can update or delete their own reviews, this will only be a soft delete and the information will remain in the database but not be shown on the site to users. Admin are able to delete any review they deem spam or unacceptable in some way, this again will be a soft delete only.
+* The home page will contain the reviews and a search bar for users to search for a book or author. Signed in users can update or delete their own reviews, this will only be a soft delete and the information will remain in the database but not be shown on the site to users. Admin are able to delete any review they deem spam or unacceptable in some way, this again will be a soft delete only.
 
 * The login page will contain a form for registered users to login. This will ask for username and password, if either are incorrect this will be displayed ot the user and the site will ask them to try again. There will also be a logout link for logged in users to use.
 
@@ -149,9 +165,9 @@ The website will use Materializecss grids to make the layout responsive to diffe
 
 * The new review page will contain a form which allows signed in users to create a new review for a book. This will include a dropdown for the book that is being revewed, recommend yes/no field, start out of 5 field and review comment (free text field).
 
-* The manage books page will contain a list of all current books in the database and a link which allows signed in users to add a new book to the database/site. Admin will also be able to update or delete existing books in the database from this page.
+* The manage books page will contain a list of all current books in the database. This will be accessible to admin only and allow them to view all books in the database and a links which allow them to a new book and update/delete an existing one. Users who are not admin and logged in will be able to add a new book to the database but not update or delete any existing ones.
 
-* The manage genres page will contain a list of all current genres in the database. This will be accessible to admin only and allow them to view all genres in the database and a link to allow them to add a new genre and update/delete an existing one.
+* The manage genres page will contain a list of all current genres in the database. This will be accessible to admin only and allow them to view all genres in the database and a links which allow them to add a new genre and update/delete an existing one.
 
 ### Skeleton
 
@@ -222,7 +238,9 @@ I picked images of books and people reading books, I also wanted to pick images 
 
 * It would be nice to have defensive programming to check if a user or admin really wants to delete a review. 
 
-* It would be nice to have defensive programming to check if an admin really wants to delete a genre name. 
+* It would be nice to have defensive programming to check if an admin really wants to delete a book or genre name. 
+
+* It would be nice to have a search function on the manage books page so admin check if a book exists in the database before adding a new one.
 
 ## Technologies Used
 
@@ -271,17 +289,23 @@ Testing - Tested the feature by going doing x.
 
 Result - The feature did not act as expected and it did z. I did a to test, noticed problem b, once I corrected this by doing c I retested and the feature acted as expected and it did y.
 
-### User Authentication
+### User Authentication Register
+
+### User Authentication Log In
+
+### User Authentication Log Out
 
 ### View Reviews
 
 - loop show "sorry no reviews text" or show all the reviews in its own loop
+- average review created a separate dictionary in python file to derive the average review for each book so this could be used in reviews.html page.
+- when searching error as couldnt find averageRev1 dictionary, I had to add the code to make this dictionary as above in this section of the python file.
 
 ### Add New Review
 
 - date created variable in right format used https://www.w3schools.com/python/python_datetime.asp to help me get this format how I wanted it.
 
-### Update Current Review
+### Edit Review
 
 - issue with date_created field being overwirtten with a value of "", had to get the value from the database and save as a variable to then include it when updating the review document in the mongodb collection.
 
@@ -289,7 +313,19 @@ Result - The feature did not act as expected and it did z. I did a to test, noti
 
 ### Manage Books
 
+### Add Book
+
+### Edit Book
+
+### Delete Book
+
 ### Manage Genres
+
+### Add Genre
+
+### Edit Genre
+
+### Delete Genre
 
 ### Online Validation
 
@@ -319,29 +355,50 @@ The summary table below shows these metrics.
 | Mobile  |  Login | xx% | xx% | xx% | xx% |
 | Mobile  |  Register | xx% | xx% | xx% | xx% |
 | Mobile  |  New Review | xx% | xx% | xx% | xx% |
+| Mobile  |  Edit Review | xx% | xx% | xx% | xx% |
 | Mobile  |  Manage Books | xx% | xx% | xx% | xx% |
+| Mobile  |  Add Book | xx% | xx% | xx% | xx% |
+| Mobile  |  Edit Book | xx% | xx% | xx% | xx% |
 | Mobile  |  Manage Genres | xx% | xx% | xx% | xx% |
+| Mobile  |  Add Genre | xx% | xx% | xx% | xx% |
+| Mobile  |  Edit Genre | xx% | xx% | xx% | xx% |
+
 | Desktop  |  Home | xx% | xx% | xx% | xx% |
 | Desktop  |  Login | xx% | xx% | xx% | xx% |
 | Desktop  |  Register | xx% | xx% | xx% | xx% |
 | Desktop  |  New Review | xx% | xx% | xx% | xx% |
+| Desktop  |  Edit Review | xx% | xx% | xx% | xx% |
 | Desktop  |  Manage Books | xx% | xx% | xx% | xx% |
+| Desktop  |  Add Book | xx% | xx% | xx% | xx% |
+| Desktop  |  Edit Book | xx% | xx% | xx% | xx% |
 | Desktop  |  Manage Genres | xx% | xx% | xx% | xx% |
+| Desktop  |  Add Genre | xx% | xx% | xx% | xx% |
+| Desktop  |  Edit Genre | xx% | xx% | xx% | xx% |
 
 Full reports can be found below:
 * [Mobile Home](assets/lighthouse/lighthouse-mobile-home.pdf)
 * [Mobile Login](assets/lighthouse/lighthouse-mobile-login.pdf)
 * [Mobile Register](assets/lighthouse/lighthouse-mobile-register.pdf)
 * [Mobile New Review](assets/lighthouse/lighthouse-mobile-new-review.pdf)
+* [Mobile Edit Review](assets/lighthouse/lighthouse-mobile-edit-review.pdf)
 * [Mobile Manage Books](assets/lighthouse/lighthouse-mobile-manage-books.pdf)
+* [Mobile Add Book](assets/lighthouse/lighthouse-mobile-add-book.pdf)
+* [Mobile Edit Book](assets/lighthouse/lighthouse-mobile-edit-book.pdf)
 * [Mobile Manage Genres](assets/lighthouse/lighthouse-mobile-manage-genres.pdf)
+* [Mobile Add Genre](assets/lighthouse/lighthouse-mobile-add-genre.pdf)
+* [Mobile Edit Genre](assets/lighthouse/lighthouse-mobile-edit-genre.pdf)
 
 * [Desktop Home](assets/lighthouse/lighthouse-desktop-home.pdf)
 * [Desktop Login](assets/lighthouse/lighthouse-desktop-login.pdf)
 * [Desktop Register](assets/lighthouse/lighthouse-desktop-register.pdf)
 * [Desktop New Review](assets/lighthouse/lighthouse-desktop-new-review.pdf)
+* [Desktop Edit Review](assets/lighthouse/lighthouse-desktop-edit-review.pdf)
 * [Desktop Manage Books](assets/lighthouse/lighthouse-desktop-manage-books.pdf)
+* [Desktop Add Book](assets/lighthouse/lighthouse-desktop-add-book.pdf)
+* [Desktop Edit Book](assets/lighthouse/lighthouse-desktop-edit-book.pdf)
 * [Desktop Manage Genres](assets/lighthouse/lighthouse-desktop-manage-genres.pdf)
+* [Desktop Add Genre](assets/lighthouse/lighthouse-desktop-add-genre.pdf)
+* [Desktop Edit Genre](assets/lighthouse/lighthouse-desktop-edit-genre.pdf)
 
 ### User Stories from the UX Section
 
@@ -374,7 +431,7 @@ Full reports can be found below:
 * Files were committed to the local repository using "git commit -m 'commit message here'".
 * Committed changes were pushed to the GitHub repository.
 
-### GitHub Pages
+### Heroku
 
 To deploy the project to a live website the below steps were followed:
 
