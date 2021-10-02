@@ -1,10 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
 
-<!-- Books: <br> {{ books }} <br> <br>
-Reviews: <br> {{ reviews }} <br> <br>
-Average reviews dict: <br> {{ averageRev1 }} -->
-
 <h3 class="center-align">All Reviews</h3>
 
     <div class="row card-panel grey lighten-5">
@@ -73,10 +69,15 @@ Average reviews dict: <br> {{ averageRev1 }} -->
                             Date Updated: {{ review.date_updated }} <br> <br>
                         </div>
                         <!-- if no reviews show some text -->
-                        {% else %}
+                        {% endfor %}
+                        <!-- if no reviews show some text -->
+                        {% if averageRev1[book.book_title][0] == 0 %}
                             Sorry, there are no reviews for this book currently. 
                             If you have read it please add a review <a href="{{ url_for('add_review') }}" class="green-text text-lighten-1">here</a>. <br>
-                        {% endfor %}
+                        {% else %}
+                        <!-- if some reviews prompt users to add more reviews -->
+                        If you have also read this book please add an additional review for it <a href="{{ url_for('add_review') }}" class="green-text text-lighten-1">here</a>. <br>
+                        {% endif %}
                         </span>
                 </div>
                 </li>
