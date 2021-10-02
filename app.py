@@ -156,7 +156,6 @@ def logout():
     return redirect(url_for("login"))
 
 
-# you'll actually want to provide conditional checks on your Python functions to restrict these pages, but redirect users elsewhere if they're not validated.
 @app.route("/add_review", methods=["GET", "POST"])
 def add_review():
     if request.method == "POST":
@@ -227,14 +226,12 @@ def delete_review(review_id):
     return redirect(url_for("get_reviews"))
 
 
-# you'll actually want to provide conditional checks on your Python functions to restrict these pages, but redirect users elsewhere if they're not validated.
 @app.route("/get_genres")
 def get_genres():
     genres = list(mongo.db.genres.find().sort("genre_name", 1))
     return render_template("genres.html", genres=genres)
 
 
-# you'll actually want to provide conditional checks on your Python functions to restrict these pages, but redirect users elsewhere if they're not validated.
 @app.route("/add_genre", methods=["GET", "POST"])
 def add_genre():
     if request.method == "POST":
@@ -269,7 +266,6 @@ def delete_genre(genre_id):
     return redirect(url_for("get_genres"))
 
 
-# you'll actually want to provide conditional checks on your Python functions to restrict these pages, but redirect users elsewhere if they're not validated.
 @app.route("/add_book", methods=["GET", "POST"])
 def add_book():
     if request.method == "POST":
@@ -286,7 +282,6 @@ def add_book():
     return render_template("add_book.html", genres=genres)
 
 
-# you'll actually want to provide conditional checks on your Python functions to restrict these pages, but redirect users elsewhere if they're not validated.
 @app.route("/get_books")
 def get_books():
     books = list(mongo.db.books.find().sort("book_title", 1))
