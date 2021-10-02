@@ -61,8 +61,31 @@ def search():
     reviews = list(mongo.db.reviews.find())
     genres = list(mongo.db.genres.find())
     users = list(mongo.db.users.find())
+    # create dictionary based on reviews in database
+    averageRev1 = {}
+    for book in books:
+        # 1st value in number of reviews, 2nd is total number of stars from all reviews on the book
+        # and 3rd number is average review to 1 decimal place
+        averageRev1[book["book_title"]] = ["", "", ""]
+    # get number of reviews and average review
+    for book in books:
+        # number of reviews starts at 0
+        num1 = 0
+        # total stars
+        totalstars = 0
+        for review in reviews:
+            if review["book_title"] == book["book_title"] and review["display"] == "Y":
+                num1 += 1
+                totalstars += int(review["stars"])
+                # totalStars = totalStars + int(review["stars"])
+        averageRev1[book["book_title"]][0] = num1
+        averageRev1[book["book_title"]][1] = totalstars
+        # create average based on total and number of reviews
+        if averageRev1[book["book_title"]][0] != 0:
+            averageRev1[book["book_title"]][2] = round(averageRev1[book["book_title"]][1]/averageRev1[book["book_title"]][0], 1)
     return render_template("reviews.html", reviews=reviews, books=books,
-                           genres=genres, users=users)
+                           genres=genres, users=users, 
+                           averageRev1=averageRev1)
 
 
 
@@ -133,6 +156,7 @@ def logout():
     return redirect(url_for("login"))
 
 
+# you'll actually want to provide conditional checks on your Python functions to restrict these pages, but redirect users elsewhere if they're not validated.
 @app.route("/add_review", methods=["GET", "POST"])
 def add_review():
     if request.method == "POST":
@@ -155,7 +179,6 @@ def add_review():
     return render_template("add_review.html", books=books)
 
 
-# no need to add conditional checks as it would be difficult for a user to guess the review id to get on to this page
 @app.route("/edit_review/<review_id>", methods=["GET", "POST"])
 def edit_review(review_id):
     if request.method == "POST":
@@ -225,7 +248,6 @@ def add_genre():
     return render_template("add_genre.html")
 
 
-# no need to add conditional checks as it would be difficult for a user to guess the genre id to get on to this page
 @app.route("/edit_genre/<genre_id>", methods=["GET", "POST"])
 def edit_genre(genre_id):
     if request.method == "POST":
@@ -247,6 +269,7 @@ def delete_genre(genre_id):
     return redirect(url_for("get_genres"))
 
 
+# you'll actually want to provide conditional checks on your Python functions to restrict these pages, but redirect users elsewhere if they're not validated.
 @app.route("/add_book", methods=["GET", "POST"])
 def add_book():
     if request.method == "POST":
@@ -263,13 +286,13 @@ def add_book():
     return render_template("add_book.html", genres=genres)
 
 
+# you'll actually want to provide conditional checks on your Python functions to restrict these pages, but redirect users elsewhere if they're not validated.
 @app.route("/get_books")
 def get_books():
     books = list(mongo.db.books.find().sort("book_title", 1))
     return render_template("books.html", books=books)
 
 
-# no need to add conditional checks as it would be difficult for a user to guess the genre id to get on to this page
 @app.route("/edit_book/<book_id>", methods=["GET", "POST"])
 def edit_book(book_id):
     if request.method == "POST":
