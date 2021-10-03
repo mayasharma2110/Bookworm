@@ -287,7 +287,8 @@ def add_genre():
 def edit_genre(genre_id):
     if request.method == "POST":
         submit = {
-            "genre_name": request.form.get("genre_name")
+            "genre_name": request.form.get("genre_name"),
+            "display": "Y"
         }
         mongo.db.genres.update({"_id": ObjectId(genre_id)}, submit)
         flash("Genre Successfully Updated")
@@ -299,7 +300,13 @@ def edit_genre(genre_id):
 
 @app.route("/delete_genre/<genre_id>")
 def delete_genre(genre_id):
-    mongo.db.genres.remove({"_id": ObjectId(genre_id)})
+    submit = {
+            # keep genre_name the same as before
+            "genre_name": mongo.db.genres.find_one({"_id": ObjectId(genre_id)})["genre_name"],
+            # change display to N to not show on the website
+            "display": "N"
+        }
+    mongo.db.genres.update({"_id": ObjectId(genre_id)}, submit)
     flash("Genre Successfully Deleted")
     return redirect(url_for("get_genres"))
 
@@ -355,7 +362,8 @@ def edit_book(book_id):
         submit = {
             "book_title": request.form.get("book_title"),
             "genre_name": request.form.get("genre_name"),
-            "author": request.form.get("author")
+            "author": request.form.get("author"),
+            "display": "Y"
         }
         mongo.db.books.update({"_id": ObjectId(book_id)}, submit)
         flash("Book Successfully Updated")
@@ -368,7 +376,15 @@ def edit_book(book_id):
 
 @app.route("/delete_book/<book_id>")
 def delete_book(book_id):
-    mongo.db.books.remove({"_id": ObjectId(book_id)})
+    submit = {
+            # keep title, author and genre the same as before
+            "book_title": mongo.db.books.find_one({"_id": ObjectId(book_id)})["book_title"],
+            "genre_name": mongo.db.books.find_one({"_id": ObjectId(book_id)})["genre_name"],
+            "author": mongo.db.books.find_one({"_id": ObjectId(book_id)})["author"],
+            # change display to N to not show on the website
+            "display": "N"
+        }
+    mongo.db.books.update({"_id": ObjectId(book_id)}, submit)
     flash("Book Successfully Deleted")
     return redirect(url_for("get_books"))
 
