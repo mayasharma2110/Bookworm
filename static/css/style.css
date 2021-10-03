@@ -34,7 +34,15 @@ h3 {
     line-height: 2; 
 }
 
-/* home page */
+/* home/reviews page */
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
 
 /* register page */
 .card-panel {

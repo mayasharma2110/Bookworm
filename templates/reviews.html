@@ -31,9 +31,9 @@
             <ul class="collapsible">
                 <li>
                 <div class="collapsible-header green darken-4 white-text"><i class="fas fa-arrow-alt-circle-down"></i>
-                    {{ book.book_title }} <br>
-                    {{ book.author }} <br>
-                    {{ book.genre_name }} <br>
+                    Title: {{ book.book_title }} <br>
+                    Author: {{ book.author }} <br>
+                    Genre: {{ book.genre_name }} <br>
                     {% if averageRev1[book.book_title][0] != 0 %}
                         Average review: {{ averageRev1[book.book_title][2] }}/5 ({{ averageRev1[book.book_title][0] }}) <br>
                     {% else %}
@@ -46,17 +46,6 @@
                         {% for review in reviews if review.book_title == book.book_title and review.display == "Y" %}
                         <!-- if any reviews, show all reviews -->
                         <!-- want some way to split list items (ie reviews) -->
-                        <!-- if user signed in made the review show delete and edit buttons -->
-                        <div class="col s3">
-                            <!-- allow user who made the review to edit the review -->
-                            {% if session.user|lower == review.username|lower %}
-                                <a class="btn-small orange darken-3" href="{{ url_for('edit_review', review_id=review._id) }}">Edit</a>
-                            {% endif %}
-                            <!-- allow user who made the review or admin to remove the review -->
-                            {% if session.user|lower == review.username|lower or session.user|lower=="admin"%}
-                                <a class="btn-small pink darken-3" href="{{ url_for('delete_review', review_id=review._id) }}">Delete</a>
-                            {% endif %}
-                        </div>
                         <div class="col s9">
                             User: {{ review.username }} <br>
                             {% for user in users if user.username == review.username %}
@@ -69,6 +58,27 @@
                             Date Created: {{ review.date_created }} <br>
                             Date Updated: {{ review.date_updated }} <br> <br>
                         </div>
+                        <!-- if user signed in made the review show delete and edit buttons -->
+                        <div class="col s3">
+                            <!-- allow user who made the review to edit the review -->
+                            {% if session.user|lower == review.username|lower %}
+                                <a class="btn-small orange darken-3" href="{{ url_for('edit_review', review_id=review._id) }}">Edit</a>
+                            {% endif %}
+                            <!-- allow user who made the review or admin to remove the review -->
+                            {% if session.user|lower == review.username|lower or session.user|lower=="admin" %}
+                                <button class="btn-small pink darken-3" id="delete_review">Delete</button>
+                                <!-- if click delete want to show text to check the user is sure they want to proceed with additional Yes/No buttons -->
+                                <div id="delete_review_check" class="hide">
+                                    Are you sure you want to delete this review? <br>
+                                    <!-- if no reload current page -->
+                                    <a href="{{ url_for('get_reviews') }}" class="btn-small pink darken-3">
+                                        No </a>
+                                    <!-- if yes soft delete review in database -->
+                                    <a class="btn-small green darken-4" href="{{ url_for('delete_review', review_id=review._id) }}">Yes</a> <br>
+                                </div>
+                            {% endif %}
+                        </div>
+                        <br>
                         <!-- if no reviews show some text -->
                         {% endfor %}
                         <!-- if no reviews show some text -->
@@ -97,4 +107,6 @@
 
     {% endif %}
 
+<script type="module" src="static/js/script_reviews.js"></script>    
+    
 {% endblock %}
