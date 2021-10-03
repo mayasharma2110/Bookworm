@@ -14,7 +14,7 @@
                 <i class="fas fa-folder-open prefix green-text text-darken-4"></i>
                 <select id="book_title" name="book_title" class="validate" required>
                     <option value="" disabled selected>Choose Book</option>
-                    {% for book in books %}
+                    {% for book in books if book.display == "Y" %}
                         <option value="{{ book.book_title }}">{{ book.book_title }} by {{ book.author }}</option>
                     {% endfor %}
                 </select>

@@ -12,7 +12,7 @@
     </div>
 
     <div class="row">
-        {% for genre in genres %}
+        {% for genre in genres if genre.display == "Y" %}
             <div class="col s12 m6 l4">
                 <div class="card center-align">
                     <div class="card-content green darken-4 white-text">

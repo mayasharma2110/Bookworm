@@ -11,7 +11,7 @@
                 <i class="fas fa-folder-open prefix green-text text-darken-4"></i>
                 <select id="selected" name="genre_name" class="validate" required>
                     <option value="" disabled>Choose Genre</option>
-                    {% for genre in genres %}
+                    {% for genre in genres if genre.display == "Y" %}
                         {% if book.genre_name == genre.genre_name %}
                             <option value="{{ genre.genre_name }}" selected>{{ genre.genre_name }}</option>
                         {% else %}

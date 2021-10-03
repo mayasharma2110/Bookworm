@@ -24,10 +24,10 @@
 
     {% if books|length > 0 %}
     <!-- show all genres -->
-        {% for genre in genres %}
+        {% for genre in genres if genre.display == "Y" %}
         <b>{{ genre.genre_name }}: </b> <br>
             <!-- check if any books fo each genre -->
-            {% for book in books if book.genre_name == genre.genre_name %}
+            {% for book in books if book.genre_name == genre.genre_name and book.display == "Y" %}
             <ul class="collapsible">
                 <li>
                 <div class="collapsible-header green darken-4 white-text"><i class="fas fa-arrow-alt-circle-down"></i>
@@ -41,7 +41,7 @@
                     {% endif %}
                 </div>
                 <div class="collapsible-body">
-                        <span>0
+                        <span>
                         <!-- check if any reviews with that book title -->
                         {% for review in reviews if review.book_title == book.book_title and review.display == "Y" %}
                         <!-- if any reviews, show all reviews -->

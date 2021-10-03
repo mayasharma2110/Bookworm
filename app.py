@@ -259,7 +259,8 @@ def get_genres():
 def add_genre():
     if request.method == "POST":
         genre = {
-            "genre_name": request.form.get("genre_name")
+            "genre_name": request.form.get("genre_name"), 
+            "display": "Y"
         }
         mongo.db.genres.insert_one(genre)
         flash("New Genre Added")
@@ -310,7 +311,8 @@ def add_book():
         book = {
             "book_title": request.form.get("book_title"),
             "genre_name": request.form.get("genre_name"),
-            "author": request.form.get("author")
+            "author": request.form.get("author"), 
+            "display": "Y"
         }
         mongo.db.books.insert_one(book)
         flash("New Book Added")

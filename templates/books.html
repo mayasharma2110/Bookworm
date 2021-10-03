@@ -12,7 +12,7 @@
     </div>
 
     <div class="row">
-        {% for book in books %}
+        {% for book in books if book.display == "Y" %}
             <div class="col s12 m6">
                 <div class="card left-align">
                     <div class="card-content green darken-4 white-text">
