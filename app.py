@@ -156,6 +156,7 @@ def logout():
     return redirect(url_for("login"))
 
 
+# add conditional check so only logged in users can add a review
 @app.route("/add_review", methods=["GET", "POST"])
 def add_review():
     if request.method == "POST":
@@ -174,10 +175,18 @@ def add_review():
         flash("Your review was successfully added")
         return redirect(url_for("get_reviews"))
 
-    books = mongo.db.books.find().sort("book_title", 1)
-    return render_template("add_review.html", books=books)
+    if request.method == "GET":
+    # check if user is logged in
+        if session:
+            books = mongo.db.books.find().sort("book_title", 1)
+            return render_template("add_review.html", books=books)
+        # if not logged in return to home page with text to prompt the user to log in
+        else:
+            flash("Sorry that did not work, you must be logged in to add a review!")
+            return redirect(url_for("get_reviews"))
 
 
+# no need to add conditional checks as it would be difficult for a user to guess the review id to get on to this page
 @app.route("/edit_review/<review_id>", methods=["GET", "POST"])
 def edit_review(review_id):
     if request.method == "POST":
@@ -226,12 +235,26 @@ def delete_review(review_id):
     return redirect(url_for("get_reviews"))
 
 
+# conditional check so only admin can access this page
 @app.route("/get_genres")
 def get_genres():
-    genres = list(mongo.db.genres.find().sort("genre_name", 1))
-    return render_template("genres.html", genres=genres)
+    # check if logged in
+    if session:
+        # if logged in check if logged in as admin
+        if session["user"]=="admin":
+            genres = list(mongo.db.genres.find().sort("genre_name", 1))
+            return render_template("genres.html", genres=genres)
+        # if not admin show warning flash message and redirect to home page
+        else:
+            flash("Sorry that did not work, you must be logged in as admin to manage genres!")
+            return redirect(url_for("get_reviews"))
+    # if not logged in show warning flash message and redirect to home page
+    else:
+        flash("Sorry that did not work, you must be logged in as admin to manage genres!")
+        return redirect(url_for("get_reviews"))
 
 
+# conditional check so only admin can access this page
 @app.route("/add_genre", methods=["GET", "POST"])
 def add_genre():
     if request.method == "POST":
@@ -242,9 +265,23 @@ def add_genre():
         flash("New Genre Added")
         return redirect(url_for("get_genres"))
 
-    return render_template("add_genre.html")
+    if request.method == "GET":
+        # check if logged in
+        if session:
+            # if logged in check if logged in as admin
+            if session["user"]=="admin":
+                return render_template("add_genre.html")
+            # if not admin show warning flash message and redirect to home page
+            else:
+                flash("Sorry that did not work, you must be logged in as admin to add a genre!")
+                return redirect(url_for("get_reviews"))
+        # if not logged in show warning flash message and redirect to home page
+        else:
+            flash("Sorry that did not work, you must be logged in as admin to add a genre!")
+            return redirect(url_for("get_reviews"))
 
 
+# no need to add conditional checks as it would be difficult for a user to guess the genre id to get on to this page
 @app.route("/edit_genre/<genre_id>", methods=["GET", "POST"])
 def edit_genre(genre_id):
     if request.method == "POST":
@@ -266,6 +303,7 @@ def delete_genre(genre_id):
     return redirect(url_for("get_genres"))
 
 
+# conditional check so only logged in users can add a book
 @app.route("/add_book", methods=["GET", "POST"])
 def add_book():
     if request.method == "POST":
@@ -278,16 +316,37 @@ def add_book():
         flash("New Book Added")
         return redirect(url_for("get_reviews"))
 
-    genres = mongo.db.genres.find().sort("genre_name", 1)
-    return render_template("add_book.html", genres=genres)
+    if request.method == "GET":
+    # check if user is logged in
+        if session:
+            genres = mongo.db.genres.find().sort("genre_name", 1)
+            return render_template("add_book.html", genres=genres)
+        # if not logged in return to home page with text to prompt the user to log in
+        else:
+            flash("Sorry that did not work, you must be logged in to add a book!")
+            return redirect(url_for("get_reviews"))
 
 
+# conditional check so only admin can access this page
 @app.route("/get_books")
 def get_books():
-    books = list(mongo.db.books.find().sort("book_title", 1))
-    return render_template("books.html", books=books)
+    # check if logged in
+    if session:
+        # if logged in check if logged in as admin
+        if session["user"]=="admin":
+            books = list(mongo.db.books.find().sort("book_title", 1))
+            return render_template("books.html", books=books)
+        # if not admin show warning flash message and redirect to home page
+        else:
+            flash("Sorry that did not work, you must be logged in as admin to manage books!")
+            return redirect(url_for("get_reviews"))
+    # if not logged in show warning flash message and redirect to home page
+    else:
+        flash("Sorry that did not work, you must be logged in as admin to manage books!")
+        return redirect(url_for("get_reviews"))
 
 
+# no need to add conditional checks as it would be difficult for a user to guess the book id to get on to this page
 @app.route("/edit_book/<book_id>", methods=["GET", "POST"])
 def edit_book(book_id):
     if request.method == "POST":

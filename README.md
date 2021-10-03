@@ -230,6 +230,12 @@ I picked images of books and people reading books, I also wanted to pick images 
 
 * The manage genres page xxxxx.
 
+* There a security checks so a user cannot gain access to cetrain pages without being logged in or logged in as admin.
+  * All users can access register, log in and home pages.
+  * Logged in users also gain access to add review and add book pages.
+  * Admin users also gain access to manage books, manage genres and add genre pages.
+  * There are no security checks for edit review, edit book and edit genre pages as these would require a user to guess the review/book/genre id (as in mongobd) and therefore are secure. For example to edit a review the page would be something like ".../edit_review/613faa0a95b25ad59fd7731c".
+
 ### Features Left to Implement
 
 * It would be nice to use some book API, for example [Google Books](https://developers.google.com/books/docs/v1/using), as this could help ensure the spelling of book titles and authors are correct when users add a new book to the site/database (and help avoid having duplicates of the same bok with various spellings of title/author). This could have the users enter a book they have using the ISBN number (usually found on the back of the book near the barcode) or if they do not have the book to hand they could be prompted to google for its ISBN number or contact the site with the details so a person could manually add it to the site/database. 
