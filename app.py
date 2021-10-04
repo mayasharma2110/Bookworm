@@ -167,6 +167,8 @@ def add_review():
             "stars": request.form.get("stars"),
             "comment": request.form.get("comment"),
             "username": session["user"],
+            # Used the code from https://www.w3schools.com/python/python_datetime.asp to help my get and format the date created/date updated variables,
+            # for more information see the credits section of readme file.
             "date_created": '{0:%d} {0:%B}, {0:%Y}'.format(todaydate, "day", "month", "year"),
             "date_updated": "Not Applicable", 
             "display": "Y"
@@ -203,6 +205,8 @@ def edit_review(review_id):
             "recommend": request.form.get("recommend"),
             "stars": request.form.get("stars"),
             "comment": request.form.get("comment"),
+            # Used the code from https://www.w3schools.com/python/python_datetime.asp to help my get and format the date created/date updated variables,
+            # for more information see the credits section of readme file.
             "date_updated": '{0:%d} {0:%B}, {0:%Y}'.format(todaydate, "day", "month", "year"), 
             "display": "Y"
         }

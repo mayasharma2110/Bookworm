@@ -506,11 +506,17 @@ on your own repository to view/edit as you wish.
 
 * The Materializecss library was also used to validate user information in the add/edit review forms. 
 
+* For the reviews I wanted to extract and display the date of each review's creation and most recent update based on the systems datetime, for this I used the code at [w3schools](https://www.w3schools.com/python/python_datetime.asp) to help me extract, format and store the dates as I wanted.
+
 ### Content
 
-* I used images from online, information below in the media section.
+* For each of the genres I used the genres that are displayed on the popular book site [Waterstones](https://www.waterstones.com/). 
+
+* For each of the books I added books I own to the database and made up my own reviews based on my own thoughts and what others online say about the books.
 
 * For the general layout of the site I had a look at popular sites [Amazon](https://www.amazon.co.uk/) and [Waterstones](https://www.waterstones.com/) to see the layout of how reviews are displayed and get inspiration for style/colour themes. These sites also helped me make up fictional reviews for a range of books to be displayed on the site.
+
+* I used images from online, information below in the media section.
 
 ### Media
 
@@ -519,7 +525,7 @@ on your own repository to view/edit as you wish.
   
 ### Acknowledgments
 
-* Code Institute for teaching me the basics of HTML, CSS, Materializecss, JavaScript, jQuery, Python, MongoDB, mySQL and Flask to allow me to create this website.
+* Code Institute for teaching me the basics of HTML, CSS, Materializecss, JavaScript, jQuery, Python, MongoDB and Flask to allow me to create this website.
 
 * My mentor Antonio Rodriguez who helped provide feedback on this website and improvements that could be made.
 
