@@ -156,7 +156,7 @@ Key features to be included based on user stories are:
 
 ### Structure
 
-All pages of the website will have a consistent navigation bar. The home, login and register links will be available to users who aren't yet registered and/or logged into the site. For logged in users this will show home, new review, manage books, manage genres and logout links. Note the manage genres link will only be available to the Admin of the site and no other users.
+All pages of the website will have a consistent navigation bar. The home, login and register links will be available to users who aren't yet registered and/or logged into the site. For non admin users when logged in this will show home, new review, add books and logout links. For admin users when logged in users this will show home, new review, manage books, manage genres and logout links. 
 
 The website will use Materializecss grids to make the layout responsive to different devices and screen sizes.
 
@@ -166,7 +166,7 @@ The website will use Materializecss grids to make the layout responsive to diffe
 
 * The register page will contain a form for new members to sign up and be part of the community. This will ask for users username, password, age category and gender. The site will check against the database to make sure there is no current user with such username and if so will notify the user as such and to choose a different username instead. Age category and gender can be of use for users of the site when deciding on a new book/author based on demogrpahics of those who read such books/authors' work.
 
-* The new review page will contain a form which allows signed in users to create a new review for a book. This will include a dropdown for the book that is being revewed, recommend yes/no field, start out of 5 field and review comment (free text field).
+* The new review page will contain a form which allows signed in users to create a new review for a book. This will include a dropdown for the book that is being revewed, recommend yes/no field, start out of 5 field and review comment (free text field). Users will also be able to update/delete their own review and admin can delete any review.
 
 * The manage books page will contain a list of all current books in the database. This will be accessible to admin only and allow them to view all books in the database and a links which allow them to a new book and update/delete an existing one. Users who are not admin and logged in will be able to add a new book to the database but not update or delete any existing ones.
 
@@ -231,31 +231,34 @@ I picked images of books and people reading books, I also wanted to pick images 
 
 ### Existing Features
 
-* Responsive on mobile, tablet and laptop size devices.
+* The site is responsive on mobile, tablet and laptop size devices.
 
-* The home page xxxxx.
+* The home page contains information of all genres, books and reviews from the database. Users can click on a book to see the reviews on it. With each book the average score out of 5 is displayed with the number of reviews in brackets. A user who created a review is able to edit or delete it when they are logged in. This page also includes a search function where users can search for a book based on its title or the author name. This page also has prompts for a user to add new books/reviews to the site to help it grow.
 
-* The login page xxxxx.
+* The login page allows registered users to log in with their username and password.
 
-* The register page xxxxx.
+* The register page allows unregistered users to register with the site by giving a username, their age category, their gender and choosing a password.
 
-* The new review page xxxxx.
+* The new review page allows logged in users to add a review for one of the books already in the database/site. They can say if they recommend it or not, give stars out of 5 and also a review comment to guide other users who view the site into picking new books/authors to read.
 
-* The manage books page xxxxx.
+* The manage books page is restricted to admins only. It allows admin to view the current books and add a new book to the site, update a book or delete a book. Users who are not admin and who are logged in can also add new books but are not able to update or delete existing records.
 
-* The manage genres page xxxxx.
+* The manage genres page is restricted to admins only. It allows admin to view the current genres and add a new genre to the site, update a book or delete a genre.
 
-* It would be nice to have defensive programming to check if a user or admin really wants to delete a review.  (ADDED)
+* Before a user/admin deletes a review, book or genre there is defensive programming which will display additional buttons to check if a user/admin really wants to delete the review, book or genre. 
 
-* It would be nice to have defensive programming to check if an admin really wants to delete a book or genre name. (ADDED)
-
-* Soft delete of reviews, books and genres, display variable in database will be Y at first and then N when deleted.
+* When a user/admin deletes a review, book or genre this is a soft delete only and the information is kept in the database but the variable "display" will change to "N" (for all reviews, books and genres this is automatically set to "Y" on creation) and therefore this information will not be presented on the site.
 
 * There a security checks so a user cannot gain access to cetrain pages without being logged in or logged in as admin.
   * All users can access register, log in and home pages.
   * Logged in users also gain access to add review and add book pages.
   * Admin users also gain access to manage books, manage genres and add genre pages.
   * There are no security checks for edit review, edit book and edit genre pages as these would require a user to guess the review/book/genre id (as in mongobd) and therefore are secure. For example to edit a review the page would be something like ".../edit_review/613faa0a95b25ad59fd7731c".
+  * If a user tries to access a page they are not allowed to some text will be shown like below. <br>
+  Try and go to http://bookworm-maya.herokuapp.com/add_review before logging in and you will get the below warning: <br>
+  ![Security](static/testing/security.PNG)
+  Try and go to http://bookworm-maya.herokuapp.com/get_genres before logging in and you will get the below warning: <br>
+  ![Security1](static/testing/security1.PNG)
 
 ### Features Left to Implement
 
@@ -266,6 +269,8 @@ I picked images of books and people reading books, I also wanted to pick images 
 * It would be nice to have a search function on the manage books page so admin check if a book exists in the database before adding a new one.
 
 * It would be good to have the site collect a users date of birth when they register rather than collecting age category directly. The site could calculate their age at a given time using this date of birth and the system date to derive age and age category. This would be good for instances when a user's age and age category will change over time and it can be automaticaly updated when they make a review.
+
+* If a book title is updated it would be good to automatically update the book_title variable in the reviews collection to make sure all the reviews should show correctly. Similarly if a genre name is updated it would be good to automatically update the genre_name variable in the books collection to make sure all books should show correctly.
 
 ## Technologies Used
 
