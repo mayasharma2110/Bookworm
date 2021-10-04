@@ -245,6 +245,12 @@ I picked images of books and people reading books, I also wanted to pick images 
 
 * The manage genres page xxxxx.
 
+* It would be nice to have defensive programming to check if a user or admin really wants to delete a review.  (ADDED)
+
+* It would be nice to have defensive programming to check if an admin really wants to delete a book or genre name. (ADDED)
+
+* Soft delete of reviews, books and genres, display variable in database will be Y at first and then N when deleted.
+
 * There a security checks so a user cannot gain access to cetrain pages without being logged in or logged in as admin.
   * All users can access register, log in and home pages.
   * Logged in users also gain access to add review and add book pages.
@@ -257,11 +263,9 @@ I picked images of books and people reading books, I also wanted to pick images 
 
 * It would be nice to have a check when a user adds a new review to see if they have already made a review for that book - if yes we could prompt them to edit this review instead.
 
-* It would be nice to have defensive programming to check if a user or admin really wants to delete a review. 
-
-* It would be nice to have defensive programming to check if an admin really wants to delete a book or genre name. 
-
 * It would be nice to have a search function on the manage books page so admin check if a book exists in the database before adding a new one.
+
+* It would be good to have the site collect a users date of birth when they register rather than collecting age category directly. The site could calculate their age at a given time using this date of birth and the system date to derive age and age category. This would be good for instances when a user's age and age category will change over time and it can be automaticaly updated when they make a review.
 
 ## Technologies Used
 
