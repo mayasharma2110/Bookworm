@@ -44,6 +44,14 @@ h3 {
     display: block;
 }
 
+.card {
+    height: 300px;
+}
+
+.card-content, .card-reveal {
+    height: 100%;
+}
+
 /* register page */
 .card-panel {
     border: 1px #1b5e20 dashed;
