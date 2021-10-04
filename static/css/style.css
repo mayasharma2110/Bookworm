@@ -44,12 +44,20 @@ h3 {
     display: block;
 }
 
-.card {
+.card-reivews {
     height: 300px;
 }
 
-.card-content, .card-reveal {
+.card-reivews .card-content, .card-reivews .card-reveal {
     height: 100%;
+}
+
+.card-reivews .s9 {
+    padding: 0;
+}
+
+.card-reivews .s3 {
+    padding: 0;
 }
 
 /* register page */

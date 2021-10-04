@@ -28,7 +28,7 @@
         <b>{{ genre.genre_name }}: </b> <br>
             <!-- check if any books fo each genre -->
             {% for book in books if book.genre_name == genre.genre_name and book.display == "Y" %}
-            <div class="card">
+            <div class="card card-reivews">
                 <div class="card-content green darken-4 white-text">
                     <span class="card-title activator">
                         Title: {{ book.book_title }} <br> 
@@ -43,7 +43,7 @@
                     </span>
                 </div>
                 <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">
+                    <div class="card-title grey-text text-darken-4">
                         Title: {{ book.book_title }} by {{ book.author }} <br>
                         {% if averageRev1[book.book_title][0] != 0 %}
                             Average review: {{ averageRev1[book.book_title][2] }}/5 ({{ averageRev1[book.book_title][0] }}) <br>
@@ -51,7 +51,7 @@
                             Average review: -/5 (0) <br>
                         {% endif %}
                         <i class="material-icons">Click to close the reviews</i>
-                    </span>
+                    </div>
                     <!-- show all reviews for each book -->
                     <div>
                         <!-- check if any reviews with that book title -->
