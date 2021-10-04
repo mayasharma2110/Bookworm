@@ -42,12 +42,15 @@ Mockups:
     * [User Goals](#user-goals)
   * [Scope](#scope)
   * [Structure](#structure)
+   * [Wireframes Navbar](#wireframes-navbar)
    * [Wireframes Home](#wireframes-home)
    * [Wireframes Login](#wireframes-login)
    * [Wireframes Register](#wireframes-register)
-   * [Wireframes New Review](#wireframes-new-review)
+   * [Wireframes New and Edit Review](#wireframes-new-edit-review)
    * [Wireframes Manage Books](#wireframes-manage-books)
+   * [Wireframes New and Edit Book](#wireframes-add-edit-book)
    * [Wireframes Manage Genres](#wireframes-manage-genres)
+   * [Wireframes New and Edit Genre](#wireframes-add-edit-genre)
   * [Skeleton](#skeleton)
     * [Colours](#colours)
     * [Imagery](#imagery)
@@ -173,6 +176,10 @@ The website will use Materializecss grids to make the layout responsive to diffe
 
 I used Balsamiq to make the wireframes for this project. The website was designed to have 6 pages - Home, Login, Register, New Review, Manage Books and Manage Categories. The webiste also includes a logout link which logs out signed in users and takes them to the home page.
 
+#### Wireframes Navbar
+
+![Navbar Wireframes](static/wireframes/navbar.jpg)  
+
 #### Wireframes Home
 
 ![Home Wireframes](static/wireframes/home.jpg)  
@@ -185,17 +192,25 @@ I used Balsamiq to make the wireframes for this project. The website was designe
 
 ![Register Wireframes](static/wireframes/register.jpg) 
 
-#### Wireframes New Review
+#### Wireframes New and Edit Review
 
-![New Review Wireframes](static/wireframes/new_review.jpg)  
+![New and Edit Review Wireframes](static/wireframes/new_edit_review.jpg)  
 
 #### Wireframes Manage Books
 
 ![Manage Books Wireframes](static/wireframes/manage_books.jpg) 
 
+#### Wireframes Add and Edit Book
+
+![Add and Edit Book Wireframes](static/wireframes/add_edit_book.jpg)  
+
 #### Wireframes Manage Genres
 
 ![Manage Genres Wireframes](static/wireframes/manage_genres.jpg) 
+
+#### Wireframes Add and Edit Genre
+
+![Add and Edit Genre](static/wireframes/add_edit_genre.jpg)  
 
 #### Wireframes Comments
 
