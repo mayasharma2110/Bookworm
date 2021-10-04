@@ -174,7 +174,7 @@ The website will use Materializecss grids to make the layout responsive to diffe
 
 ### Skeleton
 
-I used Balsamiq to make the wireframes for this project. The website was designed to have 6 pages - Home, Login, Register, New Review, Manage Books and Manage Categories. The webiste also includes a logout link which logs out signed in users and takes them to the home page.
+I used pen and paper to make the wireframes for this project. The website was designed to have 11 pages - Home, Login, Register, New Review, Edit Review, Manage Books, Add Book, Edit Book, Manage Genres, Add Genre and Edit Genre. The webiste also includes a logout link which logs out signed in users and takes them to the home page.
 
 #### Wireframes Navbar
 
@@ -269,22 +269,27 @@ I picked images of books and people reading books, I also wanted to pick images 
 
 * CSS - used to add style and colour to the content.
 
-* Javascript - used to help make the site responsive to the user's input.
-
-* jQuery - used to help make the site responsive to the user's input.
-
-* mongodb, flask, myqsl, python
-
 * [Materializecss](https://materializecss.com/)
-  * Used to xxx.
+  * Used to help make this website responsive for different devices and to create the collapsible navbar.
+  * Used to make the cards on the home page reveal the review details for each book.
+  * Used to help create the colours and style on the site. 
+  * Used to validate user information in the add/edit review forms. 
+
+* Javascript - used to help make the site responsive to the user's input - defensive programming before deleting a review, book or genre to check if the user is sure they want to proceed.
+
+* jQuery - used to help make the site responsive to the user's input - defensive programming before deleting a review, book or genre to check if the user is sure they want to proceed.
+
+* [MongoDB](https://www.mongodb.com/) used to create, store and update the data used in this site.
+
+* [Python](https://www.python.org/) and [Flask](https://flask.palletsprojects.com/en/2.0.x/) - used to get data from the database in MongoDB to the live site.
+
+* [Werkzeug](https://werkzeug.palletsprojects.com/en/2.0.x/) - used to create the security on the site allowing users to register, log in and logout of their own profiles. It also helped make the user authentication more secure by converting the users password into a random string of letters/numbers before saving this in the database (using the generate_password_hash and check_password_hash functions). 
 
 * [Gitpod](https://www.gitpod.io/) - used to write the code for the website.
 
 * [GitHub](https://github.com/) - used to store the current and previous versions of the code. 
 
 * [Heroku](https://www.heroku.com/) - used to host the live website.
-
-* [Balsamiq Wireframes](https://balsamiq.com/wireframes/) - used to create the wireframes for the website.
 
 * [Tinypng](https://tinypng.com/) - used to compress the images so they loaded quicker on the website.
 
@@ -486,7 +491,11 @@ on your own repository to view/edit as you wish.
 
 * The Materializecss library was used to help make this website responsive for different devices and to create the collapsible navbar. 
 
-* The Materializecss libraries were also used to help make x, y, z.   
+* The Materializecss library was also used to make the cards on the home page reveal the review details for each book. 
+
+* The Materializecss library was also used to help create the colours and style on the site.
+
+* The Materializecss library was also used to validate user information in the add/edit review forms. 
 
 ### Content
 
