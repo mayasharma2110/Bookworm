@@ -172,6 +172,12 @@ The website will use Materializecss grids to make the layout responsive to diffe
 
 * The manage genres page will contain a list of all current genres in the database. This will be accessible to admin only and allow them to view all genres in the database and a links which allow them to add a new genre and update/delete an existing one.
 
+* For the setup of the database, using MongoDB, I decided on 4 collections based on above scope and structure: users, reviews, books and genres. 
+  * The users collection would collect/store information about each registered user - mainly username (free text field) and password (free text field) but also age category (several options to pick from) and gender (3 options to pick from) as I thought this information on reader demographics could be useful to others who are reading reviews on books. This way they could see which demographic generally likes/dislikes certain books/authors.
+  * The reviews collection would collect/store information whenever a review was made, updated or deleted. This would contain book_title (several options to pick from) of the review, recommend (yes or no), stars out of 5 (options 1 through 5), review comment (free text field), username of user who created the review (free text field), date created (DD MONTH YYYY format of system date), date updated (DD MONTH YYYY format of system date) and display (Y or N, Y by default and changes to N if a user/admin deletes the review).
+  * The books collection would collect/store information whenever a book was added, updated or deleted. This would contain the book_title (linking to the reviews collection), author (free text field), genre name (free text field) and display (Y or N, Y by default and changes to N if the admin deletes the book).
+  * The genres collection would collect/store information whenever a genre was added, updated or deleted. This would contain the genre_name (linking to the books collection) and display (Y or N, Y by default and changes to N if the admin deletes the genre).
+
 ### Skeleton
 
 I used pen and paper to make the wireframes for this project. The website was designed to have 11 pages - Home, Login, Register, New Review, Edit Review, Manage Books, Add Book, Edit Book, Manage Genres, Add Genre and Edit Genre. The webiste also includes a logout link which logs out signed in users and takes them to the home page.
