@@ -56,13 +56,12 @@
         </td>
       </tr>
       {% else %}
+      <!-- if made no reviews add text and show link to add some reviews -->
       <tr>You have made no reviews yet, please add some reviews <a href="{{ url_for('add_review') }}" class="green-text text-lighten-1">here</a>.</tr>
       {% endfor %}
-      <!-- if made no reviews add text and show link to add some reviews -->
-      
     </tbody>
   </table>
 
-<script type="module" src="static/js/script_reviews.js"></script>    
+<script type="module" src="{{ url_for('static', filename='js/script_reviews.js') }}"></script>
 
 {% endblock %}

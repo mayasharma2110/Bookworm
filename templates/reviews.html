@@ -2,7 +2,7 @@
 {% block content %}
 
 
-<img src="../static/images/home-img.jpg" alt="A person reading on the edge of a cliff" width="70%">
+<img src="{{ url_for('static', filename='images/home-img.jpg') }}" alt="A person reading on the edge of a cliff" width="70%">
 
 <h3 class="center-align">All Reviews</h3>
 
@@ -121,6 +121,6 @@
 
     {% endif %}
 
-<script type="module" src="static/js/script_reviews.js"></script>    
-    
+<script type="module" src="{{ url_for('static', filename='js/script_reviews.js') }}"></script>
+
 {% endblock %}
