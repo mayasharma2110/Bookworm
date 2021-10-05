@@ -14,6 +14,8 @@ Mockups:
 
 ![Register Mockups](assets/mockups/mockup-register.PNG)
 
+![Profile Mockups](assets/mockups/mockup-profile.PNG)
+
 ![New Review Mockups](assets/mockups/mockup-new-review.PNG)
 
 ![Edit Review Mockups](assets/mockups/mockup-edit-review.PNG)
@@ -48,9 +50,9 @@ Mockups:
    * [Wireframes Register](#wireframes-register)
    * [Wireframes New and Edit Review](#wireframes-new-edit-review)
    * [Wireframes Manage Books](#wireframes-manage-books)
-   * [Wireframes New and Edit Book](#wireframes-add-edit-book)
+   * [Wireframes Add and Edit Book](#wireframes-add-edit-book)
    * [Wireframes Manage Genres](#wireframes-manage-genres)
-   * [Wireframes New and Edit Genre](#wireframes-add-edit-genre)
+   * [Wireframes Add and Edit Genre](#wireframes-add-edit-genre)
   * [Skeleton](#skeleton)
     * [Colours](#colours)
     * [Imagery](#imagery)
@@ -75,6 +77,7 @@ Mockups:
   * [Add Genre](#add-genre)
   * [Edit Genre](#edit-genre)
   * [Delete Genre](#delete-genre)
+  * [Security](#security)
   * [Online Validation](#online-validation)
   * [Lighthouse Validation](#lighthouse-validation) 
   * [User Stories from the UX Section](#user-stories-from-the-ux-section)
@@ -245,6 +248,8 @@ I picked images of books and people reading books, I also wanted to pick images 
 
 * The register page allows unregistered users to register with the site by giving a username, their age category, their gender and choosing a password.
 
+* The profile page allows logged in users to see the reviews they have made and also includes links to update/delete any reviews made my them. If they have made no reviews so far this is shown in text and users are prompted to add a review.
+
 * The new review page allows logged in users to add a review for one of the books already in the database/site. They can say if they recommend it or not, give stars out of 5 and also a review comment to guide other users who view the site into picking new books/authors to read.
 
 * The manage books page is restricted to admins only. It allows admin to view the current books and add a new book to the site, update a book or delete a book. Users who are not admin and who are logged in can also add new books but are not able to update or delete existing records. 
@@ -262,11 +267,6 @@ I picked images of books and people reading books, I also wanted to pick images 
   * Logged in users also gain access to add review and add book pages.
   * Admin users also gain access to manage books, manage genres and add genre pages.
   * There are no security checks for edit review, edit book and edit genre pages as these would require a user to guess the review/book/genre id (as in mongobd) and therefore are secure. For example to edit a review the page would be something like ".../edit_review/613faa0a95b25ad59fd7731c".
-  * If a user tries to access a page they are not allowed to some text will be shown like below. <br>
-  Try and go to http://bookworm-maya.herokuapp.com/add_review before logging in and you will get the below warning: <br>
-  ![Security](static/testing/security.PNG)
-  Try and go to http://bookworm-maya.herokuapp.com/get_genres before logging in and you will get the below warning: <br>
-  ![Security1](static/testing/security1.PNG)
 
 ### Features Left to Implement
 
@@ -316,35 +316,75 @@ I picked images of books and people reading books, I also wanted to pick images 
 
 ## Testing
 
-### General text for testing section
-
-Worked as planned:
-
-Expected - When the user does x the site should do y.
-
-Testing - Tested the feature by going doing x.
-
-Result - The feature acted as normally and it did y.
-
-Didnt work as planned:
-
-Expected - When the user does x the site should do y.
-
-Testing - Tested the feature by going doing x.
-
-Result - The feature did not act as expected and it did z. I did a to test, noticed problem b, once I corrected this by doing c I retested and the feature acted as expected and it did y.
-
 ### User Authentication Register
+
+Expected - When the user registers with a username that already exists in the database this will be shown to the user and they will be asked to pick another username.
+
+Testing - Tested the feature by trying to register under a already created username.
+
+Result - The feature acted as normally and it did tell me the username was already taken and to choose another username.
+
+Expected - When the user registers with a username that does not already exist in the database thier information will be added to the database (under users collection) and they will be taken back to the home page.
+
+Testing - Tested the feature by registering with a username that did not already exist in the database. 
+
+Result - This information was added to the database and I was taken to the ome page. The password variable was also converted to a random string of letters/numbers using [Werkzeug](https://werkzeug.palletsprojects.com/en/2.0.x/).
+
+![Authentication](static/testing/testing-authentication.PNG)
 
 ### User Authentication Log In
 
+Expected - When the user logs in with an incorrect username and/or password they are notified of this and the log in page is reloaded.
+
+Testing - Tested the feature by trying to log in with the wrong password and also the wrong username.
+
+Result - The feature acted as normally and it did tell me the username and/or password was wrong and reloaded the log in page.
+
+Expected - When the user logs in with the correct username and password and they will be taken to the home page and notified they logged in successfully.
+
+Testing - Tested the feature logging in with the correct username and password.
+
+Result - The feature acted as expected and it did let me know I logged in successfully and took me to the home page.
+
+![Log in](static/testing/testing-login.PNG)
+
 ### User Authentication Log Out
+
+Expected - When the user clicks to log out and they will be taken back to the home page and notified they logged out successfully.
+
+Testing - Tested the feature logging out.
+
+Result - The feature acted as expected and it did let me know I logged out successfully and took me to the home page.
+
+### My Reviews
+
+Expected - When the user clicks to edit a review they are taken to the edit_review page.
+
+Testing - Tested the feature clicking on a review to edit.
+
+Result - The feature acted as expected and it did take me to the edit review page.
+
+Expected - When the user clicks to delete a review they are asked if they want to proceed, yes or no. I they click no the current page is reloaded. If they click yes this review is soft deleted in the database (display changes from Y or N) and they are taken to the home page.
+
+Testing - Tested the feature clicking on a review to delete and then no.
+
+Result - The feature acted as expected and it did reload the current page.
+
+Testing - Tested the feature clicking on a review to delete and then yes.
+
+Result - The feature acted as expected and it did soft delete the review in the database and took me to the home page.
 
 ### View Reviews
 
-- loop show "sorry no reviews text" or show all the reviews in its own loop
-- average review created a separate dictionary in python file to derive the average review for each book so this could be used in reviews.html page.
-- when searching error as couldnt find averageRev1 dictionary, I had to add the code to make this dictionary as above in this section of the python file.
+For each book i wanted to show the average review based on this, within python before loading the page I created a dictionary (called averageRev1) with each book_title and then this function loops throught all the books and reviews for each book to derive the number of reviews, total score and then the average score (out of 5). From this I also wanted the users to be prompted to add more reviews for each book and if no reviews for a certain book to be told this and prompted to add a first review, to do this I had to have a conditional check for the variable averageRev1[book.book_title][0] which was the number of reviews a book had and check if the value was 0 or not.
+
+Expected - When the user adds some text to the search field the site refreshes the page and shows results relating to their search based on the collection books and variables bok_title and author.
+
+Testing - Tested the feature by going doing a search.
+
+Result - The feature did not act as expected and it gave me an error that averageRev1 was not defined. 
+
+Fix - I noticed that when a user clicks search the python function /search was run and this did not include the dictionary averageRev1 that was derived and included in /get_reviews, once I corrected this by doing copying the relevant code from /get_reviews to /search this resolved the issue. I retested and the feature acted as expected and it refreshed the page and showed results relating to my search.
 
 ### Add New Review
 
@@ -356,6 +396,18 @@ Result - The feature did not act as expected and it did z. I did a to test, noti
 
 ### Delete Review
 
+Expected - When the user clicks to delete a review they are asked if they want to proceed, yes or no. I they click no the current page is reloaded. If they click yes this review is soft deleted in the database (display changes from Y or N) and they are taken to the home page.
+
+Testing - Tested the feature clicking on a review to delete and then no.
+
+Result - The feature acted as expected and it did reload the current page.
+
+Testing - Tested the feature clicking on a review to delete and then yes.
+
+Result - The feature acted as expected and it did soft delete the review in the database and took me to the home page.
+
+![Delete review](static/testing/delete-review.PNG)
+
 ### Manage Books
 
 ### Add Book
@@ -364,6 +416,18 @@ Result - The feature did not act as expected and it did z. I did a to test, noti
 
 ### Delete Book
 
+Expected - When the user clicks to delete a book they are asked if they want to proceed, yes or no. I they click no the current page is reloaded. If they click yes this book is soft deleted in the database (display changes from Y or N) and the current page is reloaded.
+
+Testing - Tested the feature clicking on a book to delete and then no.
+
+Result - The feature acted as expected and it did reload the current page.
+
+Testing - Tested the feature clicking on a book to delete and then yes.
+
+Result - The feature acted as expected and it did soft delete the book in the database and it reloaded the current page.
+
+![Delete book](static/testing/delete-book.PNG)
+
 ### Manage Genres
 
 ### Add Genre
@@ -371,6 +435,26 @@ Result - The feature did not act as expected and it did z. I did a to test, noti
 ### Edit Genre
 
 ### Delete Genre
+
+Expected - When the user clicks to delete a genre they are asked if they want to proceed, yes or no. I they click no the current page is reloaded. If they click yes this genre is soft deleted in the database (display changes from Y or N) and the current page is reloaded.
+
+Testing - Tested the feature clicking on a genre to delete and then no.
+
+Result - The feature acted as expected and it did reload the current page.
+
+Testing - Tested the feature clicking on a genre to delete and then yes.
+
+Result - The feature acted as expected and it did soft delete the genre in the database and it reloaded the current page.
+
+![Delete genre](static/testing/delete-genre.PNG)
+
+### Security
+* There a security checks so a user cannot gain access to cetrain pages without being logged in or logged in as admin.
+  * If a user tries to access a page they are not allowed to some text will be shown like below. <br>
+  Try and go to http://bookworm-maya.herokuapp.com/add_review before logging in and you will get the below warning: <br>
+  ![Security](static/testing/security.PNG)
+  Try and go to http://bookworm-maya.herokuapp.com/get_genres before logging in and you will get the below warning: <br>
+  ![Security1](static/testing/security1.PNG)
 
 ### Online Validation
 
@@ -424,6 +508,7 @@ Full reports can be found below:
 * [Mobile Home](assets/lighthouse/lighthouse-mobile-home.pdf)
 * [Mobile Login](assets/lighthouse/lighthouse-mobile-login.pdf)
 * [Mobile Register](assets/lighthouse/lighthouse-mobile-register.pdf)
+* [Mobile Profile](assets/lighthouse/lighthouse-mobile-profile.pdf)
 * [Mobile New Review](assets/lighthouse/lighthouse-mobile-new-review.pdf)
 * [Mobile Edit Review](assets/lighthouse/lighthouse-mobile-edit-review.pdf)
 * [Mobile Manage Books](assets/lighthouse/lighthouse-mobile-manage-books.pdf)
@@ -436,6 +521,7 @@ Full reports can be found below:
 * [Desktop Home](assets/lighthouse/lighthouse-desktop-home.pdf)
 * [Desktop Login](assets/lighthouse/lighthouse-desktop-login.pdf)
 * [Desktop Register](assets/lighthouse/lighthouse-desktop-register.pdf)
+* [Desktop Profile](assets/lighthouse/lighthouse-desktop-profile.pdf)
 * [Desktop New Review](assets/lighthouse/lighthouse-desktop-new-review.pdf)
 * [Desktop Edit Review](assets/lighthouse/lighthouse-desktop-edit-review.pdf)
 * [Desktop Manage Books](assets/lighthouse/lighthouse-desktop-manage-books.pdf)

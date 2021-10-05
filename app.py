@@ -88,7 +88,6 @@ def search():
                            averageRev1=averageRev1)
 
 
-
 @app.route("/register", methods=["GET", "POST"])
 def register():
     # POST method functionality
@@ -98,7 +97,7 @@ def register():
             {"username": request.form.get("username").lower()})
 
         if existing_user:
-            flash("Username already exists")
+            flash("Username already exists, please choose something else")
             return redirect(url_for("register"))
 
         # else if no existing user in db with username
