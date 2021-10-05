@@ -241,7 +241,9 @@ I picked images of books and people reading books, I also wanted to pick images 
 
 * The new review page allows logged in users to add a review for one of the books already in the database/site. They can say if they recommend it or not, give stars out of 5 and also a review comment to guide other users who view the site into picking new books/authors to read.
 
-* The manage books page is restricted to admins only. It allows admin to view the current books and add a new book to the site, update a book or delete a book. Users who are not admin and who are logged in can also add new books but are not able to update or delete existing records.
+* The manage books page is restricted to admins only. It allows admin to view the current books and add a new book to the site, update a book or delete a book. Users who are not admin and who are logged in can also add new books but are not able to update or delete existing records. 
+
+* Although a non admin user can add a book I did not allow them to update or delete this as if they had already created a review for the book updating the book title later would cause the review to not show in the home page anymore.
 
 * The manage genres page is restricted to admins only. It allows admin to view the current genres and add a new genre to the site, update a book or delete a genre.
 
@@ -507,6 +509,10 @@ on your own repository to view/edit as you wish.
 * The Materializecss library was also used to validate user information in the add/edit review forms. 
 
 * For the reviews I wanted to extract and display the date of each review's creation and most recent update based on the systems datetime, for this I used the code at [w3schools](https://www.w3schools.com/python/python_datetime.asp) to help me extract, format and store the dates as I wanted.
+
+* For the tables in manage books and manage genre pages I wanted to change the colour of the highlight in each row when it is hovered over by default Materializecss makes this a light grey. I found the below code from [stackoverflow](https://stackoverflow.com/questions/54659023/change-the-highlight-and-striped-colors-in-table-on-materialize-using-a-helper) which helped my achieve my desired result.
+
+> table.highlight>tbody>tr:hover {background-color: rgba(194, 206, 23, 0.5) !important;}
 
 ### Content
 

@@ -60,13 +60,11 @@ h3 {
     padding: 0;
 }
 
-/* register page */
+/* home, register, login, new review, edit review, new book, edit book, new genre and edit genre pages */
 .card-panel {
     border: 1px #1b5e20 dashed;
     border-radius: 40px;
 }
-
-/* login page */
 
 /* add review page */
 
@@ -74,8 +72,11 @@ h3 {
     color: #1b5e20;
 } 
 
-/* add book page */
-
-/* manage genres page */
+/* manage books book page and manage genres page */
+/* used code from https://stackoverflow.com/questions/54659023/change-the-highlight-and-striped-colors-in-table-on-materialize-using-a-helper 
+to help me change the default highlight color */
+table.highlight>tbody>tr:hover {
+    background-color: #b9f6ca !important;
+}
 
 
