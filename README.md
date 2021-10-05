@@ -272,7 +272,9 @@ I picked images of books and people reading books, I also wanted to pick images 
 
 * It would be good to have the site collect a users date of birth when they register rather than collecting age category directly. The site could calculate their age at a given time using this date of birth and the system date to derive age and age category. This would be good for instances when a user's age and age category will change over time and it can be automaticaly updated when they make a review.
 
-* If a book title is updated it would be good to automatically update the book_title variable in the reviews collection to make sure all the reviews should show correctly. Similarly if a genre name is updated it would be good to automatically update the genre_name variable in the books collection to make sure all books should show correctly.
+* If a book title is updated it would be good to automatically update the book_title variable in the reviews collection to make sure all the reviews should show correctly. Similarly if a genre name is updated it would be good to automatically update the genre_name variable in the books collection to make sure all books should show correctly. 
+
+* If a book was deleted this book and any reviews for it would not show on the site but would remain in the database. If a user had made a review for a book that was deleted in the future it may be good to notify them of this.
 
 ## Technologies Used
 

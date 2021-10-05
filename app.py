@@ -148,6 +148,27 @@ def login():
     return render_template("login.html")
 
 
+@app.route("/profile/<username>", methods=["GET", "POST"])
+def profile(username):
+    # grab the session user's username from db
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+    # get other details about the logged in user
+    agecat = mongo.db.users.find_one(
+        {"username": session["user"]})["age_category"]
+    gender = mongo.db.users.find_one(
+        {"username": session["user"]})["gender"]
+    usercap = username.capitalize()
+    # get all reviews 
+    reviews = list(mongo.db.reviews.find())
+    books = list(mongo.db.books.find())
+    genres = list(mongo.db.genres.find())
+    if session["user"]:
+        return render_template("profile.html", username=username,
+        usercap=usercap, agecat=agecat, gender=gender, reviews=reviews, books=books, genres=genres)
+    return redirect(url_for("login"))
+
+
 @app.route("/logout")
 def logout():
     # remove user from session cookie
