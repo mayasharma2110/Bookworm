@@ -216,8 +216,8 @@ I used pen and paper to make the wireframes for this project. The website was de
 
 Please note there are a few changes to the final site since the wireframes were made:
 
-  * Change 1
-  * Change 2
+  * I added a image to the home/reviews page.
+  * I added a profile page called "My reviews" to the site so logged in users can see the reviews they made easily, from here they can also update/delete the reviews they created.
 
 ### Surface
 

@@ -55,7 +55,11 @@
             </div>
         </td>
       </tr>
+      {% else %}
+      <tr>You have made no reviews yet, please add some reviews <a href="{{ url_for('add_review') }}" class="green-text text-lighten-1">here</a>.</tr>
       {% endfor %}
+      <!-- if made no reviews add text and show link to add some reviews -->
+      
     </tbody>
   </table>
 
