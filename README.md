@@ -65,7 +65,7 @@ Mockups:
   * [User Authentication Register](#user-authentication-register)
   * [User Authentication Log In](#user-authentication-log-in)
   * [User Authentication Log Out](#user-authentication-log-out)
-  * [View Reviews](#view-reviews)
+  * [Home](#home)
   * [Add New Review](#add-new-review)
   * [Edit Review](#edit-review)
   * [Delete Review](#delete-review)
@@ -264,7 +264,7 @@ I picked images of books and people reading books, I also wanted to pick images 
 
 * There a security checks so a user cannot gain access to cetrain pages without being logged in or logged in as admin.
   * All users can access register, log in and home pages.
-  * Logged in users also gain access to add review and add book pages.
+  * Logged in users also gain access to my reviews, add review and add book pages.
   * Admin users also gain access to manage books, manage genres and add genre pages.
   * There are no security checks for edit review, edit book and edit genre pages as these would require a user to guess the review/book/genre id (as in mongobd) and therefore are secure. For example to edit a review the page would be something like ".../edit_review/613faa0a95b25ad59fd7731c".
 
@@ -374,7 +374,7 @@ Testing - Tested the feature clicking on a review to delete and then yes.
 
 Result - The feature acted as expected and it did soft delete the review in the database and took me to the home page.
 
-### View Reviews
+### Home
 
 For each book i wanted to show the average review based on this, within python before loading the page I created a dictionary (called averageRev1) with each book_title and then this function loops throught all the books and reviews for each book to derive the number of reviews, total score and then the average score (out of 5). From this I also wanted the users to be prompted to add more reviews for each book and if no reviews for a certain book to be told this and prompted to add a first review, to do this I had to have a conditional check for the variable averageRev1[book.book_title][0] which was the number of reviews a book had and check if the value was 0 or not.
 
@@ -388,11 +388,29 @@ Fix - I noticed that when a user clicks search the python function /search was r
 
 ### Add New Review
 
-- date created variable in right format used https://www.w3schools.com/python/python_datetime.asp to help me get this format how I wanted it.
+This page has a drop down selection and only shows books in the database with display Y, additioanlly it has extra fields for users to say if they recommend a book or not, give a stars rating out of 5 and enter a review comment. When they create a review the date created variable is made using the system timedate and to get this variable in the right format I used the [w3schools](https://www.w3schools.com/python/python_datetime.asp) site to help me.
+
+Expected - When the user clicks to add a review they are taken to the add_review page.
+
+Testing - Tested the feature by adding a review.
+
+Result - The feature acted as expected and created the review in the database and showing it on the website.
+
+![Add review](static/testing/new-review.PNG)
 
 ### Edit Review
 
-- issue with date_created field being overwirtten with a value of "", had to get the value from the database and save as a variable to then include it when updating the review document in the mongodb collection.
+Expected - When the user clicks to edit a review the fields recommend, stars and comment are updated in the database. Additionally, the date updated variable is changed from "Not Applicable" to the current date based on the system datetime.
+
+Testing - Tested the feature by updating a review.
+
+Result - The feature acted as expected however it overwrote the date created variable as "" rather than keeping as it was previously.
+
+Fix - I extracted the date create variable from the database before updating the review and used this instead. Once the below code was added in the python file the function worked as expected.
+
+> date_created1 = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})["date_created"]
+
+![Edit review](static/testing/edit-review.PNG)
 
 ### Delete Review
 
@@ -410,9 +428,25 @@ Result - The feature acted as expected and it did soft delete the review in the 
 
 ### Manage Books
 
+This shows all books with display Y in the database and allow includes links for admin to add a new book or update/delete any current books in the database. All links work as expected to add, edit or delete a book.
+
 ### Add Book
 
+This page has a drop down selection and only shows genres in the database with display Y, additioanlly it has extra fields for the book title and author.
+
+Expected - When the user clicks to add a book this is added to the database and they are taken to the home page.
+
+Testing - Tested the feature by adding a new book.
+
+Result - The feature acted as expected and created the book in the database and showing it on the website.
+
+![Add book](static/testing/add-book.PNG)
+
 ### Edit Book
+
+This page is similar to the add book page however it pre populates the book name, author and genre as currently in the database.
+
+![Edit book](static/testing/edit-book.PNG)
 
 ### Delete Book
 
@@ -430,9 +464,25 @@ Result - The feature acted as expected and it did soft delete the book in the da
 
 ### Manage Genres
 
+This shows all genres with display Y in the database and allow includes links for admin to add a new genre or update/delete any current genres in the database. All links work as expected to add, edit or delete a genre.
+
 ### Add Genre
 
+This page has a free text field allowing admins to create a new genre name.
+
+Expected - When the user clicks to add a genre this is added to the database and they are taken to the manage genres.
+
+Testing - Tested the feature by adding a new genre.
+
+Result - The feature acted as expected and created the genre in the database and showing it on the website.
+
+![Add genre](static/testing/add-genre.PNG)
+
 ### Edit Genre
+
+This page is similar to the add genre page however it pre populates the genre name as currently in the database.
+
+![Edit genre](static/testing/edit-genre.PNG)
 
 ### Delete Genre
 

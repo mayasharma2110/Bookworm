@@ -76,11 +76,13 @@ img {
     color: #1b5e20;
 } 
 
-/* manage books book page and manage genres page */
+/* manage genres, manage books and my reviews tables */
 /* used code from https://stackoverflow.com/questions/54659023/change-the-highlight-and-striped-colors-in-table-on-materialize-using-a-helper 
 to help me change the default highlight color */
 table.highlight>tbody>tr:hover {
     background-color: #b9f6ca !important;
 }
 
-
+table {
+    margin-bottom: 1rem;
+}
