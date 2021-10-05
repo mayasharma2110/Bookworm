@@ -510,7 +510,7 @@ on your own repository to view/edit as you wish.
 
 * For the reviews I wanted to extract and display the date of each review's creation and most recent update based on the systems datetime, for this I used the code at [w3schools](https://www.w3schools.com/python/python_datetime.asp) to help me extract, format and store the dates as I wanted.
 
-* For the tables in manage books and manage genre pages I wanted to change the colour of the highlight in each row when it is hovered over by default Materializecss makes this a light grey. I found the below code from [stackoverflow](https://stackoverflow.com/questions/54659023/change-the-highlight-and-striped-colors-in-table-on-materialize-using-a-helper) which helped my achieve my desired result.
+* For the tables in manage books and manage genres pages I wanted to change the colour of the highlight in each row when it is hovered over, by default Materializecss makes this a light grey. I found the below code from [stackoverflow](https://stackoverflow.com/questions/54659023/change-the-highlight-and-striped-colors-in-table-on-materialize-using-a-helper) which helped my achieve my desired result.
 
 > table.highlight>tbody>tr:hover {background-color: rgba(194, 206, 23, 0.5) !important;}
 
@@ -522,12 +522,11 @@ on your own repository to view/edit as you wish.
 
 * For the general layout of the site I had a look at popular sites [Amazon](https://www.amazon.co.uk/) and [Waterstones](https://www.waterstones.com/) to see the layout of how reviews are displayed and get inspiration for style/colour themes. These sites also helped me make up fictional reviews for a range of books to be displayed on the site.
 
-* I used images from online, information below in the media section.
+* I used an image from online, information below in the media section.
 
 ### Media
 
-* I found the following image online from [blah](): 
-  * image-x - owner xxxxx [image link here]()
+* I found the following image online from [pexels](https://www.pexels.com/photo/photo-of-person-sitting-on-cliff-edge-3224344/), this is the file static/images/home-img.jpg. The owner of the image is Ibadah Mimpi and their page on the site is [here](https://www.pexels.com/@ibadah-mimpi-332272). Please not I did some cropping to the original image but no other changes were made.
   
 ### Acknowledgments
 
