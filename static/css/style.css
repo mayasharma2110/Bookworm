@@ -60,6 +60,10 @@ h3 {
     padding: 0;
 }
 
+img {
+    margin-top: 1rem;
+}
+
 /* home, register, login, new review, edit review, new book, edit book, new genre and edit genre pages */
 .card-panel {
     border: 1px #1b5e20 dashed;
