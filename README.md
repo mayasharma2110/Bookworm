@@ -472,7 +472,19 @@ Full reports can be found below:
 
 To deploy the project to a live website the below steps were followed:
 
-* Add in steps here for Heroku deployment.
+* Go to Heroku.com and log in (if not registered you must create an account first).
+* Make sure your project has a file specifying which applications are needed to run your site, use the below code to automatically generate this
+> pip3 freeze --local > requirements.txt
+* Also make sure you have a Procfile which tells Heroku which file runs the app (in our case it is app.py), use the below code to generate this. The Procfile may add a blank line which can cause issues so check and remove this if needed.
+>  echo web: python app.py > Procfile (note that this has no extension)
+* In Heroku click on create a new app. The Heroku app name must be unique and generally uses - instead of spaces and all lowercase letters. Then select the region closest to you and create app.
+* To connect our app to Heroku we can setup an automatic deployment from our GitHub repo. Within your Heroku app go to the deployment tab and click on GitHub for the deployment method. Make sure your GitHub profile is displayed below and enter the repository name and search. Make sure your repo is displayed and click connect to this app.
+* Before enabling automatic deployment we still have a couple more steps.
+* Click on the settings tab in your app and click on reveal config vars, you can then enter the information that is in the hidden env.py file. Typically you need to include IP, PORT, SECRET_KEY, MONGO_URI and MONGO_DBNAME.
+* Git add, commit and push the changes in your Gitpod (adding the requirements and Procfile files) as epxplained in the above section.
+* Go back to your Heroku app and the deployment tab - now click to enable automatic deployment and then click deploy branch.
+* Heroku will now receive the code from GitHub and build your app, once it is complete you should see that your app has been successfully deployed.
+* Now the deployed site is available and should automatically update whenever changes are pushed to GitHub from Gitpod.
 
 ### Local Clone
 To make a local copy of a repository on your own GitHub account you can clone it.
