@@ -30,7 +30,8 @@ def get_reviews():
     # create dictionary based on reviews in database
     averageRev1 = {}
     for book in books:
-        # 1st value in number of reviews, 2nd is total number of stars from all reviews on the book
+        # 1st value in number of reviews,
+        # 2nd is total number of stars from all reviews on the book
         # and 3rd number is average review to 1 decimal place
         averageRev1[book["book_title"]] = ["", "", ""]
     # get number of reviews and average review
@@ -48,10 +49,12 @@ def get_reviews():
         averageRev1[book["book_title"]][1] = totalstars
         # create average based on total and number of reviews
         if averageRev1[book["book_title"]][0] != 0:
-            averageRev1[book["book_title"]][2] = round(averageRev1[book["book_title"]][1]/averageRev1[book["book_title"]][0], 1)
+            averageRev1[book["book_title"]][2] = round(
+                averageRev1[book["book_title"]][1]/averageRev1[book[
+                    "book_title"]][0], 1)
     return render_template("reviews.html", reviews=reviews, books=books,
                            genres=genres, users=users,
-                        averageRev1=averageRev1)
+                           averageRev1=averageRev1)
 
 
 @app.route("/search", methods=["GET", "POST"])
@@ -64,7 +67,8 @@ def search():
     # create dictionary based on reviews in database
     averageRev1 = {}
     for book in books:
-        # 1st value in number of reviews, 2nd is total number of stars from all reviews on the book
+        # 1st value in number of reviews, 2nd is total number of stars
+        # from all reviews on the book
         # and 3rd number is average review to 1 decimal place
         averageRev1[book["book_title"]] = ["", "", ""]
     # get number of reviews and average review
@@ -82,9 +86,11 @@ def search():
         averageRev1[book["book_title"]][1] = totalstars
         # create average based on total and number of reviews
         if averageRev1[book["book_title"]][0] != 0:
-            averageRev1[book["book_title"]][2] = round(averageRev1[book["book_title"]][1]/averageRev1[book["book_title"]][0], 1)
+            averageRev1[book["book_title"]][2] = round(
+                averageRev1[book["book_title"]][1]/averageRev1[
+                    book["book_title"]][0], 1)
     return render_template("reviews.html", reviews=reviews, books=books,
-                           genres=genres, users=users, 
+                           genres=genres, users=users,
                            averageRev1=averageRev1)
 
 
@@ -93,7 +99,7 @@ def register():
     # POST method functionality
     if request.method == "POST":
         # check if username already exists in db
-        existing_user= mongo.db.users.find_one(
+        existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
 
         if existing_user:
@@ -129,11 +135,11 @@ def login():
             # ensure hashed password matches user input
             if check_password_hash(
                 existing_user["password"], request.form.get("password")):
-                    session["user"] = request.form.get("username").lower()
-                    flash("Welcome, {}".format(
-                        request.form.get("username")))
-                    return redirect(url_for(
-                        "get_reviews", username=session["user"]))
+                session["user"] = request.form.get("username").lower()
+                flash(
+                    "Welcome, {}".format(request.form.get("username")))
+                return redirect(url_for(
+                    "get_reviews", username=session["user"]))
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password")
@@ -158,13 +164,14 @@ def profile(username):
     gender = mongo.db.users.find_one(
         {"username": session["user"]})["gender"]
     usercap = username.capitalize()
-    # get all reviews 
+    # get all reviews
     reviews = list(mongo.db.reviews.find())
     books = list(mongo.db.books.find())
     genres = list(mongo.db.genres.find())
     if session["user"]:
         return render_template("profile.html", username=username,
-        usercap=usercap, agecat=agecat, gender=gender, reviews=reviews, books=books, genres=genres)
+                               usercap=usercap, agecat=agecat, gender=gender,
+                               reviews=reviews, books=books, genres=genres)
     return redirect(url_for("login"))
 
 
@@ -187,10 +194,14 @@ def add_review():
             "stars": request.form.get("stars"),
             "comment": request.form.get("comment"),
             "username": session["user"],
-            # Used the code from https://www.w3schools.com/python/python_datetime.asp to help my get and format the date created/date updated variables,
-            # for more information see the credits section of readme file.
-            "date_created": '{0:%d} {0:%B}, {0:%Y}'.format(todaydate, "day", "month", "year"),
-            "date_updated": "Not Applicable", 
+            # Used the code from
+            # https://www.w3schools.com/python/python_datetime.asp
+            # to help my get and format the date created/date updated
+            # variables, for more information see the
+            # credits section of readme file.
+            "date_created": '{0:%d} {0:%B}, {0:%Y}'.format(
+                todaydate, "day", "month", "year"),
+            "date_updated": "Not Applicable",
             "display": "Y"
         }
         mongo.db.reviews.insert_one(review)
@@ -198,23 +209,30 @@ def add_review():
         return redirect(url_for("get_reviews"))
 
     if request.method == "GET":
-    # check if user is logged in
+        # check if user is logged in
         if session:
             books = mongo.db.books.find().sort("book_title", 1)
             return render_template("add_review.html", books=books)
-        # if not logged in return to home page with text to prompt the user to log in
+        # if not logged in return to home page
+        # with text to prompt the user to log in
         else:
-            flash("Sorry that did not work, you must be logged in to add a review!")
+            flash(
+                "Sorry that did not work, you must be logged in to add a review!")
             return redirect(url_for("get_reviews"))
 
 
-# no need to add conditional checks as it would be difficult for a user to guess the review id to get on to this page
+# no need to add conditional checks as
+# it would be difficult
+# for a user to guess the review id to get on to this page
 @app.route("/edit_review/<review_id>", methods=["GET", "POST"])
 def edit_review(review_id):
     if request.method == "POST":
-        book_title1 = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})["book_title"]
-        username1 = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})["username"]
-        date_created1 = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})["date_created"]
+        book_title1 = mongo.db.reviews.find_one(
+            {"_id": ObjectId(review_id)})["book_title"]
+        username1 = mongo.db.reviews.find_one(
+            {"_id": ObjectId(review_id)})["username"]
+        date_created1 = mongo.db.reviews.find_one(
+            {"_id": ObjectId(review_id)})["date_created"]
         todaydate = datetime.today()
         submit = {
             # keep booktitle, username and datecreated the same as before
@@ -225,9 +243,13 @@ def edit_review(review_id):
             "recommend": request.form.get("recommend"),
             "stars": request.form.get("stars"),
             "comment": request.form.get("comment"),
-            # Used the code from https://www.w3schools.com/python/python_datetime.asp to help my get and format the date created/date updated variables,
-            # for more information see the credits section of readme file.
-            "date_updated": '{0:%d} {0:%B}, {0:%Y}'.format(todaydate, "day", "month", "year"), 
+            # Used the code from
+            # https://www.w3schools.com/python/python_datetime.asp
+            # to help my get and format the date created/date updated
+            # variables, for more information see the credits section
+            # of readme file.
+            "date_updated": '{0:%d} {0:%B}, {0:%Y}'.format(
+                todaydate, "day", "month", "year"),
             "display": "Y"
         }
         mongo.db.reviews.update({"_id": ObjectId(review_id)}, submit)
@@ -242,14 +264,22 @@ def edit_review(review_id):
 @app.route("/delete_review/<review_id>")
 def delete_review(review_id):
     submit = {
-            # keep booktitle, username, datecreated, dateupdated, recommend, stars and comment the same as before
-            "book_title": mongo.db.reviews.find_one({"_id": ObjectId(review_id)})["book_title"],
-            "username": mongo.db.reviews.find_one({"_id": ObjectId(review_id)})["username"],
-            "date_created": mongo.db.reviews.find_one({"_id": ObjectId(review_id)})["date_created"],
-            "date_updated": mongo.db.reviews.find_one({"_id": ObjectId(review_id)})["date_updated"],
-            "recommend": mongo.db.reviews.find_one({"_id": ObjectId(review_id)})["recommend"],
-            "stars": mongo.db.reviews.find_one({"_id": ObjectId(review_id)})["stars"],
-            "comment": mongo.db.reviews.find_one({"_id": ObjectId(review_id)})["comment"],
+            # keep booktitle, username, datecreated, dateupdated, recommend,
+            # stars and comment the same as before
+            "book_title": mongo.db.reviews.find_one(
+                {"_id": ObjectId(review_id)})["book_title"],
+            "username": mongo.db.reviews.find_one(
+                {"_id": ObjectId(review_id)})["username"],
+            "date_created": mongo.db.reviews.find_one(
+                {"_id": ObjectId(review_id)})["date_created"],
+            "date_updated": mongo.db.reviews.find_one(
+                {"_id": ObjectId(review_id)})["date_updated"],
+            "recommend": mongo.db.reviews.find_one(
+                {"_id": ObjectId(review_id)})["recommend"],
+            "stars": mongo.db.reviews.find_one(
+                {"_id": ObjectId(review_id)})["stars"],
+            "comment": mongo.db.reviews.find_one(
+                {"_id": ObjectId(review_id)})["comment"],
             # change display to N to not show on the website
             "display": "N"
         }
@@ -265,16 +295,18 @@ def get_genres():
     # check if logged in
     if session:
         # if logged in check if logged in as admin
-        if session["user"]=="admin":
+        if session["user"] == "admin":
             genres = list(mongo.db.genres.find().sort("genre_name", 1))
             return render_template("genres.html", genres=genres)
         # if not admin show warning flash message and redirect to home page
         else:
-            flash("Sorry that did not work, you must be logged in as admin to manage genres!")
+            flash(
+                "Sorry that did not work, you must be logged in as admin to manage genres!")
             return redirect(url_for("get_reviews"))
     # if not logged in show warning flash message and redirect to home page
     else:
-        flash("Sorry that did not work, you must be logged in as admin to manage genres!")
+        flash(
+            "Sorry that did not work, you must be logged in as admin to manage genres!")
         return redirect(url_for("get_reviews"))
 
 
@@ -283,7 +315,7 @@ def get_genres():
 def add_genre():
     if request.method == "POST":
         genre = {
-            "genre_name": request.form.get("genre_name"), 
+            "genre_name": request.form.get("genre_name"),
             "display": "Y"
         }
         mongo.db.genres.insert_one(genre)
@@ -294,19 +326,23 @@ def add_genre():
         # check if logged in
         if session:
             # if logged in check if logged in as admin
-            if session["user"]=="admin":
+            if session["user"] == "admin":
                 return render_template("add_genre.html")
             # if not admin show warning flash message and redirect to home page
             else:
-                flash("Sorry that did not work, you must be logged in as admin to add a genre!")
+                flash(
+                    "Sorry that did not work, you must be logged in as admin to add a genre!")
                 return redirect(url_for("get_reviews"))
         # if not logged in show warning flash message and redirect to home page
         else:
-            flash("Sorry that did not work, you must be logged in as admin to add a genre!")
+            flash(
+                "Sorry that did not work, you must be logged in as admin to add a genre!")
             return redirect(url_for("get_reviews"))
 
 
-# no need to add conditional checks as it would be difficult for a user to guess the genre id to get on to this page
+# no need to add conditional checks as
+# it would be difficult
+# for a user to guess the genre id to get on to this page
 @app.route("/edit_genre/<genre_id>", methods=["GET", "POST"])
 def edit_genre(genre_id):
     if request.method == "POST":
@@ -326,7 +362,8 @@ def edit_genre(genre_id):
 def delete_genre(genre_id):
     submit = {
             # keep genre_name the same as before
-            "genre_name": mongo.db.genres.find_one({"_id": ObjectId(genre_id)})["genre_name"],
+            "genre_name": mongo.db.genres.find_one(
+                {"_id": ObjectId(genre_id)})["genre_name"],
             # change display to N to not show on the website
             "display": "N"
         }
@@ -342,7 +379,7 @@ def add_book():
         book = {
             "book_title": request.form.get("book_title"),
             "genre_name": request.form.get("genre_name"),
-            "author": request.form.get("author"), 
+            "author": request.form.get("author"),
             "display": "Y"
         }
         mongo.db.books.insert_one(book)
@@ -350,13 +387,15 @@ def add_book():
         return redirect(url_for("get_reviews"))
 
     if request.method == "GET":
-    # check if user is logged in
+        # check if user is logged in
         if session:
             genres = mongo.db.genres.find().sort("genre_name", 1)
             return render_template("add_book.html", genres=genres)
-        # if not logged in return to home page with text to prompt the user to log in
+        # if not logged in return to home page
+        # with text to prompt the user to log in
         else:
-            flash("Sorry that did not work, you must be logged in to add a book!")
+            flash(
+                "Sorry that did not work, you must be logged in to add a book!")
             return redirect(url_for("get_reviews"))
 
 
@@ -366,20 +405,24 @@ def get_books():
     # check if logged in
     if session:
         # if logged in check if logged in as admin
-        if session["user"]=="admin":
+        if session["user"] == "admin":
             books = list(mongo.db.books.find().sort("book_title", 1))
             return render_template("books.html", books=books)
         # if not admin show warning flash message and redirect to home page
         else:
-            flash("Sorry that did not work, you must be logged in as admin to manage books!")
+            flash(
+                "Sorry that did not work, you must be logged in as admin to manage books!")
             return redirect(url_for("get_reviews"))
     # if not logged in show warning flash message and redirect to home page
     else:
-        flash("Sorry that did not work, you must be logged in as admin to manage books!")
+        flash(
+            "Sorry that did not work, you must be logged in as admin to manage books!")
         return redirect(url_for("get_reviews"))
 
 
-# no need to add conditional checks as it would be difficult for a user to guess the book id to get on to this page
+# no need to add conditional checks as
+# it would be difficult
+# for a user to guess the book id to get on to this page
 @app.route("/edit_book/<book_id>", methods=["GET", "POST"])
 def edit_book(book_id):
     if request.method == "POST":
@@ -402,9 +445,12 @@ def edit_book(book_id):
 def delete_book(book_id):
     submit = {
             # keep title, author and genre the same as before
-            "book_title": mongo.db.books.find_one({"_id": ObjectId(book_id)})["book_title"],
-            "genre_name": mongo.db.books.find_one({"_id": ObjectId(book_id)})["genre_name"],
-            "author": mongo.db.books.find_one({"_id": ObjectId(book_id)})["author"],
+            "book_title": mongo.db.books.find_one(
+                {"_id": ObjectId(book_id)})["book_title"],
+            "genre_name": mongo.db.books.find_one(
+                {"_id": ObjectId(book_id)})["genre_name"],
+            "author": mongo.db.books.find_one(
+                {"_id": ObjectId(book_id)})["author"],
             # change display to N to not show on the website
             "display": "N"
         }
