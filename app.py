@@ -1,4 +1,5 @@
 import os
+from datetime import datetime
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
@@ -8,11 +9,9 @@ from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
     print("found env.py")
-from datetime import datetime
 
 
 app = Flask(__name__)
-
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
@@ -41,7 +40,8 @@ def get_reviews():
         # total stars
         totalstars = 0
         for review in reviews:
-            if review["book_title"] == book["book_title"] and review["display"] == "Y":
+            if review["book_title"] == book["book_title"] and review[
+                    "display"] == "Y":
                 num1 += 1
                 totalstars += int(review["stars"])
                 # totalStars = totalStars + int(review["stars"])
@@ -78,7 +78,8 @@ def search():
         # total stars
         totalstars = 0
         for review in reviews:
-            if review["book_title"] == book["book_title"] and review["display"] == "Y":
+            if review["book_title"] == book["book_title"] and review[
+                    "display"] == "Y":
                 num1 += 1
                 totalstars += int(review["stars"])
                 # totalStars = totalStars + int(review["stars"])
@@ -134,7 +135,7 @@ def login():
         if existing_user:
             # ensure hashed password matches user input
             if check_password_hash(
-                existing_user["password"], request.form.get("password")):
+                    existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
                 flash(
                     "Welcome, {}".format(request.form.get("username")))
@@ -217,7 +218,8 @@ def add_review():
         # with text to prompt the user to log in
         else:
             flash(
-                "Sorry that did not work, you must be logged in to add a review!")
+                "Sorry that did not work, " +
+                "you must be logged in to add a review!")
             return redirect(url_for("get_reviews"))
 
 
@@ -301,12 +303,14 @@ def get_genres():
         # if not admin show warning flash message and redirect to home page
         else:
             flash(
-                "Sorry that did not work, you must be logged in as admin to manage genres!")
+                "Sorry that did not work, " +
+                "you must be logged in as admin to manage genres!")
             return redirect(url_for("get_reviews"))
     # if not logged in show warning flash message and redirect to home page
     else:
         flash(
-            "Sorry that did not work, you must be logged in as admin to manage genres!")
+            "Sorry that did not work, " +
+            "you must be logged in as admin to manage genres!")
         return redirect(url_for("get_reviews"))
 
 
@@ -331,12 +335,14 @@ def add_genre():
             # if not admin show warning flash message and redirect to home page
             else:
                 flash(
-                    "Sorry that did not work, you must be logged in as admin to add a genre!")
+                    "Sorry that did not work, " +
+                    "you must be logged in as admin to add a genre!")
                 return redirect(url_for("get_reviews"))
         # if not logged in show warning flash message and redirect to home page
         else:
             flash(
-                "Sorry that did not work, you must be logged in as admin to add a genre!")
+                "Sorry that did not work, " +
+                "you must be logged in as admin to add a genre!")
             return redirect(url_for("get_reviews"))
 
 
@@ -395,7 +401,8 @@ def add_book():
         # with text to prompt the user to log in
         else:
             flash(
-                "Sorry that did not work, you must be logged in to add a book!")
+                "Sorry that did not work, " +
+                "you must be logged in to add a book!")
             return redirect(url_for("get_reviews"))
 
 
@@ -411,12 +418,14 @@ def get_books():
         # if not admin show warning flash message and redirect to home page
         else:
             flash(
-                "Sorry that did not work, you must be logged in as admin to manage books!")
+                "Sorry that did not work, " +
+                "you must be logged in as admin to manage books!")
             return redirect(url_for("get_reviews"))
     # if not logged in show warning flash message and redirect to home page
     else:
         flash(
-            "Sorry that did not work, you must be logged in as admin to manage books!")
+            "Sorry that did not work, " +
+            "you must be logged in as admin to manage books!")
         return redirect(url_for("get_reviews"))
 
 
