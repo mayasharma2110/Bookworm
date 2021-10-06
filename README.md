@@ -534,32 +534,35 @@ The summary table below shows these metrics.
 
 | Device | Page |  Performance | Accessibility  | Best Practises  | SEO |
 |---|---|---|---|---|---|
-| Desktop  |  Home | xx% | xx% | xx% | xx% |
-| Desktop  |  Login | xx% | xx% | xx% | xx% |
-| Desktop  |  Register | xx% | xx% | xx% | xx% |
-| Desktop  |  New Review | xx% | xx% | xx% | xx% |
-| Desktop  |  Edit Review | xx% | xx% | xx% | xx% |
-| Desktop  |  Manage Books | xx% | xx% | xx% | xx% |
-| Desktop  |  Add Book | xx% | xx% | xx% | xx% |
-| Desktop  |  Edit Book | xx% | xx% | xx% | xx% |
-| Desktop  |  Manage Genres | xx% | xx% | xx% | xx% |
-| Desktop  |  Add Genre | xx% | xx% | xx% | xx% |
-| Desktop  |  Edit Genre | xx% | xx% | xx% | xx% |
+| Desktop  |  Home | 100% | 97% | 93% | 100% |
+| Desktop  |  Login | 100% | 96% | 100% | 89% |
+| Desktop  |  Register | 100% | 84% | 100% | 100% |
+| Desktop  |  Profile | 100% | 95% | 93% | 100% |
+| Desktop  |  New Review | 100% | 84% | 93% | 100% |
+| Desktop  |  Edit Review | 100% | 84% | 93% | 100% |
+| Desktop  |  Add Book | 100% | 84% | 93% | 100% |
+| Desktop  |  Manage Books | 100% | 95% | 93% | 100% |
+| Desktop  |  Edit Book | 100% | 84% | 93% | 100% |
+| Desktop  |  Manage Genres | 100% | 95% | 93% | 100% |
+| Desktop  |  Add Genre | 100% | 96% | 93% | 100% |
+| Desktop  |  Edit Genre | 100% | 96% | 93% | 100% |
 
 Full reports can be found below:
 
-* [Desktop Home](assets/lighthouse/lighthouse-desktop-home.pdf)
-* [Desktop Login](assets/lighthouse/lighthouse-desktop-login.pdf)
-* [Desktop Register](assets/lighthouse/lighthouse-desktop-register.pdf)
-* [Desktop Profile](assets/lighthouse/lighthouse-desktop-profile.pdf)
-* [Desktop New Review](assets/lighthouse/lighthouse-desktop-new-review.pdf)
-* [Desktop Edit Review](assets/lighthouse/lighthouse-desktop-edit-review.pdf)
-* [Desktop Manage Books](assets/lighthouse/lighthouse-desktop-manage-books.pdf)
-* [Desktop Add Book](assets/lighthouse/lighthouse-desktop-add-book.pdf)
-* [Desktop Edit Book](assets/lighthouse/lighthouse-desktop-edit-book.pdf)
-* [Desktop Manage Genres](assets/lighthouse/lighthouse-desktop-manage-genres.pdf)
-* [Desktop Add Genre](assets/lighthouse/lighthouse-desktop-add-genre.pdf)
-* [Desktop Edit Genre](assets/lighthouse/lighthouse-desktop-edit-genre.pdf)
+* [Desktop Home](static/lighthouse/lighthouse-desktop-home.pdf)
+* [Desktop Login](static/lighthouse/lighthouse-desktop-login.pdf)
+* [Desktop Register](static/lighthouse/lighthouse-desktop-register.pdf)
+* [Desktop Profile](static/lighthouse/lighthouse-desktop-profile.pdf)
+
+* [Desktop New Review](static/lighthouse/lighthouse-desktop-add-review.pdf)
+* [Desktop Edit Review](static/lighthouse/lighthouse-desktop-edit-review.pdf)
+* [Desktop Add Book](static/lighthouse/lighthouse-desktop-add-book.pdf)
+
+* [Desktop Manage Books](static/lighthouse/lighthouse-desktop-manage-books.pdf)
+* [Desktop Edit Book](static/lighthouse/lighthouse-desktop-edit-book.pdf)
+* [Desktop Manage Genres](static/lighthouse/lighthouse-desktop-manage-genres.pdf)
+* [Desktop Add Genre](static/lighthouse/lighthouse-desktop-add-genre.pdf)
+* [Desktop Edit Genre](static/lighthouse/lighthouse-desktop-edit-genre.pdf)
 
 ### User Stories from the UX Section
 
