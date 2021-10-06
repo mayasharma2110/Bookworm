@@ -2,10 +2,12 @@
 {% block content %}
 
 
+<!-- image -->
 <img src="{{ url_for('static', filename='images/home-img1.jpg') }}" alt="A person reading on the edge of a cliff">
 
 <h3 class="center-align">All Reviews</h3>
 
+    <!-- search function -->
     <div class="row card-panel">
         <form action="{{ url_for('search') }}" method="post" class="col s12">
             <p>Search for books below based on book titles or authors.</p>

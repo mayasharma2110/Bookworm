@@ -688,6 +688,8 @@ on your own repository to view/edit as you wish.
 
 * The Materializecss library was also used to validate user information in the add/edit review forms. 
 
+* Code in the file static/js/script.js was taken from [code institute](https://github.com/Code-Institute-Solutions/TaskManagerAuth/blob/main/04-AddingATask-WritingToTheDatabase/02-materialize-select-validation/static/js/script.js) to help validate the select dropdown for add review and add book pages.
+
 * For the reviews I wanted to extract and display the date of each review's creation and most recent update based on the systems datetime, for this I used the code at [w3schools](https://www.w3schools.com/python/python_datetime.asp) to help me extract, format and store the dates as I wanted.
 
 * For the tables in manage books and manage genres pages I wanted to change the colour of the highlight in each row when it is hovered over, by default Materializecss makes this a light grey. I found the below code from [stackoverflow](https://stackoverflow.com/questions/54659023/change-the-highlight-and-striped-colors-in-table-on-materialize-using-a-helper) which helped my achieve my desired result.

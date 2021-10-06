@@ -19,6 +19,7 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+# home/reviews page
 @app.route("/")
 @app.route("/get_reviews")
 def get_reviews():
@@ -57,6 +58,7 @@ def get_reviews():
                            averageRev1=averageRev1)
 
 
+# search function
 @app.route("/search", methods=["GET", "POST"])
 def search():
     query = request.form.get("query")
@@ -95,6 +97,7 @@ def search():
                            averageRev1=averageRev1)
 
 
+# register function
 @app.route("/register", methods=["GET", "POST"])
 def register():
     # POST method functionality
@@ -125,6 +128,7 @@ def register():
     return render_template("register.html")
 
 
+# login function
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -154,6 +158,7 @@ def login():
     return render_template("login.html")
 
 
+# profile/my reviews page
 # conditional check so only logged in users can access this page
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
@@ -186,6 +191,7 @@ def profile(username):
         return redirect(url_for("get_reviews"))
 
 
+# logout function
 @app.route("/logout")
 def logout():
     # remove user from session cookie
@@ -194,6 +200,7 @@ def logout():
     return redirect(url_for("login"))
 
 
+# add review page/function
 # add conditional check so only logged in users can add a review
 @app.route("/add_review", methods=["GET", "POST"])
 def add_review():
@@ -233,6 +240,7 @@ def add_review():
             return redirect(url_for("get_reviews"))
 
 
+# edit review page/function
 # no need to add conditional checks as
 # it would be difficult
 # for a user to guess the review id to get on to this page
@@ -273,6 +281,7 @@ def edit_review(review_id):
     return render_template("edit_review.html", review=review, books=books)
 
 
+# delete review function
 @app.route("/delete_review/<review_id>")
 def delete_review(review_id):
     submit = {
@@ -301,6 +310,7 @@ def delete_review(review_id):
     return redirect(url_for("get_reviews"))
 
 
+# manage genres page
 # conditional check so only admin can access this page
 @app.route("/get_genres")
 def get_genres():
@@ -324,6 +334,7 @@ def get_genres():
         return redirect(url_for("get_reviews"))
 
 
+# add genre page/function
 # conditional check so only admin can access this page
 @app.route("/add_genre", methods=["GET", "POST"])
 def add_genre():
@@ -356,6 +367,7 @@ def add_genre():
             return redirect(url_for("get_reviews"))
 
 
+# edit genre page/function
 # no need to add conditional checks as
 # it would be difficult
 # for a user to guess the genre id to get on to this page
@@ -374,6 +386,7 @@ def edit_genre(genre_id):
     return render_template("edit_genre.html", genre=genre)
 
 
+# delete genre function
 @app.route("/delete_genre/<genre_id>")
 def delete_genre(genre_id):
     submit = {
@@ -388,6 +401,7 @@ def delete_genre(genre_id):
     return redirect(url_for("get_genres"))
 
 
+# add book page/function
 # conditional check so only logged in users can add a book
 @app.route("/add_book", methods=["GET", "POST"])
 def add_book():
@@ -416,6 +430,7 @@ def add_book():
             return redirect(url_for("get_reviews"))
 
 
+# manage books page
 # conditional check so only admin can access this page
 @app.route("/get_books")
 def get_books():
@@ -439,6 +454,7 @@ def get_books():
         return redirect(url_for("get_reviews"))
 
 
+# edit book page/function
 # no need to add conditional checks as
 # it would be difficult
 # for a user to guess the book id to get on to this page
@@ -460,6 +476,7 @@ def edit_book(book_id):
     return render_template("edit_book.html", book=book, genres=genres)
 
 
+# delete book function
 @app.route("/delete_book/<book_id>")
 def delete_book(book_id):
     submit = {
@@ -483,4 +500,4 @@ if __name__ == "__main__":
             port=int(os.environ.get("PORT")),
             # dont forget to change this to debug False prior to project
             # submission!
-            debug=True)
+            debug=False)

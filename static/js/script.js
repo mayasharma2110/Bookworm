@@ -6,7 +6,9 @@ $(document).ready(function(){
     $('.collapsible').collapsible();
     // code from materializecss
     $('select').formSelect();
-    // code from code insitute to help validate the select dropdown (using materializecss) for book title
+    // code from code insitute to help validate the select dropdown (using materializecss) for book title and genre name
+    // https://github.com/Code-Institute-Solutions/TaskManagerAuth/blob/main/04-AddingATask-WritingToTheDatabase/02-materialize-select-validation/static/js/script.js
+    // see readme credits section for more detail
     validateMaterializeSelect();
     function validateMaterializeSelect() {
         let classValid = { "border-bottom": "1px solid #4caf50", "box-shadow": "0 1px 0 0 #4caf50" };
