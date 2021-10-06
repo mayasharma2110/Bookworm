@@ -154,26 +154,36 @@ def login():
     return render_template("login.html")
 
 
+# conditional check so only logged in users can access this page
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
-    # grab the session user's username from db
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
-    # get other details about the logged in user
-    agecat = mongo.db.users.find_one(
-        {"username": session["user"]})["age_category"]
-    gender = mongo.db.users.find_one(
-        {"username": session["user"]})["gender"]
-    usercap = username.capitalize()
-    # get all reviews
-    reviews = list(mongo.db.reviews.find())
-    books = list(mongo.db.books.find())
-    genres = list(mongo.db.genres.find())
-    if session["user"]:
-        return render_template("profile.html", username=username,
-                               usercap=usercap, agecat=agecat, gender=gender,
-                               reviews=reviews, books=books, genres=genres)
-    return redirect(url_for("login"))
+    # check if logged in
+    if session:
+        # grab the session user's username from db
+        username = mongo.db.users.find_one(
+            {"username": session["user"]})["username"]
+        # get other details about the logged in user
+        agecat = mongo.db.users.find_one(
+            {"username": session["user"]})["age_category"]
+        gender = mongo.db.users.find_one(
+            {"username": session["user"]})["gender"]
+        usercap = username.capitalize()
+        # get all reviews
+        reviews = list(mongo.db.reviews.find())
+        books = list(mongo.db.books.find())
+        genres = list(mongo.db.genres.find())
+        if session["user"] == username:
+            return render_template("profile.html", username=username,
+                                   usercap=usercap, agecat=agecat,
+                                   gender=gender,
+                                   reviews=reviews, books=books, genres=genres)
+        else:
+            return redirect(url_for("login"))
+    # if not logged in give a warning and return to home page
+    else:
+        flash("Sorry that did not work, " +
+              "you must be logged in to see your profile!")
+        return redirect(url_for("get_reviews"))
 
 
 @app.route("/logout")
