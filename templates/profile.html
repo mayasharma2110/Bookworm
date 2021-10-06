@@ -66,7 +66,7 @@
       </tr>
       {% else %}
       <!-- if made no reviews add text and show link to add some reviews -->
-      <tr>You have made no reviews yet, please add some reviews <a href="{{ url_for('add_review') }}" class="green-text text-lighten-1">here</a>.</tr>
+      <tr>You have made no reviews yet, please <a href="{{ url_for('add_review') }}" class="green-text text-lighten-1"> add some reviews here</a>.</tr>
       {% endfor %}
     </tbody>
   </table>
