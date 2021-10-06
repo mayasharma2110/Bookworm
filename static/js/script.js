@@ -1,3 +1,4 @@
+// jshint esversion: 6
 $(document).ready(function(){
     // code from materializecss
     $('.sidenav').sidenav({edge:"right"});
