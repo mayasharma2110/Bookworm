@@ -141,7 +141,7 @@ The website will use Materializecss grids to make the layout responsive to diffe
 
 * The login page will contain a form for registered users to login. This will ask for username and password, if either are incorrect this will be displayed ot the user and the site will ask them to try again. There will also be a logout link for logged in users to use.
 
-* The register page will contain a form for new members to sign up and be part of the community. This will ask for users username, password, age category and gender. The site will check against the database to make sure there is no current user with such username and if so will notify the user as such and to choose a different username instead. Age category and gender can be of use for users of the site when deciding on a new book/author based on demogrpahics of those who read such books/authors' work.
+* The register page will contain a form for new members to sign up and be part of the community. This will ask for users username, password, age category and gender. The site will check against the database to make sure there is no current user with such username and if so, will notify the user as such and to choose a different username instead. Age category and gender can be of use for users of the site when deciding on a new book/author based on demogrpahics of those who read such books/authors' work.
 
 * The new review page will contain a form which allows signed in users to create a new review for a book. This will include a dropdown for the book that is being revewed, recommend yes/no field, start out of 5 field and review comment (free text field). Users will also be able to update/delete their own review and admin can delete any review.
 
@@ -199,16 +199,16 @@ I used pen and paper to make the wireframes for this project. The website was de
 
 Please note there are a few changes to the final site since the wireframes were made:
 
-  * I added a image to the home/reviews page.
+  * I added an image to the home/reviews page.
   * I added a profile page called "My reviews" to the site so logged in users can see the reviews they made easily, from here they can also update/delete the reviews they created.
 
 ### Surface
 
 #### Colours
-I noticed that several booksites seem to use a common colour of blue e.g. [Waterstones](https://www.waterstones.com/) and [World of Books](https://www.worldofbooks.com/en-gb), however I chose a main colour of green as I found this a good colour to represent nature/balance and is also calming. From [Adobe Color](https://color.adobe.com/create/color-wheel) I choose green (#00e676 green accent-3) as the main colour and this site helped me find the split complemantary colours of orange (#ef6c00 orange darken-3) and magenta (#ad1457 pink darken-3). For the navbar and headings text I chose a light (#b9f6ca green accent-1) and dark green (#1b5e20 green darken-4) and other text uses dark grey (#424242 grey darken-3).
+I noticed that the popular booksite [Waterstones](https://www.waterstones.com/) uses a common colour of teal, however I chose a main colour of green as I found this a good colour to represent nature/balance and is also calming. From [Adobe Color](https://color.adobe.com/create/color-wheel) I choose green (#00e676 green accent-3) as the main colour and this site helped me find the split complemantary colours of orange (#ef6c00 orange darken-3) and magenta (#ad1457 pink darken-3). For the navbar and headings text I chose a light (#b9f6ca green accent-1) and dark green (#1b5e20 green darken-4) and other text uses dark grey (#424242 grey darken-3).
 
 #### Imagery
-I picked images of books and people reading books, I also wanted to pick images that created a sense of relaxation and calm (so a few of the images are of people reading outside). The images used on the site are credited in the credits - media section of this readme.
+I picked an image of a person reading a book outdoors for the home page as I wanted to create a sense of relaxation and calm. Further information on this is given in the credits - media section of this readme.
 
 ## Features
 
@@ -228,33 +228,33 @@ I picked images of books and people reading books, I also wanted to pick images 
 
 * The manage books page is restricted to admins only. It allows admin to view the current books and add a new book to the site, update a book or delete a book. Users who are not admin and who are logged in can also add new books but are not able to update or delete existing records. 
 
-* Although a non admin user can add a book I did not allow them to update or delete this as if they had already created a review for the book updating the book title later would cause the review to not show in the home page anymore.
+* Although a non admin user can add a book, I did not allow them to update or delete this as if they had already created a review for the book updating the book title later would cause the review to not show in the home page anymore.
 
 * The manage genres page is restricted to admins only. It allows admin to view the current genres and add a new genre to the site, update a book or delete a genre.
 
 * Before a user/admin deletes a review, book or genre there is defensive programming which will display additional buttons to check if a user/admin really wants to delete the review, book or genre. 
 
-* When a user/admin deletes a review, book or genre this is a soft delete only and the information is kept in the database but the variable "display" will change to "N" (for all reviews, books and genres this is automatically set to "Y" on creation) and therefore this information will not be presented on the site.
+* When a user/admin deletes a review, book or genre this is a soft delete only and the information is kept in the database, but the variable "display" will change to "N" (for all reviews, books and genres this is automatically set to "Y" on creation) and therefore this information will not be presented on the site.
 
-* There a security checks so a user cannot gain access to cetrain pages without being logged in or logged in as admin.
+* There are security checks so a user cannot gain access to cetrain pages without being logged in or logged in as admin.
   * All users can access register, log in and home pages.
   * Logged in users also gain access to my reviews, add review and add book pages.
   * Admin users also gain access to manage books, manage genres and add genre pages.
-  * There are no security checks for edit review, edit book and edit genre pages as these would require a user to guess the review/book/genre id (as in mongobd) and therefore are secure. For example to edit a review the page would be something like ".../edit_review/613faa0a95b25ad59fd7731c".
+  * There are no security checks for edit review, edit book and edit genre pages as these would require a user to guess the review/book/genre id (as in mongobd) and therefore are secure. For example, to edit a review the page would be something like ".../edit_review/613faa0a95b25ad59fd7731c".
 
 ### Features Left to Implement
 
-* It would be nice to use some book API, for example [Google Books](https://developers.google.com/books/docs/v1/using), as this could help ensure the spelling of book titles and authors are correct when users add a new book to the site/database (and help avoid having duplicates of the same bok with various spellings of title/author). This could have the users enter a book they have using the ISBN number (usually found on the back of the book near the barcode) or if they do not have the book to hand they could be prompted to google for its ISBN number or contact the site with the details so a person could manually add it to the site/database. 
+* It would be nice to use some book API, for example [Google Books](https://developers.google.com/books/docs/v1/using), as this could help ensure the spelling of book titles and authors are correct when users add a new book to the site/database (and help avoid having duplicates of the same bok with various spellings of title/author). This could have the users enter a book they have using the ISBN number (usually found on the back of the book near the barcode) or if they do not have the book to hand, they could be prompted to google for its ISBN number or contact the site with the details so a person could manually add it to the site/database. 
 
-* It would be nice to have a check when a user adds a new review to see if they have already made a review for that book - if yes we could prompt them to edit this review instead.
+* It would be nice to have a check when a user adds a new review to see if they have already made a review for that book - if yes, we could prompt them to edit this review instead.
 
 * It would be nice to have a search function on the manage books page so admin check if a book exists in the database before adding a new one.
 
 * It would be good to have the site collect a users date of birth when they register rather than collecting age category directly. The site could calculate their age at a given time using this date of birth and the system date to derive age and age category. This would be good for instances when a user's age and age category will change over time and it can be automaticaly updated when they make a review.
 
-* If a book title is updated it would be good to automatically update the book_title variable in the reviews collection to make sure all the reviews should show correctly. Similarly if a genre name is updated it would be good to automatically update the genre_name variable in the books collection to make sure all books should show correctly. 
+* If a book title is updated it would be good to automatically update the book_title variable in the reviews collection to make sure all the reviews should show correctly. Similarly, if a genre name is updated it would be good to automatically update the genre_name variable in the books collection to make sure all books should show correctly. 
 
-* If a book was deleted this book and any reviews for it would not show on the site but would remain in the database. If a user had made a review for a book that was deleted in the future it may be good to notify them of this.
+* If a book was deleted this book and any reviews for it would not show on the site but would remain in the database. If a user had made a review for a book that was deleted in the future, it may be good to notify them of this.
 
 ## Technologies Used
 
@@ -292,9 +292,9 @@ I picked images of books and people reading books, I also wanted to pick images 
 
 Expected - When the user registers with a username that already exists in the database this will be shown to the user and they will be asked to pick another username.
 
-Testing - Tested the feature by trying to register under a already created username.
+Testing - Tested the feature by trying to register under an already created username.
 
-Result - The feature acted as normally and it did tell me the username was already taken and to choose another username.
+Result - The feature acted as normally, and it did tell me the username was already taken and to choose another username.
 
 Expected - When the user registers with a username that does not already exist in the database thier information will be added to the database (under users collection) and they will be taken back to the home page.
 
@@ -310,7 +310,7 @@ Expected - When the user logs in with an incorrect username and/or password they
 
 Testing - Tested the feature by trying to log in with the wrong password and also the wrong username.
 
-Result - The feature acted as normally and it did tell me the username and/or password was wrong and reloaded the log in page.
+Result - The feature acted as normally, and it did tell me the username and/or password was wrong and reloaded the log in page.
 
 Expected - When the user logs in with the correct username and password and they will be taken to the home page and notified they logged in successfully.
 
@@ -336,7 +336,7 @@ Testing - Tested the feature clicking on a review to edit.
 
 Result - The feature acted as expected and it did take me to the edit review page.
 
-Expected - When the user clicks to delete a review they are asked if they want to proceed, yes or no. I they click no the current page is reloaded. If they click yes this review is soft deleted in the database (display changes from Y or N) and they are taken to the home page.
+Expected - When the user clicks to delete a review they are asked if they want to proceed, yes or no. I they click no the current page is reloaded. If they click yes, this review is soft deleted in the database (display changes from Y or N) and they are taken to the home page.
 
 Testing - Tested the feature clicking on a review to delete and then no.
 
@@ -360,9 +360,9 @@ Fix - I noticed that when a user clicks search the python function /search was r
 
 ### Add New Review
 
-This page has a drop down selection and only shows books in the database with display Y, additioanlly it has extra fields for users to say if they recommend a book or not, give a stars rating out of 5 and enter a review comment. When they create a review the date created variable is made using the system timedate and to get this variable in the right format I used the [w3schools](https://www.w3schools.com/python/python_datetime.asp) site to help me.
+This page has a drop down selection and only shows books in the database with display Y, additioanlly it has extra fields for users to say if they recommend a book or not, give a star rating out of 5 and enter a review comment. When they create a review, the date created variable is made using the system timedate and to get this variable in the right format I used the [w3schools](https://www.w3schools.com/python/python_datetime.asp) site to help me.
 
-Expected - When the user clicks to add a review they are taken to the add_review page.
+Expected - When the user clicks to add a review, they are taken to the add_review page.
 
 Testing - Tested the feature by adding a review.
 
@@ -386,7 +386,7 @@ Fix - I extracted the date create variable from the database before updating the
 
 ### Delete Review
 
-Expected - When the user clicks to delete a review they are asked if they want to proceed, yes or no. I they click no the current page is reloaded. If they click yes this review is soft deleted in the database (display changes from Y or N) and they are taken to the home page.
+Expected - When the user clicks to delete a review they are asked if they want to proceed, yes or no. I they click no the current page is reloaded. If they click yes, this review is soft deleted in the database (display changes from Y or N) and they are taken to the home page.
 
 Testing - Tested the feature clicking on a review to delete and then no.
 
@@ -416,13 +416,13 @@ Result - The feature acted as expected and created the book in the database and 
 
 ### Edit Book
 
-This page is similar to the add book page however it pre populates the book name, author and genre as currently in the database.
+This page is similar to the add book page however it pre-populates the book name, author and genre as currently in the database.
 
 ![Edit book](static/testing/edit-book.PNG)
 
 ### Delete Book
 
-Expected - When the user clicks to delete a book they are asked if they want to proceed, yes or no. I they click no the current page is reloaded. If they click yes this book is soft deleted in the database (display changes from Y or N) and the current page is reloaded.
+Expected - When the user clicks to delete a book they are asked if they want to proceed, yes or no. I they click no the current page is reloaded. If they click yes, this book is soft deleted in the database (display changes from Y or N) and the current page is reloaded.
 
 Testing - Tested the feature clicking on a book to delete and then no.
 
@@ -430,7 +430,7 @@ Result - The feature acted as expected and it did reload the current page.
 
 Testing - Tested the feature clicking on a book to delete and then yes.
 
-Result - The feature acted as expected and it did soft delete the book in the database and it reloaded the current page.
+Result - The feature acted as expected and it did soft delete the book in the database, and it reloaded the current page.
 
 ![Delete book](static/testing/delete-book.PNG)
 
@@ -452,13 +452,13 @@ Result - The feature acted as expected and created the genre in the database and
 
 ### Edit Genre
 
-This page is similar to the add genre page however it pre populates the genre name as currently in the database.
+This page is similar to the add genre page however it pre-populates the genre name as currently in the database.
 
 ![Edit genre](static/testing/edit-genre.PNG)
 
 ### Delete Genre
 
-Expected - When the user clicks to delete a genre they are asked if they want to proceed, yes or no. I they click no the current page is reloaded. If they click yes this genre is soft deleted in the database (display changes from Y or N) and the current page is reloaded.
+Expected - When the user clicks to delete a genre they are asked if they want to proceed, yes or no. I they click no the current page is reloaded. If they click yes, this genre is soft deleted in the database (display changes from Y or N) and the current page is reloaded.
 
 Testing - Tested the feature clicking on a genre to delete and then no.
 
@@ -620,8 +620,8 @@ To deploy the project to a live website the below steps were followed:
 >  echo web: python app.py > Procfile (note that this has no extension)
 * In Heroku click on create a new app. The Heroku app name must be unique and generally uses - instead of spaces and all lowercase letters. Then select the region closest to you and create app.
 * To connect our app to Heroku we can setup an automatic deployment from our GitHub repo. Within your Heroku app go to the deployment tab and click on GitHub for the deployment method. Make sure your GitHub profile is displayed below and enter the repository name and search. Make sure your repo is displayed and click connect to this app.
-* Before enabling automatic deployment we still have a couple more steps.
-* Click on the settings tab in your app and click on reveal config vars, you can then enter the information that is in the hidden env.py file. Typically you need to include IP, PORT, SECRET_KEY, MONGO_URI and MONGO_DBNAME.
+* Before enabling automatic deployment, we still have a couple more steps.
+* Click on the settings tab in your app and click on reveal config vars, you can then enter the information that is in the hidden env.py file. Typically, you need to include IP, PORT, SECRET_KEY, MONGO_URI and MONGO_DBNAME.
 * Git add, commit and push the changes in your Gitpod (adding the requirements and Procfile files) as epxplained in the above section.
 * Go back to your Heroku app and the deployment tab - now click to enable automatic deployment and then click deploy branch.
 * Heroku will now receive the code from GitHub and build your app, once it is complete you should see that your app has been successfully deployed.
