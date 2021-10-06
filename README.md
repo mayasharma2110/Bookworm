@@ -508,12 +508,16 @@ Result - The feature acted as expected and it did soft delete the genre in the d
 
 ### Online Validation
 
-* I checked the website loads and responds as expected on Google Chrome, Internet Explorer and Microsoft Edge browsers. 
+* I checked the website loads and responds as expected on Google Chrome and Microsoft Edge browsers. 
 
-* Used chrome developer tools and [responsinator](https://www.responsinator.com/) to check responsiveness on mobile, tablet and laptop devices.  
+* Used chrome developer tools to check responsiveness on mobile, tablet and laptop devices.  
 I also checked the website on my HP 15 inch laptop, Philips 20 inch monitor and Sony smartphone.
 
-* Used the [w3c validator](https://validator.w3.org/) to validate my html (for both pages of the website) to check for no errors or warnings. 
+* Used the [w3c validator](https://validator.w3.org/) to validate my html (for all pages of the website) to check for no errors or warnings. For html there was 1 warning on all pages due to the section for flash messages (shown below).
+  ![HTML warning](static/testing/html-warning.PNG) <br>
+  There were additionally some extra errors/warnings due to the materializecss being used that the validator did not have access to (see below also). <br>
+  ![Other HTML warnings](static/testing/other-html-warnings.png)
+
 * Used the [jigsaw validator](https://jigsaw.w3.org/css-validator/#validate_by_input) to validate my style.css file to check for no errors or warnings. 
 I did not validate css of the whole website as this included the imported materializecss files.
 
@@ -525,23 +529,11 @@ I did not validate css of the whole website as this included the imported materi
 
 I used [lighthouse](https://developers.google.com/web/tools/lighthouse) in chrome developer tools to check the websites performance in terms of 
 performance, accessibility, best practises and SEO.
-This was done for both pages of the website and for both mobile and desktop devices.
+This was done for all pages of the website and for desktop devices only due to time.
 The summary table below shows these metrics.
 
 | Device | Page |  Performance | Accessibility  | Best Practises  | SEO |
 |---|---|---|---|---|---|
-| Mobile  |  Home | xx% | xx% | xx% | xx% |
-| Mobile  |  Login | xx% | xx% | xx% | xx% |
-| Mobile  |  Register | xx% | xx% | xx% | xx% |
-| Mobile  |  New Review | xx% | xx% | xx% | xx% |
-| Mobile  |  Edit Review | xx% | xx% | xx% | xx% |
-| Mobile  |  Manage Books | xx% | xx% | xx% | xx% |
-| Mobile  |  Add Book | xx% | xx% | xx% | xx% |
-| Mobile  |  Edit Book | xx% | xx% | xx% | xx% |
-| Mobile  |  Manage Genres | xx% | xx% | xx% | xx% |
-| Mobile  |  Add Genre | xx% | xx% | xx% | xx% |
-| Mobile  |  Edit Genre | xx% | xx% | xx% | xx% |
-
 | Desktop  |  Home | xx% | xx% | xx% | xx% |
 | Desktop  |  Login | xx% | xx% | xx% | xx% |
 | Desktop  |  Register | xx% | xx% | xx% | xx% |
@@ -555,18 +547,6 @@ The summary table below shows these metrics.
 | Desktop  |  Edit Genre | xx% | xx% | xx% | xx% |
 
 Full reports can be found below:
-* [Mobile Home](assets/lighthouse/lighthouse-mobile-home.pdf)
-* [Mobile Login](assets/lighthouse/lighthouse-mobile-login.pdf)
-* [Mobile Register](assets/lighthouse/lighthouse-mobile-register.pdf)
-* [Mobile Profile](assets/lighthouse/lighthouse-mobile-profile.pdf)
-* [Mobile New Review](assets/lighthouse/lighthouse-mobile-new-review.pdf)
-* [Mobile Edit Review](assets/lighthouse/lighthouse-mobile-edit-review.pdf)
-* [Mobile Manage Books](assets/lighthouse/lighthouse-mobile-manage-books.pdf)
-* [Mobile Add Book](assets/lighthouse/lighthouse-mobile-add-book.pdf)
-* [Mobile Edit Book](assets/lighthouse/lighthouse-mobile-edit-book.pdf)
-* [Mobile Manage Genres](assets/lighthouse/lighthouse-mobile-manage-genres.pdf)
-* [Mobile Add Genre](assets/lighthouse/lighthouse-mobile-add-genre.pdf)
-* [Mobile Edit Genre](assets/lighthouse/lighthouse-mobile-edit-genre.pdf)
 
 * [Desktop Home](assets/lighthouse/lighthouse-desktop-home.pdf)
 * [Desktop Login](assets/lighthouse/lighthouse-desktop-login.pdf)
