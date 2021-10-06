@@ -6,32 +6,6 @@ This is a website for a book review/recommendation site.
 
 It is aimed for those who are interested in getting book recommendaions based on author, genre or trying something completely new, users can also help others by providing reviews of books they have read themselves. 
 
-Mockups:
-
-![Home Mockups](assets/mockups/mockup-home.PNG)
-
-![Login Mockups](assets/mockups/mockup-login.PNG)
-
-![Register Mockups](assets/mockups/mockup-register.PNG)
-
-![Profile Mockups](assets/mockups/mockup-profile.PNG)
-
-![New Review Mockups](assets/mockups/mockup-new-review.PNG)
-
-![Edit Review Mockups](assets/mockups/mockup-edit-review.PNG)
-
-![Add Book Mockups](assets/mockups/mockup-add-book.PNG)
-
-![Manage Books Mockups](assets/mockups/mockup-manage-books.PNG)
-
-![Edit Book Mockups](assets/mockups/mockup-edit-book.PNG)
-
-![Manage Genres Mockups](assets/mockups/mockup-manage-genres.PNG)
-
-![Add Genre Mockups](assets/mockups/mockup-add-genre.PNG)
-
-![Edit Genre Mockups](assets/mockups/mockup-edit-genre.PNG)
-
 ## Table of Contents
 
 * [UX](#ux)
@@ -312,8 +286,6 @@ I picked images of books and people reading books, I also wanted to pick images 
 
 * [Tinypng](https://tinypng.com/) - used to compress the images so they loaded quicker on the website.
 
-* [Am I Responsive](http://ami.responsivedesign.is/#) - used for the mockups of the website on different devices.
-
 ## Testing
 
 ### User Authentication Register
@@ -535,7 +507,7 @@ The summary table below shows these metrics.
 | Device | Page |  Performance | Accessibility  | Best Practises  | SEO |
 |---|---|---|---|---|---|
 | Desktop  |  Home | 100% | 97% | 93% | 100% |
-| Desktop  |  Login | 100% | 96% | 100% | 89% |
+| Desktop  |  Login | 99% | 96% | 93% | 100% |
 | Desktop  |  Register | 100% | 84% | 100% | 100% |
 | Desktop  |  Profile | 100% | 95% | 93% | 100% |
 | Desktop  |  New Review | 100% | 84% | 93% | 100% |
@@ -553,11 +525,9 @@ Full reports can be found below:
 * [Desktop Login](static/lighthouse/lighthouse-desktop-login.pdf)
 * [Desktop Register](static/lighthouse/lighthouse-desktop-register.pdf)
 * [Desktop Profile](static/lighthouse/lighthouse-desktop-profile.pdf)
-
 * [Desktop New Review](static/lighthouse/lighthouse-desktop-add-review.pdf)
 * [Desktop Edit Review](static/lighthouse/lighthouse-desktop-edit-review.pdf)
 * [Desktop Add Book](static/lighthouse/lighthouse-desktop-add-book.pdf)
-
 * [Desktop Manage Books](static/lighthouse/lighthouse-desktop-manage-books.pdf)
 * [Desktop Edit Book](static/lighthouse/lighthouse-desktop-edit-book.pdf)
 * [Desktop Manage Genres](static/lighthouse/lighthouse-desktop-manage-genres.pdf)
