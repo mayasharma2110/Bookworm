@@ -125,11 +125,11 @@ Mockups:
 
 #### Business goals
 
-* As a business owner I want to, help users find new books/authors they may enjoy.
+* As a business owner, I want to help users find new books/authors they may enjoy.
 
-* As a business owner I want to, be able to manage the list of books and genres that are displayed as options to users of the site when adding a new review or book to the database/site.
+* As a business owner, I want to be able to manage the list of books and genres that are displayed as options to users of the site when adding a new review or book to the database/site.
 
-* As a business owner I want to, be able to manage the reviews and soft delete any that are deemed spam or unacceptable in some way, this will be a soft delete and will remain in the database but not be shown on the site to users.
+* As a business owner, I want to be able to manage the reviews and soft delete any that are deemed spam or unacceptable in some way, this will be a soft delete and will remain in the database but not be shown on the site to users.
 
 #### User Goals
 
@@ -565,23 +565,67 @@ Full reports can be found below:
 
 * First Time Visitor Goals  
 
-  * As a first time user, xxxxx.
-    * How the site achieves this goal.
+  * As a first time user,  I want to know the purpose of the site.
+    * The site has a clear title Bookworm which is a clear indication the site is about books.
+    * There is an image of a person reading by a cliff side which also shows the site is to do with books.
+    * Below the image there is text "All Reviews" and a search bar which shows the site will contain information about book reviews.
+
+  * As a first time user,  I want to read reviews registered users have made.
+    * When the home page is first loaded users can see the text "All Reviews" and are therefore encouraged to scroll down where they will see the list of genres and books. Each book has some text to tell the user to click to see the reviews.
+    * Additioanlly, users can search near the top of the page based on a particular author or book title to narrow thier search.
+
+  * As a first time user,  I want to be able to find a new book that I may like to read.
+    * For each book the information of average score out of 5 is shown and also the number of reviews which can also help users pick a new book to read.
+    * Users can read the reviews of certain books, authors or genres to get an idea of which books they may like. 
+    * For each review the site also shows the age category and gender of the user who made the review, this can help others pick a book as they gain an idea of which books are liked/disliked by different demographics.
+    
+  * As a first time user, I want to be able to be able to search in the reviews for a certain book title or author.
+    * There is a search bar below the image on the home screen with instructions for the user to search based on book title or author with search and reset buttons.
 
 * Returning Visitor Goals
 
-  * As a returning user, xxxxx.
-    * How the site achieves this goal.
+  * As a returning user, I have similar needs of a first time user.
+    * See above section.
+
+  * As a returning user, I want to be able to register and login as myself.
+    * In the navbar there are clear links to log in and register.
+    * The register page has clear instructions for each field on what is expected/allowed and each field is validated through the materializecss library.
+    * The log in page allows registered users to log in and if the get the username/password wrong the log in page is reloaded and they are lotified ther attempt was unsuccessful.
+
+  * As a returning user, I want to be able to add new books to the database/site.
+    * Logged in users can see the Add Book link in the navbar.
+    * Additionally, in the home page there are links to prompt the user to add a new book if there are no books in the database currently for a genre. 
+    * The add book page has clear instructions for each field on what is expected/allowed and each field is validated through the materializecss library.
+    * Once they have added a book they are notified that this was successful and taken to the home page.
+
+  * As a returning user, I want to be able to add my own reviews to the site, I would also like to update or delete my own reviews.
+    * Logged in users can see the My Reviews link in the navbar, from here they can see the current reviews they made. They can also add a review and also update/delete any existing reviews they made.
+    * From the home page logged in users can see any reviews they made and next to them will have edit and delete buttons.
+    * From the home page users are prompted to add a review for each book if they have read it.
+    * The add review page has clear instructions for each field on what is expected/allowed and each field is validated through the materializecss library.
+    * Once they have added a review they are notified that this was successful and taken to the home page.
+    * There is also a conditonal check before they delete a review to check if are sure.
 
 * Frequent User Goals
     
-  * As a frequent user, xxxxx.
-    * How the site achieves this goal.
+  * As a frequent user, I have similar needs of a first time and returning user.
+    * See above sections.
 
 * Business Goals
 
-  * As a business I want, xxxx.
-    * How the site achieves this goal.
+  * As a business owner, I want to help users find new books/authors they may enjoy.
+    * See above sections for how the site helps users find new books/authors they may like.
+
+  * As a business owner, I want to be able to manage the list of books and genres that are displayed as options to users of the site when adding a new review or book to the database/site.
+    * From the navbar admin have access to the manage books and manage genre pages. These pages show all books/genres in the database with display "Y". They additionally have links allowing admin to add a new book/genre to the database or update/delete any existing books/genres.
+    * There is also a conditonal check before they delete a book/genre to check if are sure.
+    * When the books or genres collections in MongoDB are updated by admin this is automatically updated in pages such as add book (the selection of genre names will be updated dynamically) and add review (the selection of book names will be updated dynamically).
+
+  * As a business owner, I want to be able to manage the reviews and soft delete any that are deemed spam or unacceptable in some way, this will be a soft delete and will remain in the database but not be shown on the site to users.
+    * From the home page admin are able to view all reviews and delete a review made by themselves or any user.
+    * There is also a conditonal check before they delete a review to check if are sure.
+    * If they click delete and then yes they are notified that the review has been deleted and the home page is reloaded.
+    * If they click delete and then no the home page is reloaded and the database is not updated.
 
 ## Deployment
 
