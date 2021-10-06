@@ -2,7 +2,7 @@
 {% block content %}
 
 
-<img src="{{ url_for('static', filename='images/home-img.jpg') }}" alt="A person reading on the edge of a cliff" width="70%">
+<img src="{{ url_for('static', filename='images/home-img.jpg') }}" alt="A person reading on the edge of a cliff">
 
 <h3 class="center-align">All Reviews</h3>
 
@@ -99,10 +99,10 @@
                         <!-- if no reviews show some text -->
                         {% if averageRev1[book.book_title][0] == 0 %}
                             Sorry, there are no reviews for this book currently. 
-                            If you have read it please add a review <a href="{{ url_for('add_review') }}" class="green-text text-lighten-1">here</a>. <br>
+                            If you have read it please <a href="{{ url_for('add_review') }}" class="green-text text-lighten-1">add a review here</a>. <br>
                         {% else %}
                         <!-- if some reviews prompt users to add more reviews -->
-                        If you have also read this book please add an additional review for it <a href="{{ url_for('add_review') }}" class="green-text text-lighten-1">here</a>. <br>
+                        If you have also read this book please <a href="{{ url_for('add_review') }}" class="green-text text-lighten-1">add an additional review for it here</a>. <br>
                         {% endif %}
                     </div>
                 </div>
@@ -110,7 +110,7 @@
             <!-- if no books of this genre -->
             {% else %}
             Sorry, there are no books in the database for this genre currently. 
-            If you have read a book of this genre please add it <a href="{{ url_for('add_book') }}" class="green-text text-lighten-1">here</a> and then add a review <a href="{{ url_for('add_review') }}" class="green-text text-lighten-1">here</a>. <br>
+            If you have read a book of this genre <a href="{{ url_for('add_book') }}" class="green-text text-lighten-1">please add it here</a> and then <a href="{{ url_for('add_review') }}" class="green-text text-lighten-1">add a review here</a>. <br>
             {% endfor %}
 
         {% endfor %}
